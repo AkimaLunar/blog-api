@@ -2,6 +2,7 @@ const express = require('express');
 
 const { logger } = require('./logger');
 const { router } = require('./router');
+require('./BLOGPOSTS.js');
 
 const app = express();
 
