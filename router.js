@@ -22,7 +22,7 @@ router.get('/:id', jsonParser, (req, res) => {
 })
 
 // CREATE
-router.put('/', jsonParser, (req, res) => {
+router.post('/', jsonParser, (req, res) => {
     // Author optional??
     const requiredFields = ['title', 'content', 'author'];
     for (let i=0; i<requiredFields.length; i++) {
