@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: F3XbZ6TiU/FaMFv5TdxyjHzGszGMa4INPADtncgfPjravA9Ka1KM3FuSCLi8S5/n/ZwtIhfgcgkfOVCj7K1oAc0Lh99WT4hX+RdD5UsGX2pLBw3FxKy+trTrTOXCBPKw6PoXTWZRZnj9xTwa0wiTtOEamub+Thr8RdMeLD4TwUZYPQD4SOYmUZk4ZPoteH4XE/KF+2iXovykB7LCmFkXXNSqDqTBKdSQQGQV25Rk7jjtmxRi2Z+ScnGtisRR0j2Mztbk5xWaC9/kTWsjwta+thGZlRBNagrgojHkB2BkZfylWd4BQZWMR0scWwxcvXJRfcoPFmJVurD/Yqlj+kj+KAnruqua8DwJtM0qTI7tsbmZZsKAuCwdcir6t+0ki8PYop0cUU2L7mJEGsWvowa9MU+UDeB4UzDuF5mwHUEWf2KGVkqK/tJEmjixaQBIRIYMGhSaSSPjsET+ulJ9KW3AVbvsPjvfpiJAVEmjFqKQmGAbCHwLjpBymhi+pvKmNMqkCqhvMvM5CsKWSypRxf6RhHjSDi8Eb646J5bdY+MaYKMt97ZVyYJMNXyRcgZXOGfmlXhCHA/NP+t/uwPnK7K85zj69OZwsGlMSOylmgtdG5XRhwWvcliSYfRCc0RDjlMkWwkeaA5dxI6LYFq6HLhhKlAt+PWTa/UtMbh3tAvb3g8=
+  app: powerful-headland-33492
+  on:
+    repo: AkimaLunar/blog-api
