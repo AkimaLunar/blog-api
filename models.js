@@ -44,7 +44,9 @@ const BlogPosts = {
       this.posts.splice(postIndex, 1);
     }
   },
+
   update: function(updatedPost) {
+    updatedPost.publishDate = Date.now();
     const {id} = updatedPost;
     const postIndex = this.posts.findIndex(
       post => post.id === updatedPost.id);
@@ -53,7 +55,9 @@ const BlogPosts = {
         `Can't update post with id \`${id}\` because it doesn't exist.`)
     }
     this.posts[postIndex] = Object.assign(
-      this.posts[postIndex], updatedPost);
+      this.posts[postIndex], updatedPost
+    );
+
     return this.posts[postIndex];
   }
 };

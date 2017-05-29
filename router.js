@@ -46,7 +46,7 @@ router.post('/', jsonParser, (req, res) => {
         }
     }
     // Date optional??
-    const post = BlogPosts.create(req.body.title, req.body.content, req.body.author, req.body.author, publishDate);
+    const post = BlogPosts.create(req.body.title, req.body.content, req.body.author);
     logger.info(chalk.blue(`Created a new post with ID ${post.id}`));
     res.status(201).json(post);
 })
@@ -76,7 +76,7 @@ router.put('/:id', jsonParser, (req, res) => {
     try {
         BlogPosts.update(updatedPost);
         logger.info(chalk.blue(`Updated a post with ID ${updatedPost.id}`));
-        res.status(200).send(updatedPost);
+        res.status(201).send(updatedPost);
     } catch(e) {
         logger.error(chalk.red(e));
         res.status(400).send(e);
@@ -87,7 +87,7 @@ router.put('/:id', jsonParser, (req, res) => {
 router.delete('/:id', jsonParser, (req, res) => {
     BlogPosts.delete(req.params.id);
     logger.info(chalk.blue(`Deleted a post with ID ${req.params.id}`));
-    res.status(200).end();
+    res.status(204).end();
 
 })
 

@@ -4,7 +4,7 @@
   "description": "Blog API with Node.js and Express",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "nodemon server.js"
   },
   "repository": {
@@ -14,6 +14,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.0.0",
+    "chai-http": "^3.0.0",
     "nodemon": "^1.11.0"
   },
   "dependencies": {
