@@ -1,5 +1,5 @@
 const express = require('express');
-
+const { PORT } = require('./config.js');
 const { logger } = require('./logger');
 const { router } = require('./router');
 require('./BLOGPOSTS.js');
@@ -9,7 +9,7 @@ const app = express();
 app.use('/blog-posts', router);
 
 let server;
-const runServer = function(port = 8080){
+const runServer = function(port=PORT){
     return new Promise((resolve, reject) => {
         server = app.listen(port, () => {
             logger.info(`Your app is listening on port ${port}`);
