@@ -35,6 +35,7 @@ describe('Blog', function(){
 
     it('should retrieve a correct blog post with an ID on GET', function(){
         let postId;
+
         return chai.request(app)
             .get('/blog-posts')
             .then(function(res){
@@ -54,7 +55,7 @@ describe('Blog', function(){
                     "author",
                     "publishDate"
                 );
-                res.body.id.should.deep.equal(postId);
+                res.body.id.should.equal(postId);
             });
     });
 
