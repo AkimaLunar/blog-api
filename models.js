@@ -1,72 +1,43 @@
-const uuid = require('uuid');
+const mongoose = require('mongoose');
 
-function StorageException(message) {
-   this.message = message;
-   this.name = "StorageException";
-}
-
-const BlogPosts = {
-  create: function(title, content, author, publishDate) {
-    const post = {
-      id: uuid.v4(),
-      title: title,
-      content: content,
-      author: author,
-      publishDate: publishDate || Date.now()
-    };
-    this.posts.push(post);
-    return post;
+const blogPostSchema = mongoose.Schema({
+  title : {type: String, required: true},
+  content : {type: String, required: true},
+  author : {
+    firstName : {type: String, required: true},
+    lastName : {type: String, required: true}
   },
+  timestamp: { type: Date, require: true}
+})
 
-  get: function(id=null) {
-    let promise = new Promise((resolve, reject) => {
-        // Passed an ID
-        if (id !== null) {
-            const post = this.posts.find(post => post.id === id);
-            if (!post) {
-                reject(`Post with id ${id} not found`);
-            } else {
-                resolve(post);
-            }
-        }
+blogPostSchema.virtual('authorString').get(function() {
+  return `${this.author.firstName} ${this.author.lastName}`
+})
 
-        // All Blog Posts (no ID)
-        const posts = this.posts.sort((a, b) => b.publishDate - a.publishDate)
-        resolve(posts);
-    })
-    return promise;
-  },
-
-  delete: function(id) {
-    const postIndex = this.posts.findIndex(
-      post => post.id === id);
-    if (postIndex > -1) {
-      this.posts.splice(postIndex, 1);
-    }
-  },
-
-  update: function(updatedPost) {
-    updatedPost.publishDate = Date.now();
-    const {id} = updatedPost;
-    const postIndex = this.posts.findIndex(
-      post => post.id === updatedPost.id);
-    if (postIndex === -1) {
-      throw StorageException(
-        `Can't update post with id \`${id}\` because it doesn't exist.`)
-    }
-    this.posts[postIndex] = Object.assign(
-      this.posts[postIndex], updatedPost
-    );
-
-    return this.posts[postIndex];
+// [*] Add virtual for timestamp >> human-readable format
+blogPostSchema.virtual('timestampString').get(function() {
+  if (this.timestamp) {
+    return `${this.timestamp.getMonth()} / ${this.timestamp.getDate()} / ${this.timestamp.getFullYear()}`
+  } else {
+    return 'No date'
   }
-};
+})
 
-function createBlogPostsModel() {
-  const storage = Object.create(BlogPosts);
-  storage.posts = [];
-  return storage;
+blogPostSchema.methods.apiRepr = function() {
+  return {
+    id: this._id,
+    author: this.authorString,
+    title: this.title,
+    content: this.content,
+
+// [*] Switch with virtual
+    timestamp: this.timestampString
+  }
 }
 
+// [ ] Add author filter
 
-module.exports = {BlogPosts: createBlogPostsModel()};
+const BlogPost = mongoose.model('BlogPost', blogPostSchema);
+
+
+module.exports = { BlogPost };

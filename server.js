@@ -1,37 +1,51 @@
 const express = require('express');
-const { PORT } = require('./config.js');
-const { logger } = require('./logger');
 const { router } = require('./router');
-require('./BLOGPOSTS.js');
+const mongoose = require('mongoose');
+const { PORT, DATABASE_URL } = require('./config.js');
+
+const { logger } = require('./logger');
+const chalk = require('chalk');
 
 const app = express();
 
 app.use('/blog-posts', router);
 
+
+
 let server;
-const runServer = function(port=PORT){
+const runServer = function(databaseUrl=DATABASE_URL, port=PORT){
     return new Promise((resolve, reject) => {
-        server = app.listen(port, () => {
-            logger.info(`Your app is listening on port ${port}`);
-            resolve();
-        })
-        .on('error', err => {
-            reject(err);
-        })
-    })
+        mongoose.connect(databaseUrl, err => {
+            if (err) {
+                logger.error(chalk.red('Couldn’t connect to the database. Shutting down.' + err))
+                return reject(err)
+            }
+            server = app.listen(port, () => {
+                logger.info(chalk.green(`Your app is listening on port ${port}`));
+                resolve();
+            })
+            .on('error', err => {
+                mongoose.disconnect();
+                logger.error(chalk.red('Couldn’t start the server.' + err))
+                reject(err);
+            });
+        });
+    });
 }
 
 const closeServer = function(){
-    return new Promise((resolve, reject) => {
-        server.close(err => {
-            if(!err) {
-                logger.info('Shutting down server')
-                resolve();
-            } else {
-                reject(err);
-                logger.error(err);
-            }
-        })
+    return mongoose.disconnect().then(() => {
+        return new Promise((resolve, reject) => {
+            server.close(err => {
+                if(!err) {
+                    logger.info(chalk.green('Shutting down server. Bye!'))
+                    resolve();
+                } else {
+                    reject(err);
+                    logger.error(chalk.red(err));
+                }
+            });
+        });
     })
 }
 
