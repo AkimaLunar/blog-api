@@ -42,6 +42,10 @@ router.get('/:id', (req, res) => {
         .findOne({'_id': id})
         .exec()
         .then(post => {
+            if (!post){
+                logger.error(chalk.red(`Post with ID ${req.params.id} doesn't exist.`));
+                return res.status(404).json({message: 'Post not found'});
+            }
             res.status(200).json(post.apiRepr());
             logger.info(chalk.blue(`Retrieved blog post with ID ${post._id}`));
         })
@@ -84,7 +88,6 @@ router.post('/', (req, res) => {
 
 // UPDATE
 router.put('/:id', (req, res) => {
-
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
         const message = `The ID in URL (${req.params.id}) and body (${req.body.id}) must match`;
         logger.error(chalk.red(message));
@@ -99,13 +102,17 @@ router.put('/:id', (req, res) => {
         }
     })
 
-    
     BlogPost
         .findByIdAndUpdate(
             req.params.id,
             { $set: toUpdate }
         )
         .exec()
+        .then(() => {
+            return BlogPost
+                .findById(req.params.id)
+                .exec()
+        })
         .then(post => {
             logger.info(chalk.blue(`Updated post with ID ${post._id}`));
             res.status(201).json(post.apiRepr())
