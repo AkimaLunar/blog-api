@@ -65,7 +65,7 @@ describe('Blog API', function(){
         it('should retrieve all blog posts on GET', function(){
             let res;
             return chai.request(app)
-                .get('/blog-posts')
+                .get('/api')
                 .then(function(_res){
                     res = _res;
                     res.should.have.status(200);
@@ -94,11 +94,11 @@ describe('Blog API', function(){
             let postId;
 
             return chai.request(app)
-                .get('/blog-posts')
+                .get('/api')
                 .then(function(res){
                     postId = res.body[0].id;
                     return chai.request(app)
-                        .get(`/blog-posts/${postId}`)
+                        .get(`/api/${postId}`)
                 })
 
                 .then(function(res){
@@ -128,7 +128,7 @@ describe('Blog API', function(){
                 },
             };
             return chai.request(app)
-                .post('/blog-posts')
+                .post('/api')
                 .send(newBlogPost)
                 .then(function(res){
                     res.should.have.status(201);
@@ -161,11 +161,11 @@ describe('Blog API', function(){
                 },
             };
             return chai.request(app)
-                .get('/blog-posts')
+                .get('/api')
                 .then(function(res){
                     updatedBlogPost.id = res.body[0].id;
                     return chai.request(app)
-                        .put(`/blog-posts/${res.body[0].id}`)
+                        .put(`/api/${res.body[0].id}`)
                         .send(updatedBlogPost);
                 })
 
@@ -190,10 +190,10 @@ describe('Blog API', function(){
     describe('DELETE endpoint', function(){
         it('should delete a blog post with ID on DELETE', function(){
             return chai.request(app)
-                .get('/blog-posts')
+                .get('/api')
                 .then(function(res) {
                     return chai.request(app)
-                    .delete(`/blog-posts/${res.body[0].id}`);
+                    .delete(`/api/${res.body[0].id}`);
                 })
                 .then(function(res) {
                     res.should.have.status(204);
