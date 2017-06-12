@@ -1,8 +1,8 @@
 {
-  "name": "blog-api",
+  "name": "meenk.me",
   "version": "1.0.0",
-  "description": "Blog API with Node.js and Express",
-  "main": "index.js",
+  "description": "Visually rich platform for style and beauty bloggers with innovative post types.",
+  "main": "server.js",
   "scripts": {
     "test": "mocha",
     "start": "nodemon server.js"
