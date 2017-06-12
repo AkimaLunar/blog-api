@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const { router } = require('./router');
 const mongoose = require('mongoose');
@@ -8,9 +9,14 @@ const chalk = require('chalk');
 
 const app = express();
 
-app.use('/blog-posts', router);
+app.use(express.static('public'))
+app.use('/api', router);
+// app.use('/api/blog', blogRouter);
+// app.use('/api/users', userRouter);
 
-
+app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname + '/public/index.html'));
+});
 
 let server;
 const runServer = function(databaseUrl=DATABASE_URL, port=PORT){
