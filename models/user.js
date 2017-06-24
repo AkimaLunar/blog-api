@@ -16,6 +16,9 @@ const userSchema = mongoose.Schema({
             { type: mongoose.Schema.Types.ObjectId, ref: 'BlogPost' }
           ]
       }
+  ],
+  following : [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
   ]
 })
 
