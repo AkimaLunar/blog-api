@@ -6,7 +6,7 @@
               col-md-2">
   <div class="box">
 
-    <h1>Meenk</h1>
+    <h1><a routerLink="/">Meenk</a></h1>
 
   </div>
   </div>
@@ -23,9 +23,9 @@
   <div class="col-xs-12
               col-md-3">
   <div class="box navigation__last">
-    <p class="username heading font-color--light"><a href="">Ria Carmin</a></p>
-    <a href=""><img class="avatar--small" src="http://via.placeholder.com/60x60" alt="Ria Carmin, profile photo"></a>
-    <a href="" class="round-button round-button--default">+ <span class="screen-reader">Create a Post</span></a>
+    <p class="username heading font-color--light"><a [routerLink]="['/profile', 1]">Ria Carmin</a></p>
+    <a [routerLink]="['/profile', 1]"><img class="avatar--small" src="http://via.placeholder.com/60x60" alt="Ria Carmin, profile photo"></a>
+    <a [routerLink]="['/create']"href="" class="round-button round-button--default">+ <span class="screen-reader">Create a Post</span></a>
 
   </div>
   </div>
