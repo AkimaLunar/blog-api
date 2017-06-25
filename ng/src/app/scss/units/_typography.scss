@@ -1,0 +1,27 @@
+.heading {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: $font-bold;
+}
+
+.font-color {
+  @each $theme, $color in $grey-colors {
+    &--#{$theme} {
+        color: $color;
+    }
+  }
+}
+
+.font-accent {
+  font-family: $accent-font-family;
+}
+
+.hr {
+  display: block;
+  margin-top: 0;
+  margin-bottom: .75rem;
+  height: .75rem;
+  border: none;
+  background-color: $action-color;
+  width: 60%;
+}

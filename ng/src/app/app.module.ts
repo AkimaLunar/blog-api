@@ -10,6 +10,7 @@ import { PostListComponent } from './containers/post-list/post-list.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { CardBlogComponent } from './components/card-blog/card-blog.component';
+import { UserProfileComponent } from './containers/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CardBlogComponent } from './components/card-blog/card-blog.component';
     NavigationComponent,
     BreadcrumbsComponent,
     CardBlogComponent,
-    PostListComponent
+    PostListComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

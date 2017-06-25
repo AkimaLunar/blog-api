@@ -1,0 +1,20 @@
+.avatar {
+  $sizes: (
+    large:  600,
+    medium: 200,
+    small:  46,
+    nano: 16
+  );
+  border-radius: 50%;
+  @each $size, $number in $sizes {
+    &--#{$size} {
+      clip-path: circle(($number/2) + 0px);
+    }
+  }
+
+  // Usage
+  // .avatar--large
+  // .avatar--medium
+  // .avatar--small
+
+}
