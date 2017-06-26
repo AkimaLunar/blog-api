@@ -333,7 +333,7 @@ picture {
   margin: 0;
   max-width: 100%; }
 
-.heading {
+.heading, .user-profile__name {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 800; }
@@ -513,12 +513,20 @@ input.input {
 .avatar {
   border-radius: 50%; }
   .avatar--large {
-    clip-path: circle(300px); }
+    height: 280px;
+    width: 280px;
+    clip-path: circle(140px); }
   .avatar--medium {
-    clip-path: circle(100px); }
+    height: 120px;
+    width: 120px;
+    clip-path: circle(60px); }
   .avatar--small {
+    height: 46px;
+    width: 46px;
     clip-path: circle(23px); }
   .avatar--nano {
+    height: 16px;
+    width: 16px;
     clip-path: circle(8px); }
 
 .card {
@@ -536,6 +544,42 @@ input.input {
 .breadcrumbs {
   min-height: 4rem;
   background: #4a4756; }
+
+.user-profile {
+  height: 400px;
+  color: rgba(255, 255, 255, 0.75); }
+  .user-profile__outer {
+    background: #353341; }
+  .user-profile__left, .user-profile__right {
+    height: 100%;
+    position: relative; }
+  .user-profile__left {
+    background-color: #3a3747; }
+  .user-profile__right {
+    background-color: #4a4756;
+    text-align: center;
+    padding-top: 80px; }
+  .user-profile__avatar {
+    left: -140px;
+    position: absolute;
+    top: 60px; }
+  .user-profile__name {
+    font-size: 3rem; }
+    .user-profile__name:before {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      margin-bottom: .75rem;
+      height: .75rem;
+      border: none;
+      background-color: #88b2cc;
+      width: 20%; }
+  .user-profile__bio {
+    font-family: "Alegreya", serif;
+    font-size: 1.5rem; }
+  .user-profile__stats {
+    text-transform: uppercase;
+    letter-spacing: 2px; }
 
 html,
 body {

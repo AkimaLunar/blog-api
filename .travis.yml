@@ -7,3 +7,4 @@ deploy:
   app: powerful-headland-33492
   on:
     repo: AkimaLunar/blog-api
+    branch: master

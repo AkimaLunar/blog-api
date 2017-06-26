@@ -7,15 +7,16 @@ import { Routing } from './app.routes';
 import { AppComponent } from './app.component';
 
 import { PostListComponent } from './containers/post-list/post-list.component';
-
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
-import { CardBlogComponent } from './components/card-blog/card-blog.component';
 import { UserProfileComponent } from './containers/user-profile/user-profile.component';
 import { BlogViewComponent } from './containers/blog-view/blog-view.component';
 import { CreateComponent } from './containers/create/create.component';
 import { CollectionComponent } from './containers/collection/collection.component';
+
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+import { CardBlogComponent } from './components/card-blog/card-blog.component';
 import { PageNotFoundComponent } from './containers/page-not-found/page-not-found.component';
+import { CardCollectionComponent } from './components/card-collection/card-collection.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,9 @@ import { PageNotFoundComponent } from './containers/page-not-found/page-not-foun
     UserProfileComponent,
     BlogViewComponent,
     CreateComponent,
+    PageNotFoundComponent,
     CollectionComponent,
-    PageNotFoundComponent
+    CardCollectionComponent
   ],
   imports: [
     Routing,

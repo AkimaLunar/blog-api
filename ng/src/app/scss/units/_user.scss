@@ -1,13 +1,15 @@
 .avatar {
   $sizes: (
-    large:  600,
-    medium: 200,
+    large:  280,
+    medium: 120,
     small:  46,
     nano: 16
   );
   border-radius: 50%;
   @each $size, $number in $sizes {
     &--#{$size} {
+      height: $number + 0px;
+      width: $number + 0px;
       clip-path: circle(($number/2) + 0px);
     }
   }

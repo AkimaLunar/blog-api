@@ -1,3 +1,35 @@
-<p>
-  blog-view works!
-</p>
+<app-breadcrumbs></app-breadcrumbs>
+<div class="container">
+  <div class="row main">
+
+    <article class="col-md-12 col-lg-8">
+      <div class="card card__inner">
+        <div class="box">
+          <div class="row">
+            <div class="col-xs-12 col-md-3">
+                  <a [routerLink]="['/profile', 1]"><img class="avatar--medium" src="http://via.placeholder.com/60x60" alt="Ria Carmin, profile photo"></a>
+            </div>
+            <div class="col-xs-12 col-md-9">
+              <hr class="hr">
+              <h1 class="heading font-color--dark">The Best organic Hair Products</h1>
+              <p class="font-accent">by <a [routerLink]="['/profile', 1]">Ria Carmin</a></p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt consequatur explicabo inventore nemo magni tenetur laboriosam pariatur eius maiores repellat voluptas, ratione neque ipsam accusamus et animi assumenda, dolore voluptate?</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam assumenda, dignissimos recusandae magni, iste obcaecati repellat. Dicta perferendis, aliquid eligendi aspernatur reprehenderit nulla molestiae sed autem fuga placeat veniam qui.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <aside class="col-md-12 col-lg-4">
+      <p class="heading font-color--medium-grey">Other Posts</p>
+      <ul>
+        <li><a href="">Lorem ipsum dolor sit amet</a></li>
+        <li><a href="">Consectetur adipisicing elit. Commodi quia omnis repudiandae animi unde.</a></li>
+        <li><a href=""> iusto explicabo</a></li>
+        <li><a href="">Dolore veritatis dolores similique?</a></li>
+        <li><a href=""> Laboriosam quisquam ex inventore sit maxime quas.</a></li>
+      </ul>
+    </aside>
+  </div>
+</div>

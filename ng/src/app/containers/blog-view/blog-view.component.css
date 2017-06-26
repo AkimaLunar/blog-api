@@ -1,0 +1,9 @@
+.avatar--medium {
+    display: block;
+    margin: 20px auto;
+}
+
+hr {
+    margin-top: 20px;
+    width: 30%;
+}

@@ -1,0 +1,49 @@
+.user-profile {
+    height: 400px;
+    color:$color-white;
+    &__outer {
+        background: darken($color-plum-3, 2%);
+    }
+    &__left,
+    &__right {
+        height: 100%;
+        position: relative;
+    }
+    &__left {
+        background-color: $color-plum-3;
+    }
+
+    &__right {
+        background-color: $color-plum-2;
+        text-align: center;
+        padding-top: 80px;
+    }
+    &__avatar {
+        left: -140px;
+        position: absolute;
+        top: 60px;
+    }
+    &__name {
+        @extend .heading;
+        font-size: 3rem;
+        &:before {
+            content: '';
+            display: block;
+            margin: 0 auto;
+            margin-bottom: .75rem;
+            height: .75rem;
+            border: none;
+            background-color: $action-color;
+            width: 20%;
+        }
+    }
+    &__bio {
+        font-family: $accent-font-family;
+        font-size: 1.5rem;
+    }
+
+    &__stats {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
