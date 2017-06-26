@@ -533,9 +533,22 @@ input.input {
   border-radius: 10px;
   background-color: white;
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
-  overflow: hidden; }
+  overflow: hidden;
+  display: block; }
   .card__inner {
     padding: .5rem; }
+  .card__half {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    float: left;
+    box-sizing: border-box; }
+    .card__half--photo {
+      background-size: cover;
+      background-position: center center; }
+    .card__half--text {
+      text-align: center;
+      padding: 2rem .5rem; }
 
 .navigation {
   min-height: 4rem;
@@ -580,6 +593,9 @@ input.input {
   .user-profile__stats {
     text-transform: uppercase;
     letter-spacing: 2px; }
+
+* {
+  box-sizing: border-box; }
 
 html,
 body {

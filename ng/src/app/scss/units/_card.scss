@@ -3,8 +3,27 @@
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
   overflow: hidden;
+  display: block;
 
   &__inner {
     padding: .5rem;
+  }
+
+  &__half {
+    display: inline-block;
+    width: 50%;
+    height:100%;
+    float: left;
+    box-sizing: border-box;
+
+    &--photo {
+      background-size: cover;
+      background-position: center center;
+    }
+
+    &--text {
+      text-align: center;
+      padding: 2rem .5rem;
+    }
   }
 }

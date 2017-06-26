@@ -17,6 +17,7 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
 import { CardBlogComponent } from './components/card-blog/card-blog.component';
 import { PageNotFoundComponent } from './containers/page-not-found/page-not-found.component';
 import { CardCollectionComponent } from './components/card-collection/card-collection.component';
+import { CardPhotoComponent } from './components/card-photo/card-photo.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CardCollectionComponent } from './components/card-collection/card-colle
     CreateComponent,
     PageNotFoundComponent,
     CollectionComponent,
-    CardCollectionComponent
+    CardCollectionComponent,
+    CardPhotoComponent
   ],
   imports: [
     Routing,
