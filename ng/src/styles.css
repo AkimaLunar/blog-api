@@ -549,7 +549,7 @@ input.input {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(84, 82, 94, 0.6); }
+    background-color: rgba(84, 82, 94, 0.4); }
     .card__overlay:hover {
       background-color: rgba(84, 82, 94, 0.2); }
   .card__half {

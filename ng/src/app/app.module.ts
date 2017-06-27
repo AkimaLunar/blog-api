@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 
 import { PostListComponent } from './containers/post-list/post-list.component';
 import { UserProfileComponent } from './containers/user-profile/user-profile.component';
-import { BlogViewComponent } from './containers/blog-view/blog-view.component';
+import { ViewBlogComponent } from './containers/view-blog/view-blog.component';
 import { CreateComponent } from './containers/create/create.component';
 import { CollectionComponent } from './containers/collection/collection.component';
+import { ViewPhotoComponent } from './containers/view-photo/view-photo.component';
 
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
@@ -18,7 +19,6 @@ import { CardBlogComponent } from './components/card-blog/card-blog.component';
 import { PageNotFoundComponent } from './containers/page-not-found/page-not-found.component';
 import { CardCollectionComponent } from './components/card-collection/card-collection.component';
 import { CardPhotoComponent } from './components/card-photo/card-photo.component';
-import { ViewPhotoComponent } from './containers/view-photo/view-photo.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +28,13 @@ import { ViewPhotoComponent } from './containers/view-photo/view-photo.component
     CardBlogComponent,
     PostListComponent,
     UserProfileComponent,
-    BlogViewComponent,
     CreateComponent,
     PageNotFoundComponent,
     CollectionComponent,
     CardCollectionComponent,
     CardPhotoComponent,
-    ViewPhotoComponent
+    ViewPhotoComponent,
+    ViewBlogComponent
   ],
   imports: [
     Routing,

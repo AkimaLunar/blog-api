@@ -25,7 +25,7 @@
     height: 100%;
     top:0;
     left:0;
-    background-color: transparentize($color-dark-grey, .4);
+    background-color: transparentize($color-dark-grey, .6);
     &:hover {
       background-color: transparentize($color-dark-grey, .8);
     }
