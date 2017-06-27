@@ -2,10 +2,10 @@ hr {
     margin: .5rem auto 1rem auto;
 }
 
-.card__half {
-    height: 210px;
-}
-
 .font-accent {
     color:#a6a5aa;
+}
+
+.card {
+    height: 220px;
 }

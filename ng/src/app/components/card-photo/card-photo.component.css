@@ -1,0 +1,17 @@
+a.card {
+    color:white;
+    font-size: 1rem;
+}
+.card__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 240px;
+
+}
+.card__bottom {
+    text-align: right;
+    align-self: flex-end;
+    width: 100%;
+    padding-right: 1rem;
+}
