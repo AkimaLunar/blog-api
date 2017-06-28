@@ -8,12 +8,12 @@ import { CardItem } from '../components/card/card-item';
 @Injectable()
 export class CardService {
 
-  renderCard(type, data) {
+  renderCard(type, post) {
     if (type === 'blog') {
-      return new CardItem(CardBlogComponent, data);
+      return new CardItem(CardBlogComponent, post);
     }
     if (type === 'photo') {
-      return new CardItem(CardPhotoComponent, data);
+      return new CardItem(CardPhotoComponent, post);
     }
   }
 
