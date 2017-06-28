@@ -12,19 +12,18 @@ import { CardItem } from './card-item';
 })
 export class CardComponent implements AfterViewInit {
   @Input() post: Post;
-  @ViewChild(CardDirective) appPostHost: CardDirective;
+  @ViewChild(CardDirective) postHost: CardDirective;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private cardService: CardService
   ) { }
 
-  AfterViewInit() {
+  ngAfterViewInit() {
     const cardItem = this.cardService.renderCard(this.post.type, this.post);
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(cardItem);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(cardItem.component);
 
-    const viewContainerRef = this.appPostHost.viewContainerRef;
-    viewContainerRef.clear();
+    const viewContainerRef = this.postHost.viewContainerRef;
 
     const componentRef = viewContainerRef.createComponent(componentFactory);
   }

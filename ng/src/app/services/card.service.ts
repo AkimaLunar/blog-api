@@ -10,10 +10,10 @@ export class CardService {
 
   renderCard(type, data) {
     if (type === 'blog') {
-      new CardItem(CardBlogComponent, data);
+      return new CardItem(CardBlogComponent, data);
     }
     if (type === 'photo') {
-      new CardItem(CardPhotoComponent, data);
+      return new CardItem(CardPhotoComponent, data);
     }
   }
 
