@@ -1,9 +1,9 @@
-import { Post } from './post';
+import { Post } from '../models/post';
 
 export const POSTS = [
   {
     title: 'pulvinar sed nisl nunc',
-    type: 'Face to face',
+    type: 'blog',
     author: {
       userId: {
         $oid: '595053dafc13ae36b9000078'
@@ -17,7 +17,7 @@ export const POSTS = [
   },
   {
     title: 'posuere metus vitae ipsum aliquam non mauris',
-    type: 'web-enabled',
+    type: 'blog',
     author: {
       userId: {
         $oid: '595053dafc13ae36b9000079'
@@ -31,7 +31,7 @@ export const POSTS = [
   },
   {
     title: 'erat eros viverra eget congue eget semper rutrum nulla',
-    type: 'Open-architected',
+    type: 'photo',
     author: {
       userId: {
         $oid: '595053dafc13ae36b900007a'
@@ -41,11 +41,11 @@ export const POSTS = [
     timestamp: '10/29/2016',
     tags: 'dogs',
     hearts: 'birds',
-    content: 'Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.'
+    content: 'http://via.placeholder.com/350x150'
   },
   {
     title: 'velit eu est congue elementum',
-    type: 'Re-contextualized',
+    type: 'photo',
     author: {
       userId: {
         $oid: '595053dafc13ae36b900007b'
@@ -55,11 +55,11 @@ export const POSTS = [
     timestamp: '9/5/2016',
     tags: 'rabbits',
     hearts: 'cats',
-    content: 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.'
+    content: 'http://via.placeholder.com/350x150'
   },
   {
     title: 'et tempus semper est quam pharetra magna ac',
-    type: 'transitional',
+    type: 'blog',
     author: {
       userId: {
         $oid: '595053dafc13ae36b900007c'
@@ -73,7 +73,7 @@ export const POSTS = [
   },
   {
     title: 'euismod scelerisque quam turpis adipiscing lorem vitae mattis',
-    type: 'client-server',
+    type: 'blog',
     author: {
       userId: {
         $oid: '595053dafc13ae36b900007d'
@@ -87,7 +87,7 @@ export const POSTS = [
   },
   {
     title: 'quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet',
-    type: 'fault-tolerant',
+    type: 'blog',
     author: {
       userId: {
         $oid: '595053dafc13ae36b900007e'
@@ -101,7 +101,7 @@ export const POSTS = [
   },
   {
     title: 'blandit nam nulla integer pede justo lacinia',
-    type: 'content-based',
+    type: 'blog',
     author: {
       userId: {
         $oid: '595053dafc13ae36b900007f'
@@ -115,7 +115,7 @@ export const POSTS = [
   },
   {
     title: 'nulla nisl nunc nisl',
-    type: 'homogeneous',
+    type: 'blog',
     author: {
       userId: {
         $oid: '595053dafc13ae36b9000080'
@@ -129,7 +129,7 @@ export const POSTS = [
   },
   {
     title: 'velit vivamus vel nulla eget eros elementum pellentesque quisque',
-    type: 'upward-trending',
+    type: 'blog',
     author: {
       userId: {
         $oid: '595053dafc13ae36b9000081'
@@ -143,7 +143,7 @@ export const POSTS = [
   },
   {
     title: 'vulputate nonummy maecenas tincidunt lacus',
-    type: 'open architecture',
+    type: 'blog',
     author: {
       userId: {
         $oid: '595053dafc13ae36b9000082'
@@ -157,7 +157,7 @@ export const POSTS = [
   },
   {
     title: 'diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum',
-    type: 'Multi-layered',
+    type: 'blog',
     author: {
       userId: {
         $oid: '595053dafc13ae36b9000083'

@@ -1,4 +1,4 @@
-export class Post {
+export interface Post {
     title: string;
     type: string;
     author: {
@@ -8,7 +8,7 @@ export class Post {
       displayName: string;
     };
     timestamp: string;
-    tags: string;
-    hearts: string;
+    tags?: string;
+    hearts?: string;
     content: string;
 }
