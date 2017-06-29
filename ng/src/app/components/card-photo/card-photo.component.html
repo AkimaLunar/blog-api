@@ -1,8 +1,8 @@
 <article class="box">
-  <a class="card card__photo" [routerLink]="['/profile', 1, 'eye-liners']" style="background-image: url('https://placeholdit.co//i/555x778')">
+  <a class="card card__photo" href="" [ngStyle]="{'background-image': 'url(' + post.content + ')'}">
     <div class="card__inner" >
       <div class="card__bottom">
-        <p class="font-accent">by Ria Carmin</p>
+        <p class="font-accent">by {{post.author.displayName}}</p>
       </div>
     <div class="card__overlay">&nbsp;</div>
     </div>
