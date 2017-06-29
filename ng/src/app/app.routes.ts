@@ -14,9 +14,9 @@ const routes = [
     { path: '', component: PostListComponent },
     { path: 'profile/:id', component: UserProfileComponent },
     { path: 'profile/:id/:collection', component: CollectionComponent },
-    { path: 'post/:id', component: ViewBlogComponent },
+    { path: 'blog/:id', component: ViewBlogComponent },
+    { path: 'photo/:id', component: ViewPhotoComponent },
     { path: 'create', component: CreateComponent },
-    { path: 'photo', component: ViewPhotoComponent },
     { path: '**', component: PageNotFoundComponent },
 ];
 
