@@ -3,10 +3,12 @@
     <img src="https://placeholdit.co//i/555x250">
     <div class="card__inner">
       <hr class="hr">
-      <h1 class="heading font-color--dark">{{post.title}}</h1>
+      <h1 class="heading font-color--dark">{{post.title.slice(0, 40).concat('…')}}</h1>
       <p class="font-accent">by <a href="">{{post.author.displayName}}</a></p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus saepe iure et quos consequuntur autem iste dolor molestiae impedit...</p>
-      <p><a href="/" class="oval-button oval-button__outline oval-button__outline--default">Read</a></p>
+      <p>{{post.content.slice(0, 200).concat('…')}}</p>
+      <div class="card__bottom">
+        <p><a href="/" class="oval-button oval-button__outline oval-button__outline--default">Read</a></p>
+      </div>
     </div>
   </div>
 </article>

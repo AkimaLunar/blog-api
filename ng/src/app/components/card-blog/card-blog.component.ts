@@ -13,8 +13,10 @@ export interface PostComponent {
 })
 export class CardBlogComponent implements PostComponent, OnChanges {
   component: ComponentRef<PostComponent>;
+  snippet: string;
   @Input() post: Post;
   constructor() { }
+
 
   ngOnChanges(changes: SimpleChanges) {
      if (!this.component) {
