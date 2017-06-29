@@ -26,12 +26,17 @@ export class CardComponent implements AfterContentInit {
     private cardService: CardService
   ) { }
 
-  ngAfterContentInit() {
+  loadComponent() {
     const cardItem = this.cardService.renderCard(this.post.type, this.post);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(cardItem.component);
     const viewContainerRef = this.cardDirective.viewContainerRef;
+    viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
     (<PostComponent>componentRef.instance).post = this.post;
-
   }
+
+  ngAfterContentInit() {
+    this.loadComponent();
+  }
+
 }
