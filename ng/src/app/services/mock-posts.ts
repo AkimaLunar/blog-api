@@ -2,6 +2,7 @@ import { Post } from '../models/post';
 
 export const POSTS = [
   {
+    _id: 1,
     title: 'pulvinar sed nisl nunc',
     type: 'blog',
     author: {
@@ -16,6 +17,7 @@ export const POSTS = [
     content: 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.'
   },
   {
+    _id: 2,
     title: 'posuere metus vitae ipsum aliquam non mauris',
     type: 'blog',
     author: {
@@ -30,6 +32,7 @@ export const POSTS = [
     content: 'Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.'
   },
   {
+    _id: 3,
     title: 'erat eros viverra eget congue eget semper rutrum nulla',
     type: 'photo',
     author: {
@@ -44,6 +47,7 @@ export const POSTS = [
     content: 'http://via.placeholder.com/350x150'
   },
   {
+    _id: 4,
     title: 'velit eu est congue elementum',
     type: 'photo',
     author: {
@@ -58,6 +62,7 @@ export const POSTS = [
     content: 'http://via.placeholder.com/350x150'
   },
   {
+    _id: 5,
     title: 'et tempus semper est quam pharetra magna ac',
     type: 'blog',
     author: {
@@ -72,6 +77,7 @@ export const POSTS = [
     content: 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.'
   },
   {
+    _id: 6,
     title: 'euismod scelerisque quam turpis adipiscing lorem vitae mattis',
     type: 'blog',
     author: {
@@ -86,6 +92,7 @@ export const POSTS = [
     content: 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.'
   },
   {
+    _id: 7,
     title: 'quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet',
     type: 'blog',
     author: {
@@ -100,6 +107,7 @@ export const POSTS = [
     content: 'In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.'
   },
   {
+    _id: 8,
     title: 'blandit nam nulla integer pede justo lacinia',
     type: 'blog',
     author: {
@@ -114,6 +122,7 @@ export const POSTS = [
     content: 'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.'
   },
   {
+    _id: 9,
     title: 'nulla nisl nunc nisl',
     type: 'blog',
     author: {
@@ -128,6 +137,7 @@ export const POSTS = [
     content: 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.'
   },
   {
+    _id: 10,
     title: 'velit vivamus vel nulla eget eros elementum pellentesque quisque',
     type: 'blog',
     author: {
@@ -142,6 +152,7 @@ export const POSTS = [
     content: 'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.'
   },
   {
+    _id: 11,
     title: 'vulputate nonummy maecenas tincidunt lacus',
     type: 'blog',
     author: {
@@ -156,6 +167,7 @@ export const POSTS = [
     content: 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.'
   },
   {
+    _id: 12,
     title: 'diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum',
     type: 'blog',
     author: {
