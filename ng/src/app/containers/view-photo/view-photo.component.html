@@ -1,23 +1,25 @@
 <app-breadcrumbs></app-breadcrumbs>
 <div class="container">
-  <div class="row main">
+  <div *ngIf="post" class="row main">
 
-    <article class="col-md-12 col-lg-8">
-      <img src="http://via.placeholder.com/300x300" alt="">
-      <div class="card card__inner">
-        <p>by Ria Carmin</p>
-      </div>
-    </article>
+      <article class="col-md-12 col-lg-8">
+        <img src="{{post.content}}" alt="{{post.title}}">
+        <div class="card card__inner">
+          <p>by <a [routerLink]="['/profile', post.author.userId.$oid]">{{post.author.displayName}}</a></p>
+        </div>
+      </article>
 
-    <aside class="col-md-12 col-lg-4">
-      <p class="heading font-color--medium-grey">Other Posts</p>
-      <ul>
-        <li><a href="">Lorem ipsum dolor sit amet</a></li>
-        <li><a href="">Consectetur adipisicing elit. Commodi quia omnis repudiandae animi unde.</a></li>
-        <li><a href=""> iusto explicabo</a></li>
-        <li><a href="">Dolore veritatis dolores similique?</a></li>
-        <li><a href=""> Laboriosam quisquam ex inventore sit maxime quas.</a></li>
-      </ul>
-    </aside>
+      <aside class="col-md-12 col-lg-4">
+        <p class="heading font-color--medium-grey">Other Posts</p>
+        <ul>
+          <li><a href="">Lorem ipsum dolor sit amet</a></li>
+          <li><a href="">Consectetur adipisicing elit. Commodi quia omnis repudiandae animi unde.</a></li>
+          <li><a href=""> iusto explicabo</a></li>
+          <li><a href="">Dolore veritatis dolores similique?</a></li>
+          <li><a href=""> Laboriosam quisquam ex inventore sit maxime quas.</a></li>
+        </ul>
+
+      </aside>
+
   </div>
 </div>

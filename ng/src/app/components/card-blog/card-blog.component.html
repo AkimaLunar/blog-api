@@ -7,7 +7,7 @@
       <p class="font-accent">by <a href="">{{post.author.displayName}}</a></p>
       <p>{{post.content.slice(0, 200).concat('…')}}</p>
       <div class="card__bottom">
-        <p><a href="/" class="oval-button oval-button__outline oval-button__outline--default">Read</a></p>
+        <p><a [routerLink]="['/blog', post._id]" class="oval-button oval-button__outline oval-button__outline--default">Read</a></p>
       </div>
     </div>
   </div>

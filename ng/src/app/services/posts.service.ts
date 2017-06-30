@@ -11,4 +11,9 @@ export class PostsService {
   getPosts(): Promise<Post[]> {
     return Promise.resolve(POSTS);
   }
+
+  getPostById(id: any): Promise<Post> {
+    return this.getPosts()
+      .then(posts => posts.find(post => post._id === id));
+  }
 }
