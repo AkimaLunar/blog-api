@@ -1,5 +1,5 @@
 <article class="box">
-  <a class="card card__photo" [routerLink]="['/photo', post._id]" [ngStyle]="{'background-image': 'url(' + post.content + ')'}">
+  <a class="card card__photo" [routerLink]="['/photo', post._id]" [ngStyle]="{'background-image': 'url(' + post.content.photoUrl + ')'}">
     <div class="card__inner" >
       <div class="card__bottom">
         <p class="font-accent">by {{post.author.displayName}}</p>

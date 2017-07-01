@@ -5,7 +5,7 @@
       <hr class="hr">
       <h1 class="heading font-color--dark">{{post.title.slice(0, 40).concat('…')}}</h1>
       <p class="font-accent">by <a href="">{{post.author.displayName}}</a></p>
-      <p>{{post.content.slice(0, 200).concat('…')}}</p>
+      <p>{{post.content.excerpt}}</p>
       <div class="card__bottom">
         <p><a [routerLink]="['/blog', post._id]" class="oval-button oval-button__outline oval-button__outline--default">Read</a></p>
       </div>

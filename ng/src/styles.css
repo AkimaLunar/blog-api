@@ -571,7 +571,9 @@ input.input {
 
 .breadcrumbs {
   min-height: 4rem;
-  background: #4a4756; }
+  background: #4a4756;
+  padding: 1rem 0;
+  vertical-align: middle; }
 
 .user-profile {
   height: 400px;

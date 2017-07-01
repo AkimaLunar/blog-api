@@ -13,7 +13,8 @@
               <hr class="hr">
               <h1 class="heading font-color--dark">{{post.title}}</h1>
               <p class="font-accent">by <a [routerLink]="['/profile', 1]">{{post.author.displayName}}</a></p>
-              <p>{{post.content}}</p>
+              <div [innerHTML]="post.content.html">
+              </div>
             </div>
           </div>
         </div>

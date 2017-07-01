@@ -14,6 +14,7 @@ import { PostsService } from '../../services/posts.service';
 })
 export class ViewPhotoComponent implements OnInit {
   post: Post;
+  contentChecked: Boolean;
   constructor(
     private postsService: PostsService,
     private route: ActivatedRoute,
