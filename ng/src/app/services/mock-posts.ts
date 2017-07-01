@@ -14,7 +14,12 @@ export const POSTS = [
     timestamp: '7/6/2016',
     tags: 'birds',
     hearts: 'birds',
-    content: 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.'
+    content: {
+        excerpt: 'pulvinar sed nisl nunc',
+        html: `<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.</p>
+        <h3>Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.</h3>
+        <p>Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>`
+    }
   },
   {
     _id: 2,
@@ -29,7 +34,10 @@ export const POSTS = [
     timestamp: '3/19/2017',
     tags: 'cats',
     hearts: 'birds',
-    content: 'Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.'
+    content: {
+        excerpt: 'pulvinar sed nisl nunc',
+        html: '<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>'
+    }
   },
   {
     _id: 3,
@@ -44,7 +52,10 @@ export const POSTS = [
     timestamp: '10/29/2016',
     tags: 'dogs',
     hearts: 'birds',
-    content: 'http://via.placeholder.com/350x150'
+    content: {
+      photoUrl: 'http://via.placeholder.com/350x150',
+      description: 'Very cure pic'
+    }
   },
   {
     _id: 4,
@@ -59,7 +70,10 @@ export const POSTS = [
     timestamp: '9/5/2016',
     tags: 'rabbits',
     hearts: 'cats',
-    content: 'http://via.placeholder.com/350x150'
+    content: {
+      photoUrl: 'http://via.placeholder.com/350x150',
+      description: 'Very cure pic'
+    }
   },
   {
     _id: 5,
@@ -74,7 +88,10 @@ export const POSTS = [
     timestamp: '1/4/2017',
     tags: 'cats',
     hearts: 'cats',
-    content: 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.'
+    content: {
+      excerpt: 'pulvinar sed nisl nunc',
+      html: '<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>'
+    }
   },
   {
     _id: 6,
@@ -89,7 +106,10 @@ export const POSTS = [
     timestamp: '2/17/2017',
     tags: 'cats',
     hearts: 'birds',
-    content: 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.'
+    content: {
+      excerpt: 'pulvinar sed nisl nunc',
+      html: '<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>'
+    }
   },
   {
     _id: 7,
@@ -104,7 +124,10 @@ export const POSTS = [
     timestamp: '12/28/2016',
     tags: 'cats',
     hearts: 'rabbits',
-    content: 'In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.'
+    content: {
+      excerpt: 'pulvinar sed nisl nunc',
+      html: '<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>'
+    }
   },
   {
     _id: 8,
@@ -119,7 +142,10 @@ export const POSTS = [
     timestamp: '5/23/2017',
     tags: 'dogs',
     hearts: 'dogs',
-    content: 'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.'
+    content: {
+      excerpt: 'pulvinar sed nisl nunc',
+      html: '<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>'
+    }
   },
   {
     _id: 9,
@@ -134,7 +160,10 @@ export const POSTS = [
     timestamp: '10/30/2016',
     tags: 'cats',
     hearts: 'dogs',
-    content: 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.'
+    content: {
+      excerpt: 'pulvinar sed nisl nunc',
+      html: '<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>'
+    }
   },
   {
     _id: 10,
@@ -149,7 +178,10 @@ export const POSTS = [
     timestamp: '11/11/2016',
     tags: 'cats',
     hearts: 'rabbits',
-    content: 'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.'
+    content: {
+      excerpt: 'pulvinar sed nisl nunc',
+      html: '<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>'
+    }
   },
   {
     _id: 11,
@@ -164,7 +196,10 @@ export const POSTS = [
     timestamp: '6/6/2017',
     tags: 'dogs',
     hearts: 'cats',
-    content: 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.'
+    content: {
+      excerpt: 'pulvinar sed nisl nunc',
+      html: '<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>'
+    }
   },
   {
     _id: 12,
@@ -179,6 +214,9 @@ export const POSTS = [
     timestamp: '12/18/2016',
     tags: 'cats',
     hearts: 'rabbits',
-    content: 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.\n\nVestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.'
+    content: {
+      excerpt: 'pulvinar sed nisl nunc',
+      html: '<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>'
+    }
   }
 ];

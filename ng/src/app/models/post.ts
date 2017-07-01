@@ -11,5 +11,5 @@ export interface Post {
     timestamp: string;
     tags?: string;
     hearts?: string;
-    content: string;
+    content: object;
 }
