@@ -1,5 +1,7 @@
 import { RouterModule } from '@angular/router';
 
+import { AuthGuard } from './services/auth-guard.service';
+
 import { PostListComponent } from './containers/post-list/post-list.component';
 import { UserProfileComponent } from './containers/user-profile/user-profile.component';
 import { CollectionComponent } from './containers/collection/collection.component';
@@ -16,7 +18,11 @@ const routes = [
     { path: 'profile/:id/:collection', component: CollectionComponent },
     { path: 'blog/:id', component: ViewBlogComponent },
     { path: 'photo/:id', component: ViewPhotoComponent },
-    { path: 'create', component: CreateComponent },
+    {
+        path: 'create', 
+        component: CreateComponent,
+        canActivate: [AuthGuard]
+    },
     { path: '**', component: PageNotFoundComponent },
 ];
 
