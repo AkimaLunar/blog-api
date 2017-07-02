@@ -19,7 +19,7 @@ const routes = [
     { path: 'blog/:id', component: ViewBlogComponent },
     { path: 'photo/:id', component: ViewPhotoComponent },
     {
-        path: 'create', 
+        path: 'create',
         component: CreateComponent,
         canActivate: [AuthGuard]
     },

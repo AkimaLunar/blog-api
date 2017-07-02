@@ -22,7 +22,7 @@ export class NavigationComponent implements OnInit {
 
   setProfile() {
     const _profile = localStorage.getItem('profile');
-    return _profile;
+    return JSON.parse(_profile);
   }
   login() {
     this.auth.login();

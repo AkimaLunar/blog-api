@@ -28,7 +28,7 @@ export class AuthService {
           this.router.navigate(['/']);
           return;
         }
-
+        console.log(profile);
         localStorage.setItem('idToken', authResult.idToken);
         localStorage.setItem('accessToken', authResult.accessToken);
         localStorage.setItem('profile', JSON.stringify(profile));
@@ -38,7 +38,7 @@ export class AuthService {
     });
   }
 
-  setLoggedIn(value: boolean) {
+  setLoggedIn(value: boolean): void {
     this.loggedIn$.next(value);
     this.loggedIn = value;
   }
@@ -53,15 +53,14 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('accessToken');
-    localStorage.removeItem('id_token');
+    localStorage.removeItem('idToken');
     localStorage.removeItem('profile');
-    localStorage.removeItem('myCat');
     this.router.navigate(['/']);
     this.setLoggedIn(false);
  }
 
-  get authenticated() {
+  authenticated(): boolean {
     // Check if there's an unexpired access token
-    return tokenNotExpired('token');
+    return tokenNotExpired('idToken');
   }
 }
