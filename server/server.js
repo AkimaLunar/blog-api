@@ -1,25 +1,30 @@
-const path = require('path');
-const express = require('express');
-const { router } = require('./router');
-const mongoose = require('mongoose');
-const { PORT, DATABASE_URL } = require('./config.js');
+require('dotenv').config()
 
-const { logger } = require('./logger');
-const chalk = require('chalk');
+const path            = require('path');
+const express         = require('express');
+const { postsRouter } = require('./api/postsRouter');
+const { usersRouter } = require('./api/usersRouter');
+const mongoose        = require('mongoose');
 
-const app = express();
+const { logger }      = require('./logger');
+const chalk           = require('chalk');
 
-app.use(express.static('public'))
-app.use('/api', router);
-// app.use('/api/blog', blogRouter);
-// app.use('/api/users', userRouter);
+const app             = express();
 
+// app.use(express.static('public'))
+// app.use('/api', router);
+
+// app.get('*', function(req, res){
+//     res.sendFile(path.join(__dirname + '/public/index.html'));
+// });
+
+app.use('/api/posts', postsRouter);
+app.use('/api/users', usersRouter);
 app.get('*', function(req, res){
-    res.sendFile(path.join(__dirname + '/public/index.html'));
-});
-
+    return res.status(200).json({message: 'Meenk API'});
+})
 let server;
-const runServer = function(databaseUrl=DATABASE_URL, port=PORT){
+const runServer = function(databaseUrl=process.env.DATABASE_URL, port=process.env.PORT){
     return new Promise((resolve, reject) => {
         mongoose.connect(databaseUrl, err => {
             if (err) {
