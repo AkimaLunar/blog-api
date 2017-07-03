@@ -1,20 +1,19 @@
 export class User {
-    _id: {
-      $oid: string;
-    };
+    _id: string;
     email: string;
-    password: string;
     name: {
       firstName: string;
       lastName: string;
     };
+    picture: string;
     bio: string;
     collections: [
       {
         _id: string;
         collection: string;
-        posts: number;
+        posts: number[];
       }
     ];
-    following: number;
+    following: string[];
+    followers: string[];
 }

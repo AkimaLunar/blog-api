@@ -7,10 +7,11 @@
       </div>
       <div class="col-xs-12 col-md-8 user-profile__right">
         <div class="box">
-          <img src="https://placeholdit.co//i/800x600" class="user-profile__avatar avatar--large">
-          <h1 class="user-profile__name">Ria Carmin</h1>
-          <p class="user-profile__bio">Cat lady </p>
-          <p class="user-profile__stats">followers 165   |   following 202   |   posts 102</p>
+          <img src="{{user.picture}}" class="user-profile__avatar avatar--large">
+          <p *ngIf="self" class="username heading font-color--light"><a (click)="auth.logout()">Log Out</a></p>
+          <h1 class="user-profile__name">{{user.name.firstName}} {{user.name.lastName}}</h1>
+          <p class="user-profile__bio">{{user.bio}}</p>
+          <p class="user-profile__stats">followers {{user.followers.length}}   |   following {{user.followers.length}}   |   posts ###</p>
           <button class="oval-button oval-button__fill oval-button__fill--default">Follow</button>
         </div>
       </div>

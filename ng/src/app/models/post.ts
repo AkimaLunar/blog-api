@@ -1,11 +1,10 @@
 export interface Post {
+  // @TODO ID is a string
     _id: number;
     title: string;
     type: string;
     author: {
-      userId: {
-        $oid: string;
-      };
+      userId: string;
       displayName: string;
     };
     timestamp: string;
