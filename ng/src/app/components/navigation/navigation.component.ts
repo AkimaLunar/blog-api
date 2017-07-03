@@ -1,28 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { UsersService } from '../../services/users.service';
 import { Subscription } from 'rxjs/Subscription';
+
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
-  providers: [AuthService]
+  providers: [AuthService, UsersService]
 })
 export class NavigationComponent implements OnInit {
 
   loggedInSubscription: Subscription;
   loggedIn: Boolean;
-  profile;
-  constructor(private auth: AuthService) {}
+  user: User;
+  constructor(
+    private auth: AuthService,
+    private usersService: UsersService
+    ) {}
 
   ngOnInit() {
-    this.loggedInSubscription = this.auth.loggedIn$.subscribe(loggedIn => { this.loggedIn = loggedIn; });
-    this.profile = this.setProfile();
+    this.loggedInSubscription = this.auth.loggedIn$.subscribe(loggedIn => {
+      this.loggedIn = loggedIn;
+      if (loggedIn === true) {
+        this.setUser();
+      }
+    });
   }
 
-  setProfile() {
-    const _profile = localStorage.getItem('profile');
-    return JSON.parse(_profile);
+  setUser(): void {
+    const _currentUserId: string = this.auth.getCurrentUser();
+    console.log(_currentUserId);
+    if (_currentUserId) {
+      this.usersService.getUserById(_currentUserId)
+        .then(user => this.user = user);
+    }
   }
   login() {
     this.auth.login();
@@ -30,7 +44,4 @@ export class NavigationComponent implements OnInit {
   logout() {
     this.auth.logout();
   }
-
-
-
 }

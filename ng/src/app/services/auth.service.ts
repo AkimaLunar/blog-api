@@ -63,4 +63,12 @@ export class AuthService {
     // Check if there's an unexpired access token
     return tokenNotExpired('idToken');
   }
+
+  getCurrentUser(): string {
+    if (this.authenticated()) {
+      const _profile = JSON.parse(localStorage.getItem('profile'));
+      console.log(_profile);
+      return _profile.identities[0].user_id;
+    }
+  }
 }

@@ -6,9 +6,7 @@ export const POSTS = [
     title: 'pulvinar sed nisl nunc',
     type: 'blog',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b9000078'
-      },
+      userId: '595053dafc13ae36b9000078',
       displayName: 'Trudey Maffei'
     },
     timestamp: '7/6/2016',
@@ -26,9 +24,7 @@ export const POSTS = [
     title: 'posuere metus vitae ipsum aliquam non mauris',
     type: 'blog',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b9000079'
-      },
+      userId: '595053dafc13ae36b9000079',
       displayName: 'Maxwell Alyoshin'
     },
     timestamp: '3/19/2017',
@@ -44,9 +40,7 @@ export const POSTS = [
     title: 'erat eros viverra eget congue eget semper rutrum nulla',
     type: 'photo',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b900007a'
-      },
+      userId: '595053dafc13ae36b900007a',
       displayName: 'Rochester Kidney'
     },
     timestamp: '10/29/2016',
@@ -62,9 +56,7 @@ export const POSTS = [
     title: 'velit eu est congue elementum',
     type: 'photo',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b900007b'
-      },
+      userId: '595053dafc13ae36b900007b',
       displayName: 'Roseanna Balwin'
     },
     timestamp: '9/5/2016',
@@ -80,9 +72,7 @@ export const POSTS = [
     title: 'et tempus semper est quam pharetra magna ac',
     type: 'blog',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b900007c'
-      },
+      userId: '595053dafc13ae36b900007c',
       displayName: 'Dorothy Donegan'
     },
     timestamp: '1/4/2017',
@@ -98,9 +88,7 @@ export const POSTS = [
     title: 'euismod scelerisque quam turpis adipiscing lorem vitae mattis',
     type: 'blog',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b900007d'
-      },
+      userId: '595053dafc13ae36b900007d',
       displayName: 'Hermia Derye-Barrett'
     },
     timestamp: '2/17/2017',
@@ -116,9 +104,7 @@ export const POSTS = [
     title: 'quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet',
     type: 'blog',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b900007e'
-      },
+      userId: '595053dafc13ae36b900007e',
       displayName: 'Lorianne Lanchberry'
     },
     timestamp: '12/28/2016',
@@ -134,9 +120,7 @@ export const POSTS = [
     title: 'blandit nam nulla integer pede justo lacinia',
     type: 'blog',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b900007f'
-      },
+      userId: '595053dafc13ae36b900007f',
       displayName: 'Ruttger Guesford'
     },
     timestamp: '5/23/2017',
@@ -152,9 +136,7 @@ export const POSTS = [
     title: 'nulla nisl nunc nisl',
     type: 'blog',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b9000080'
-      },
+      userId: '595053dafc13ae36b9000080',
       displayName: 'Rodolfo McNirlan'
     },
     timestamp: '10/30/2016',
@@ -170,9 +152,7 @@ export const POSTS = [
     title: 'velit vivamus vel nulla eget eros elementum pellentesque quisque',
     type: 'blog',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b9000081'
-      },
+      userId: '595053dafc13ae36b9000081',
       displayName: 'Pauli Gladebeck'
     },
     timestamp: '11/11/2016',
@@ -188,9 +168,7 @@ export const POSTS = [
     title: 'vulputate nonummy maecenas tincidunt lacus',
     type: 'blog',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b9000082'
-      },
+      userId: '595053dafc13ae36b9000082',
       displayName: 'Batsheva Belson'
     },
     timestamp: '6/6/2017',
@@ -206,9 +184,7 @@ export const POSTS = [
     title: 'diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum',
     type: 'blog',
     author: {
-      userId: {
-        $oid: '595053dafc13ae36b9000083'
-      },
+      userId: '595053dafc13ae36b9000083',
       displayName: 'Kial Morling'
     },
     timestamp: '12/18/2016',
@@ -217,6 +193,38 @@ export const POSTS = [
     content: {
       excerpt: 'pulvinar sed nisl nunc',
       html: '<p>Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.</p>'
+    }
+  },
+    {
+    _id: 13,
+    title: 'Cute Cat 1',
+    type: 'photo',
+    author: {
+      userId: '59443d6fe3a86a2dc3cd6e72',
+      displayName: 'Ria Carmin'
+    },
+    timestamp: '12/18/2016',
+    tags: 'cats',
+    hearts: 'rabbits',
+    content: {
+      photoUrl: 'http://via.placeholder.com/350x150',
+      description: 'Very cure pic'
+    }
+  },
+    {
+    _id: 14,
+    title: 'Cute Cat 2',
+    type: 'photo',
+    author: {
+      userId: '59443d6fe3a86a2dc3cd6e72',
+      displayName: 'Ria Carmin'
+    },
+    timestamp: '12/18/2016',
+    tags: 'cats',
+    hearts: '595053dafc13ae36b9000083',
+    content: {
+      photoUrl: 'http://via.placeholder.com/350x150',
+      description: 'Very cure pic'
     }
   }
 ];

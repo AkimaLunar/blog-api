@@ -12,8 +12,8 @@ export class UsersService {
     return Promise.resolve(USERS);
   }
 
-  getUser(id: string): Promise<User> {
+  getUserById(id: string): Promise<User> {
     return this.getUsers()
-      .then(users => users.find(user => user._id.$oid === id));
+      .then(users => users.find(user => user._id === id));
   }
 }

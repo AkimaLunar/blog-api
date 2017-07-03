@@ -7,12 +7,12 @@
         <div class="box">
           <div class="row">
             <div class="col-xs-12 col-md-3">
-                  <a [routerLink]="['/profile', 1]"><img class="avatar--medium" src="http://via.placeholder.com/60x60" alt="Ria Carmin, profile photo"></a>
+                  <a [routerLink]="['/profile', post.author.userId]"><img class="avatar--medium" src="http://via.placeholder.com/60x60" alt="{{post.author.displayName}}, profile photo"></a>
             </div>
             <div class="col-xs-12 col-md-9">
               <hr class="hr">
               <h1 class="heading font-color--dark">{{post.title}}</h1>
-              <p class="font-accent">by <a [routerLink]="['/profile', 1]">{{post.author.displayName}}</a></p>
+              <p class="font-accent">by <a [routerLink]="['/profile', post.author.userId]">{{post.author.displayName}}</a></p>
               <div [innerHTML]="post.content.html">
               </div>
             </div>
