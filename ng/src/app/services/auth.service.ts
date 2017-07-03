@@ -67,8 +67,11 @@ export class AuthService {
   getCurrentUser(): string {
     if (this.authenticated()) {
       const _profile = JSON.parse(localStorage.getItem('profile'));
-      console.log(_profile);
       return _profile.identities[0].user_id;
     }
+  }
+
+  getTokenId(): string {
+    return localStorage.getItem('idToken');
   }
 }
