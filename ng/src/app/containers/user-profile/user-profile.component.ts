@@ -26,10 +26,15 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.usersService.getUserById(params.get('id')))
-      .subscribe(user => this.user = user);
-      if (this.auth.getCurrentUser() === this.user._id) {
-        this.self = true;
-      }
+      .subscribe(user => {
+        this.user = user;
+        if (this.auth.getCurrentUser() === this.user._id) {
+          this.self = true;
+        } else {
+          this.self = false;
+        }
+      });
+
   }
 
 }

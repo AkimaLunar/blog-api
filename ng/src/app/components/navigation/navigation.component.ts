@@ -32,7 +32,6 @@ export class NavigationComponent implements OnInit {
 
   setUser(): void {
     const _currentUserId: string = this.auth.getCurrentUser();
-    console.log(_currentUserId);
     if (_currentUserId) {
       this.usersService.getUserById(_currentUserId)
         .then(user => this.user = user);
