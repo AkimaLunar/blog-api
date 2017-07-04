@@ -17,6 +17,23 @@ const postSchema = mongoose.Schema({
     content: { type: String, required: true }
 })
 
+postSchema.methods.postRepr = function() {
+    return {
+         _id: this._id,
+        title: this.title,
+        type: this.type,
+        author: {
+            userId: this.author.userId,
+            displayName: this.author.displayName,
+        },
+        timestamp: this.timestamp,
+        tags: this.tags,
+        hearts:this. hearts,
+        content: this.content
+    }
+}
+
+
 postSchema.methods.blogPostRepr = function() {
     const _blogPostContent = JSON.parse(this.content);
     return {
@@ -24,8 +41,8 @@ postSchema.methods.blogPostRepr = function() {
         title: this.title,
         type: this.type,
         author: {
-            userId: this.userId,
-            displayName: this.displayName,
+            userId: this.author.userId,
+            displayName: this.author.displayName,
         },
         timestamp: this.timestamp,
         tags: this.tags,
@@ -44,8 +61,8 @@ postSchema.methods.photoPostRepr = function() {
         title: this.title,
         type: this.type,
         author: {
-            userId: this.userId,
-            displayName: this.displayName,
+            userId: this.author.userId,
+            displayName: this.author.displayName,
         },
         timestamp: this.timestamp,
         tags: this.tags,

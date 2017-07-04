@@ -31,8 +31,8 @@ userSchema.methods.apiRepr = function() {
     _id: this._id,
     email: this.email,
     name: {
-      firstName: this.firstName,
-      lastName: this.lastName
+      firstName: this.name.firstName,
+      lastName: this.name.lastName
     },
     picture: this.picture,
     bio: this.bio,

@@ -16,7 +16,7 @@ const chalk         = require('chalk');
 usersRouter.use(bodyParser.json());
 
 // GET ALL
-usersRouter.get('/', authCheck, (req, res) => {
+usersRouter.get('/', (req, res) => {
     User
         .find()
         .exec()
@@ -30,7 +30,7 @@ usersRouter.get('/', authCheck, (req, res) => {
                     return user.apiRepr()
                 })
             );
-            logger.info(chalk.blue(`Retrieved blog posts.`));
+            logger.info(chalk.blue(`Retrieved users.`));
         })
         .catch(
             err => {

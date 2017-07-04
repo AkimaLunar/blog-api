@@ -23,13 +23,13 @@
     "jwks-rsa": "^1.2.0",
     "mongoose": "^4.10.4",
     "node-pre-gyp": "^0.6.36",
+    "nodemon": "^1.11.0",
     "uuid": "^3.0.1",
     "winston": "^2.3.1"
   },
   "devDependencies": {
     "chai": "^4.0.0",
     "chai-http": "^3.0.0",
-    "mocha": "^3.4.2",
-    "nodemon": "^1.11.0"
+    "mocha": "^3.4.2"
   }
 }

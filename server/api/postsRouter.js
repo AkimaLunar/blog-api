@@ -27,10 +27,11 @@ postsRouter.get('/', (req, res) => {
             }
             res.status(200).json(
                 posts.map(post => {
-                    return post.apiRepr()
+                    logger.info(chalk.blue(`${posts}`));
+                    return post.postRepr();
                 })
             );
-            logger.info(chalk.blue(`Retrieved posts.`));
+            logger.info(chalk.blue(`Retrieved ${posts.lenght} posts.`));
         })
         .catch(
             err => {
@@ -51,7 +52,7 @@ postsRouter.get('/:id', (req, res) => {
                 logger.error(chalk.red(`Post with ID ${req.params.id} doesn't exist.`));
                 return res.status(404).json({message: 'Post not found'});
             }
-            res.status(200).json(post.apiRepr());
+            res.status(200).json(post.postRepr());
             logger.info(chalk.blue(`Retrieved blog post with ID ${post._id}`));
         })
         .catch(
@@ -71,15 +72,15 @@ postsRouter.get('/user/:id', (req, res) => {
         .exec()
         .then(posts => {
             if (!posts){
-                logger.error(chalk.red(`Post with ID ${req.params.id} doesn't exist.`));
-                return res.status(404).json({message: 'Post not found'});
+                logger.error(chalk.red(`No posts not found`));
+                return res.status(404).json({message: 'No posts not found'});
             }
             res.status(200).json(
                 posts.map(
-                    (post) => post.apiRepr()
+                    (post) => post.postRepr()
                 )
             );
-            logger.info(chalk.blue(`Retrieved blog post with ID ${post._id}`));
+            logger.info(chalk.blue(`Retrieved blog posts for the user with ID ${id}`));
         })
         .catch(
             err => {
@@ -88,6 +89,5 @@ postsRouter.get('/user/:id', (req, res) => {
             }
         )
 });
-
 
 module.exports = { postsRouter };
