@@ -26,6 +26,13 @@ userSchema.virtual('displayName').get(function() {
   return `${this.name.firstName} ${this.name.lastName}`
 })
 
+userSchema.methods.authorRepr = function() {
+  return {
+    userId: this._id,
+    displayName: this.displayName,
+  }
+}
+
 userSchema.methods.apiRepr = function() {
   return {
     _id: this._id,

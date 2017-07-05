@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { UsersService } from '../../services/users.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -11,7 +11,7 @@ import { User } from '../../models/user';
   styleUrls: ['./navigation.component.css'],
   providers: [AuthService, UsersService]
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, OnChanges {
 
   loggedInSubscription: Subscription;
   loggedIn: Boolean;
@@ -24,10 +24,16 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.loggedInSubscription = this.auth.loggedIn$.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
-      if (loggedIn === true) {
+      if (this.loggedIn === true) {
         this.setUser();
       }
     });
+  }
+
+  ngOnChanges() {
+      if (this.loggedIn === true) {
+        this.setUser();
+      }
   }
 
   setUser(): void {
@@ -42,5 +48,10 @@ export class NavigationComponent implements OnInit {
   }
   logout() {
     this.auth.logout();
+  }
+
+  check(){
+    console.log(this.auth.authenticated());
+    console.log(this.auth.loggedIn);
   }
 }

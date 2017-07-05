@@ -8,15 +8,10 @@ const mongoose        = require('mongoose');
 
 const { logger }      = require('./logger');
 const chalk           = require('chalk');
-
+const cors            = require('cors');
 const app             = express();
 
-// app.use(express.static('public'))
-// app.use('/api', router);
-
-// app.get('*', function(req, res){
-//     res.sendFile(path.join(__dirname + '/public/index.html'));
-// });
+app.use(cors())
 
 app.use('/api/posts', postsRouter);
 app.use('/api/users', usersRouter);

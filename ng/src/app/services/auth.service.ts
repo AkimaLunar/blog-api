@@ -17,9 +17,7 @@ export class AuthService {
   loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn);
 
   constructor(public router: Router) {
-    if (this.authenticated) {
-      this.setLoggedIn(true);
-    }
+    this.setLoggedIn(this.authenticated());
     this.lock.on('authenticated', (authResult) => {
 
       this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
@@ -32,7 +30,7 @@ export class AuthService {
         localStorage.setItem('idToken', authResult.idToken);
         localStorage.setItem('accessToken', authResult.accessToken);
         localStorage.setItem('profile', JSON.stringify(profile));
-        this.setLoggedIn(true);
+        this.setLoggedIn(this.authenticated());
 
       });
     });
@@ -56,11 +54,10 @@ export class AuthService {
     localStorage.removeItem('idToken');
     localStorage.removeItem('profile');
     this.router.navigate(['/']);
-    this.setLoggedIn(false);
+    this.setLoggedIn(this.authenticated());
  }
 
   authenticated(): boolean {
-    // Check if there's an unexpired access token
     return tokenNotExpired('idToken');
   }
 

@@ -14,7 +14,7 @@ export const USERS: User[] = [
       {
         _id: '140f7415-6e62-4bd5-9658-4f9e9139d0b5',
         collection: 'Cute Cats',
-        posts: [13, 14]
+        posts: ['13', '14']
       }
     ],
     following: ['595053dafc13ae36b9000083', '595053dafc13ae36b9000082'],

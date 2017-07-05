@@ -4,6 +4,7 @@ const postsRouter   = express.Router();
 const mongoose      = require('mongoose');
 mongoose.Promise    = global.Promise;
 const { Post }      = require('../models/post');
+const { User }      = require('../models/user');
 
 const bodyParser    = require('body-parser');
 
@@ -27,11 +28,12 @@ postsRouter.get('/', (req, res) => {
             }
             res.status(200).json(
                 posts.map(post => {
-                    logger.info(chalk.blue(`${posts}`));
+                    // Post.postTypeFactory(post);
+                    logger.info(chalk.blue(`${post.type}`));
                     return post.postRepr();
                 })
             );
-            logger.info(chalk.blue(`Retrieved ${posts.lenght} posts.`));
+            logger.info(chalk.blue(`Retrieved posts.`));
         })
         .catch(
             err => {
@@ -82,6 +84,59 @@ postsRouter.get('/user/:id', (req, res) => {
             );
             logger.info(chalk.blue(`Retrieved blog posts for the user with ID ${id}`));
         })
+        .catch(
+            err => {
+                logger.error(chalk.red(err));
+                res.status(500).json({message: 'Internal server error'});
+            }
+        )
+});
+
+postsRouter.post('/', authCheck, (req, res) => {
+    const allowedTypes = [
+        'blog',
+        'photo'
+    ];
+    const requiredFields = [
+        'title',
+        'type',
+        'author',
+        'tags',
+        'hearts',
+        'content'
+    ];
+    for (let i=0; i<requiredFields.length; i++) {
+        const field = requiredFields[i];
+        if (!(field in req.body)) {
+            const message = `Missing \`${field}\` in request body`
+            console.error(message);
+            return res.status(400).send(message);
+        }
+    }
+    console.log(req.body.type !== "blog");
+    console.log(req.body.type !== "photo");
+    if (req.body.type !== "photo") {
+        const message = `Incorrect post type \`${req.body.type}\``
+        console.error(message);
+        return res.status(400).send(message);
+    }
+    let _user;
+    User
+        .findOne({'_id':req.body.author.userId})
+        .exec()
+        .then(user => _user = user.authorRepr());
+    console.log(JSON.stringify(_user));
+    Post
+        .create({
+            title: req.body.title,
+            type: req.body.type,
+            author: _user,
+            timestamp: new Date,
+            tags: req.body.tags,
+            hearts:req.body.hearts,
+            content: JSON.stringify(req.body.content)
+        })
+        .then(post => res.status(200).json(post.postRepr))
         .catch(
             err => {
                 logger.error(chalk.red(err));

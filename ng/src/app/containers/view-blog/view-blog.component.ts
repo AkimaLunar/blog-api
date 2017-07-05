@@ -23,7 +23,7 @@ export class ViewBlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.postsService.getPostById(+params.get('id')))
+      .switchMap((params: ParamMap) => this.postsService.getPostById(params.get('id')))
       .subscribe(post => this.post = post);
   }
 

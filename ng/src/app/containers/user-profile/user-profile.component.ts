@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./user-profile.component.css'],
   providers: [UsersService, AuthService]
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit, OnChanges {
   user: User;
   self: boolean;
   constructor(
@@ -26,15 +26,23 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.usersService.getUserById(params.get('id')))
-      .subscribe(user => {
-        this.user = user;
-        if (this.auth.getCurrentUser() === this.user._id) {
-          this.self = true;
-        } else {
-          this.self = false;
-        }
-      });
+      .subscribe(user => this.user = user);
 
+  }
+  ngOnChanges() {
+    this.setSelf();
+  }
+
+  setSelf(){
+      if (this.auth.getCurrentUser() === this.user._id) {
+        this.self = true;
+      } else {
+        this.self = false;
+      }
+  }
+
+  logout(){
+    this.auth.logout();
   }
 
 }
