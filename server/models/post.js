@@ -4,8 +4,8 @@ const postSchema = mongoose.Schema({
     title : { type: String, required: true },
     type: { type: String, required: true },
     author: {
-      userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-      displayName: { type: String, required: true },
+      userId: { type: String, required: true },
+      displayName: { type: String },
     },
     timestamp: { type: Date, required: true },
     tags: [

@@ -10,7 +10,8 @@
         <div class="col-xs-12 col-md-8 user-profile__right">
           <div class="box">
             <img src="{{user.picture}}" class="user-profile__avatar avatar--large">
-            <p *ngIf="self" class="username heading font-color--light"><a (click)="logout()">Log Out</a></p>
+            <!--<p *ngIf="self" class="username heading font-color--light"><a (click)="logout()">Log Out</a></p>-->
+            <a (click)="logout()">Log Out</a>
             <h1 class="user-profile__name">{{user.name.firstName}} {{user.name.lastName}}</h1>
             <p class="user-profile__bio">{{user.bio}}</p>
             <p class="user-profile__stats">followers {{user.followers.length}}   |   following {{user.followers.length}}   |   posts ###</p>

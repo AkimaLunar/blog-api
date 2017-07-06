@@ -24,19 +24,17 @@ export class NavigationComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.loggedInSubscription = this.auth.loggedIn$.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
-      if (this.loggedIn === true) {
-        this.setUser();
-      }
     });
   }
 
   ngOnChanges() {
-      if (this.loggedIn === true) {
-        this.setUser();
-      }
+    if (this.auth.authenticated()) {
+      this.setUser();
+    }
   }
 
   setUser(): void {
+
     const _currentUserId: string = this.auth.getCurrentUser();
     if (_currentUserId) {
       this.usersService.getUserById(_currentUserId)

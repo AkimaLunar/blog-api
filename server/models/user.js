@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
+  auth0_id : { type: String, required: true },
   email : { type: String, required: true },
   name : {
     firstName : { type: String, required: false },
@@ -35,7 +36,7 @@ userSchema.methods.authorRepr = function() {
 
 userSchema.methods.apiRepr = function() {
   return {
-    _id: this._id,
+    _id: this.auth0_id,
     email: this.email,
     name: {
       firstName: this.name.firstName,

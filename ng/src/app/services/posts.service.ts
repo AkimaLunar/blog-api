@@ -45,7 +45,7 @@ export class PostsService {
         'Authorization': 'Bearer ' + this.authService.getTokenId()
       });
       const options = new RequestOptions({ headers: headers });
-      return this.http.post(API_URL, body, options)
+      return this.http.post(API_URL, JSON.stringify(body), options)
         .map((response: Response) => response.json());
     } else {
       console.log('Boo! You are not logged in.');

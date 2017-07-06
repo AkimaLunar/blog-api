@@ -44,7 +44,7 @@ usersRouter.get('/', (req, res) => {
 usersRouter.get('/:id', (req, res) => {
     const id = req.params.id;
     User
-        .findOne({'_id': id})
+        .findOne({'auth0_id': id})
         .exec()
         .then(user => {
             if (!user){
@@ -52,7 +52,7 @@ usersRouter.get('/:id', (req, res) => {
                 return res.status(404).json({message: 'User not found'});
             }
             res.status(200).json(user.apiRepr());
-            logger.info(chalk.blue(`Retrieved user with ID ${user._id}`));
+            logger.info(chalk.blue(`Retrieved user with ID ${user.auth0_id}`));
         })
         .catch(
             err => {

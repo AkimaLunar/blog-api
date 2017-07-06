@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
-
+import { Observable } from 'rxjs';
 // We want to avoid any 'name not found'
 // warnings from TypeScript
 declare var Auth0Lock: any;
@@ -14,7 +14,7 @@ export class AuthService {
   // lock = new Auth0Lock('YOUR_AUTH0_CLIENT_ID', 'YOUR_AUTH0_DOMAIN');
   lock = new Auth0Lock('r0U8PcRtw9LMakkw0MV9mjnHYb7gk7e3', 'riacarmin.auth0.com');
   loggedIn: boolean;
-  loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn);
+  loggedIn$ = new BehaviorSubject<boolean>(this.authenticated());
 
   constructor(public router: Router) {
     this.setLoggedIn(this.authenticated());
@@ -26,7 +26,6 @@ export class AuthService {
           this.router.navigate(['/']);
           return;
         }
-        console.log(profile);
         localStorage.setItem('idToken', authResult.idToken);
         localStorage.setItem('accessToken', authResult.accessToken);
         localStorage.setItem('profile', JSON.stringify(profile));
@@ -40,7 +39,7 @@ export class AuthService {
     this.loggedIn$.next(value);
     this.loggedIn = value;
   }
-
+  
   login(): void {
     this.lock.show((error: string, profile: Object, id_token: string) => {
       if (error) {

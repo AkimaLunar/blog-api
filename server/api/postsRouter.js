@@ -120,23 +120,23 @@ postsRouter.post('/', authCheck, (req, res) => {
         console.error(message);
         return res.status(400).send(message);
     }
-    let _user;
     User
         .findOne({'_id':req.body.author.userId})
         .exec()
-        .then(user => _user = user.authorRepr());
-    console.log(JSON.stringify(_user));
-    Post
-        .create({
-            title: req.body.title,
-            type: req.body.type,
-            author: _user,
-            timestamp: new Date,
-            tags: req.body.tags,
-            hearts:req.body.hearts,
-            content: JSON.stringify(req.body.content)
+        .then(user => user.authorRepr())
+        .then(author => {
+            return Post
+            .create({
+                title: req.body.title,
+                type: req.body.type,
+                author: author,
+                timestamp: new Date,
+                tags: req.body.tags,
+                hearts:req.body.hearts,
+                content: JSON.stringify(req.body.content)
+            })
         })
-        .then(post => res.status(200).json(post.postRepr))
+        .then(post => res.status(200).json(post.postRepr()))
         .catch(
             err => {
                 logger.error(chalk.red(err));
