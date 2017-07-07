@@ -3,9 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
-// We want to avoid any 'name not found'
-// warnings from TypeScript
 declare var Auth0Lock: any;
 
 @Injectable()
@@ -14,12 +13,10 @@ export class AuthService {
   // lock = new Auth0Lock('YOUR_AUTH0_CLIENT_ID', 'YOUR_AUTH0_DOMAIN');
   lock = new Auth0Lock('r0U8PcRtw9LMakkw0MV9mjnHYb7gk7e3', 'riacarmin.auth0.com');
   loggedIn: boolean;
-  loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn);
+  loggedIn$ = new BehaviorSubject<boolean>(this.authenticated());
 
   constructor(public router: Router) {
-    if (this.authenticated) {
-      this.setLoggedIn(true);
-    }
+    this.setLoggedIn(this.authenticated());
     this.lock.on('authenticated', (authResult) => {
 
       this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
@@ -28,11 +25,10 @@ export class AuthService {
           this.router.navigate(['/']);
           return;
         }
-        console.log(profile);
         localStorage.setItem('idToken', authResult.idToken);
         localStorage.setItem('accessToken', authResult.accessToken);
         localStorage.setItem('profile', JSON.stringify(profile));
-        this.setLoggedIn(true);
+        this.setLoggedIn(this.authenticated());
 
       });
     });
@@ -56,19 +52,21 @@ export class AuthService {
     localStorage.removeItem('idToken');
     localStorage.removeItem('profile');
     this.router.navigate(['/']);
-    this.setLoggedIn(false);
+    this.setLoggedIn(this.authenticated());
  }
 
   authenticated(): boolean {
-    // Check if there's an unexpired access token
     return tokenNotExpired('idToken');
   }
 
   getCurrentUser(): string {
     if (this.authenticated()) {
       const _profile = JSON.parse(localStorage.getItem('profile'));
-      console.log(_profile);
       return _profile.identities[0].user_id;
     }
+  }
+
+  getTokenId(): string {
+    return localStorage.getItem('idToken');
   }
 }

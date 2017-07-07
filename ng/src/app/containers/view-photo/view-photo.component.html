@@ -5,7 +5,8 @@
       <article class="col-md-12 col-lg-8">
         <img src="{{post.content.photoUrl}}" alt="{{post.title}}">
         <div class="card card__inner">
-          <p>{{post.content.description}} by <a [routerLink]="['/profile', post.author.userId]">{{post.author.displayName}}</a></p>
+          <p>{{post.title}} <span *ngIf="post.author.displayName">by <a [routerLink]="['/profile', post.author.userId]">{{post.author.displayName}}</a></span></p>
+          <p>{{post.content.description}}</p>
         </div>
       </article>
 

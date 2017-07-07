@@ -1,19 +1,20 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
+  auth0_id : { type: String, required: true },
   email : { type: String, required: true },
-  password: { type: String, required: true },
   name : {
     firstName : { type: String, required: false },
     lastName : { type: String, required: false }
   },
+  picture: { type: String, required: false },
   bio : { type: String, required: false },
   collections: [
       {
           _id: { type: String, required: true },
-          collection: { type: String, required: false },
+          collection_name: { type: String, required: false },
           posts: [
-            { type: mongoose.Schema.Types.ObjectId, ref: 'BlogPost' }
+            { type: mongoose.Schema.Types.ObjectId, ref: 'Post' }
           ]
       }
   ],
@@ -26,12 +27,27 @@ userSchema.virtual('displayName').get(function() {
   return `${this.name.firstName} ${this.name.lastName}`
 })
 
+userSchema.methods.authorRepr = function() {
+  return {
+    userId: this._id,
+    displayName: this.displayName,
+  }
+}
+
 userSchema.methods.apiRepr = function() {
   return {
-    id: this._id,
-    name: this.displayName,
+    _id: this.auth0_id,
+    email: this.email,
+    name: {
+      firstName: this.name.firstName,
+      lastName: this.name.lastName
+    },
+    picture: this.picture,
     bio: this.bio,
-    collections: this.collections
+    collections: this.collections,
+    following: this.following,
+    // @TODO find all users that follow this user
+    followers: ['0']
   }
 }
 

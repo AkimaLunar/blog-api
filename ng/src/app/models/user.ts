@@ -11,7 +11,7 @@ export class User {
       {
         _id: string;
         collection: string;
-        posts: number[];
+        posts: string[];
       }
     ];
     following: string[];
