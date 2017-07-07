@@ -35,18 +35,30 @@ export class PostsService {
     return this.http.get(`${API_URL}/posts/${id}`)
       .toPromise()
       .then(response => response.json() as Post)
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
-  createPost(body): Observable<Post> {
+  createPost(body): Promise<Post> {
+    const _bodyJSON = JSON.stringify(body);
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.authService.getTokenId()
+    });
+    const options = new RequestOptions({ headers: headers });
+
     if (this.authService.authenticated()) {
-      const headers = new Headers({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.authService.getTokenId()
-      });
-      const options = new RequestOptions({ headers: headers });
-      return this.http.post(API_URL, JSON.stringify(body), options)
-        .map((response: Response) => response.json());
+      console.log(`${API_URL}/posts/`);
+      console.log(_bodyJSON);
+      console.log(options);
+
+      return this.http.post(`${API_URL}/posts/`, _bodyJSON, options)
+        .toPromise()
+        .then(response => response.json() as Post)
+        .catch(this.handleError);
+        // .map((response: Response) => {
+        //   console.log(response);
+        //   return response.json();
+        // });
     } else {
       console.log('Boo! You are not logged in.');
     }

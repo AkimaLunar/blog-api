@@ -4,8 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-// We want to avoid any 'name not found'
-// warnings from TypeScript
+
 declare var Auth0Lock: any;
 
 @Injectable()
@@ -39,7 +38,7 @@ export class AuthService {
     this.loggedIn$.next(value);
     this.loggedIn = value;
   }
-  
+
   login(): void {
     this.lock.show((error: string, profile: Object, id_token: string) => {
       if (error) {

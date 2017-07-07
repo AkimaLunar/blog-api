@@ -20,16 +20,16 @@ export class CreateComponent implements OnInit {
 
   post(){
     const FAKEBOD = {
-      title: 'Hella Title!!',
+      title: 'Have you seen this cat yet?',
       type: 'photo',
       author: {
-        userId: '595acf8e1a6a85e333968bec'
+        userId: this.auth.getCurrentUser()
       },
       tags: ['cats'],
       hearts: [],
       content: {
-        photoUrl: 'https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg',
-        description: 'What a great cat!'
+        photoUrl: 'https://static.pexels.com/photos/126407/pexels-photo-126407.jpeg',
+        description: 'Another great cat'
       }
     }
     this.postsService.createPost(FAKEBOD);

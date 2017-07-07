@@ -24,6 +24,7 @@ export class NavigationComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.loggedInSubscription = this.auth.loggedIn$.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
+      this.setUser();
     });
   }
 
@@ -46,10 +47,5 @@ export class NavigationComponent implements OnInit, OnChanges {
   }
   logout() {
     this.auth.logout();
-  }
-
-  check(){
-    console.log(this.auth.authenticated());
-    console.log(this.auth.loggedIn);
   }
 }

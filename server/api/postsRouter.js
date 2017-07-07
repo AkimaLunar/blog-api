@@ -113,17 +113,23 @@ postsRouter.post('/', authCheck, (req, res) => {
             return res.status(400).send(message);
         }
     }
-    console.log(req.body.type !== "blog");
-    console.log(req.body.type !== "photo");
+
     if (req.body.type !== "photo") {
         const message = `Incorrect post type \`${req.body.type}\``
         console.error(message);
         return res.status(400).send(message);
     }
     User
-        .findOne({'_id':req.body.author.userId})
+        .findOne({'auth0_id':req.body.author.userId})
         .exec()
-        .then(user => user.authorRepr())
+        .then(user => {
+            if (!user) {
+                logger.error(chalk.red(`User doesn't excist`));
+                res.status(500).json({message: 'Internal server error'});
+            }
+            
+            user.authorRepr()
+        })
         .then(author => {
             return Post
             .create({
@@ -136,7 +142,10 @@ postsRouter.post('/', authCheck, (req, res) => {
                 content: JSON.stringify(req.body.content)
             })
         })
-        .then(post => res.status(200).json(post.postRepr()))
+        .then(post => {
+            logger.info(chalk.blue(`Created a post with id ${post._id}`));
+            res.status(200).json(post.postRepr())
+        })
         .catch(
             err => {
                 logger.error(chalk.red(err));

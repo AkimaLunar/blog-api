@@ -2,7 +2,7 @@
   <a class="card card__photo" [routerLink]="['/photo', post._id]" [ngStyle]="{'background-image': 'url(' + post.content.photoUrl + ')'}">
     <div class="card__inner" >
       <div class="card__bottom">
-        <p class="font-accent">by {{post.author.displayName}}</p>
+        <p *ngIf="post.author.displayName" class="font-accent">by {{post.author.displayName}}</p>
       </div>
     <div class="card__overlay">&nbsp;</div>
     </div>

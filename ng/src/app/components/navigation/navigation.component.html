@@ -28,7 +28,6 @@
       <a [routerLink]="['/profile', user._id]"><img class="avatar--small" src="{{user.picture}}" alt="{{user.name.firstName}} {{user.name.lastName}}, profile photo"></a>
       <a [routerLink]="['/create']" class="round-button round-button--default">+ <span class="screen-reader">Create a Post</span></a>
       <p class="username heading font-color--light"><a (click)="auth.logout()">Log Out</a></p>
-      <p class="username heading font-color--light"><a (click)="check()">Check</a></p>
 
     </div>
     <div *ngIf="!auth.loggedIn">
