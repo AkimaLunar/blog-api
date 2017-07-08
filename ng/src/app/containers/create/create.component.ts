@@ -1,7 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from '../../services/posts.service'
-import { AuthService } from '../../services/auth.service'
- 
+import { PostsService } from '../../services/posts.service';
+import { AuthService } from '../../services/auth.service';
+
+interface PostBody {
+    title: string,
+    type: string,
+    author: {
+        userId: string
+    },
+    tags: Array<string>,
+    hearts: Array<string>,
+    content: any
+}
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -9,6 +20,11 @@ import { AuthService } from '../../services/auth.service'
   providers: [PostsService, AuthService]
 })
 export class CreateComponent implements OnInit {
+  public types: Array<string> = [
+    'blog',
+    'photo'
+  ];
+  private post: PostBody;
 
   constructor(
     private postsService: PostsService,
@@ -16,23 +32,24 @@ export class CreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  }
-
-  post(){
-    const FAKEBOD = {
-      title: 'Have you seen this cat yet?',
-      type: 'photo',
+    this.post = {
+      title: '',
+      type: '',
       author: {
         userId: this.auth.getCurrentUser()
       },
-      tags: ['cats'],
+      tags: [''],
       hearts: [],
-      content: {
-        photoUrl: 'https://static.pexels.com/photos/126407/pexels-photo-126407.jpeg',
-        description: 'Another great cat'
-      }
-    }
-    this.postsService.createPost(FAKEBOD);
+      content: {}
+    };
+  }
+
+  onPost() {
+    this.postsService.createPost(this.post);
+  }
+
+  onPostType(value) {
+    this.post.type = value.type;
   }
 
 }

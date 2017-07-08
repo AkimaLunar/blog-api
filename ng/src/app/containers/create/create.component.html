@@ -1,3 +1,34 @@
 <p>
   <button (click)="post()">POST</button>
 </p>
+
+<div class="container">
+  <div class="col-md-12 col-lg-8">
+    <h1>
+      <small>Step 1</small>
+      Choose a post type
+    </h1>
+    <form #postTypeForm="ngForm" (ngSubmit)="onPostType(postTypeForm.value)">
+
+      <label for="postType">Post Type</label>
+      <select
+        #postType
+        id="postType"
+        required
+        [(ngModel)]="post.type"
+        name="type">
+          <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+
+
+      <div *ngIf="postType.errors?.required">This field is required</div>
+
+      <button type="submit" class="" [disabled]="!postTypeForm.form.valid">Submit</button>
+
+  </form> 
+{{postTypeForm.value | json}}
+{{postTypeForm.valid | json}}
+
+
+  </div>
+</div>
