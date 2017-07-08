@@ -1,0 +1,13 @@
+.create__type {
+  height: 8rem;
+  text-align: center;
+  color: white;
+}
+
+.create__type--photo {
+  background-color: blue;
+}
+
+.create__type--blog {
+  background-color: red;
+}

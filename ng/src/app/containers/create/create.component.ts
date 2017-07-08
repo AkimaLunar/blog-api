@@ -43,7 +43,9 @@ export class CreateComponent implements OnInit {
       content: {}
     };
   }
-
+  onSelectType(type) {
+    this.post.type = type;
+  }
   onPost() {
     this.postsService.createPost(this.post);
   }

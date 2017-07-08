@@ -3,32 +3,61 @@
 </p>
 
 <div class="container">
-  <div class="col-md-12 col-lg-8">
-    <h1>
-      <small>Step 1</small>
-      Choose a post type
-    </h1>
-    <form #postTypeForm="ngForm" (ngSubmit)="onPostType(postTypeForm.value)">
+  <div class="row">
+    <div class="col-md-12 col-lg-8">
 
-      <label for="postType">Post Type</label>
-      <select
-        #postType
-        id="postType"
-        required
-        [(ngModel)]="post.type"
-        name="type">
-          <option *ngFor="let type of types" [value]="type">{{type}}</option>
-      </select>
+      <div class="box">
+        <h1>
+          <small>Step 1</small>
+          Choose a post type
+        </h1>
+      </div>
 
-
-      <div *ngIf="postType.errors?.required">This field is required</div>
-
-      <button type="submit" class="" [disabled]="!postTypeForm.form.valid">Submit</button>
-
-  </form> 
-{{postTypeForm.value | json}}
-{{postTypeForm.valid | json}}
-
-
+    </div>
   </div>
+
+  <div class="row">
+    <div class="col-sm-6" (click)="onSelectType('blog')">
+      <div class="create__type create__type--blog box">
+        <p>Blog</p>
+      </div>
+    </div>
+
+    <div class="col-sm-6" (click)="onSelectType('photo')">
+      <div class="create__type create__type--photo box">
+        <p>Photo</p>
+      </div>
+    </div>
+  </div>
+
+      <div class="col-md-12 col-lg-8">
+
+      <div class="box">
+        <div [ngSwitch]="post.type">
+          <div *ngSwitchCase="'blog'" class="create__containter create__containter--active">
+            <h2>
+              {{post.type}}
+            </h2>
+            <form>
+              <textarea name="" id="" cols="30" rows="10"></textarea>
+            </form>
+          </div>
+
+          <div *ngSwitchCase="'photo'" class="create__containter create__containter--active">
+            <h2>
+              {{post.type}}
+            </h2>
+            <form>
+              <label for="">Photo Url here</label>
+              <input type="text">
+            </form>
+          </div>
+
+          <div *ngSwitchDefault class="create__containter create__containter--disabled">
+            <p> Please, select a post type</p>
+          </div>
+
+      </div>
+    </div>
 </div>
+
