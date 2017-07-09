@@ -1,7 +1,3 @@
-<p>
-  <button (click)="post()">POST</button>
-</p>
-
 <div class="container">
   <div class="row">
     <div class="col-md-12 col-lg-8">
@@ -17,39 +13,71 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-6" (click)="onSelectType('blog')">
-      <div class="create__type create__type--blog box">
-        <p>Blog</p>
+      <div *ngFor="let type of types" class="col-sm-4" (click)="onSelectType(type)">
+        <div class="create__type create__type--{{type}} box">
+          <p>{{type}}</p>
+        </div>
       </div>
-    </div>
 
-    <div class="col-sm-6" (click)="onSelectType('photo')">
-      <div class="create__type create__type--photo box">
-        <p>Photo</p>
-      </div>
-    </div>
   </div>
+  <div *ngIf="post.type" class="row">
+    <div class="col-md-12 col-lg-8">
 
-      <div class="col-md-12 col-lg-8">
-
-      <div class="box">
+      <div class="box card">
+        <h1>
+          <small>Step 2</small>
+          Add your content
+        </h1>
         <div [ngSwitch]="post.type">
           <div *ngSwitchCase="'blog'" class="create__containter create__containter--active">
-            <h2>
-              {{post.type}}
-            </h2>
-            <form>
-              <textarea name="" id="" cols="30" rows="10"></textarea>
+            <form #blogPostForm="ngForm" (ngSubmit)="onPost()">
+
+              <label for="title">Title</label>
+              <input type="text"
+                     name="title"
+                     id="title"
+                     required
+                     [(ngModel)]="post.title">
+
+              <label for="excerpt">Excerpt</label>
+              <input type="text"
+                     name="excerpt"
+                     id="excerpt"
+                     required
+                     [(ngModel)]="content.excerpt">
+
+              <label for="html">Content (HTML)</label>
+              <textarea
+                     name="html"
+                     id="html"
+                     cols="30"
+                     rows="10"
+                     [(ngModel)]="content.html"
+                     required>
+              </textarea>
+              Valid: {{blogPostForm.valid | json}}
+              <button type="submit" [disabled]="!blogPostForm.form.valid">Post a {{post.type}}</button>
             </form>
           </div>
 
           <div *ngSwitchCase="'photo'" class="create__containter create__containter--active">
-            <h2>
-              {{post.type}}
-            </h2>
-            <form>
-              <label for="">Photo Url here</label>
-              <input type="text">
+            <form #photoPostForm="ngForm" (ngSubmit)="onPost()">
+
+              <label for="title">Title</label>
+              <input type="text"
+                     name="title"
+                     id="title"
+                     [(ngModel)]="post.title"
+                     required>
+
+              <label for="photoUrl">Photo URL</label>
+              <input type="text"
+                     name="photoUrl"
+                     id="photoUrl"
+                     [(ngModel)]="content.photoUrl"
+                     required>
+              Valid: {{photoPostForm.valid | json}}
+              <button type="submit" [disabled]="!photoPostForm.form.valid">Post a {{post.type}}</button>
             </form>
           </div>
 
@@ -57,7 +85,9 @@
             <p> Please, select a post type</p>
           </div>
 
+        </div>
       </div>
     </div>
+  </div>
 </div>
 
