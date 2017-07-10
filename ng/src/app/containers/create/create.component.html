@@ -3,7 +3,7 @@
     <div class="col-md-12 col-lg-8">
 
       <div class="box">
-        <h1>
+        <h1 class="heading">
           <small>Step 1</small>
           Choose a post type
         </h1>
@@ -14,7 +14,7 @@
 
   <div class="row">
       <div *ngFor="let type of types" class="col-sm-4" (click)="onSelectType(type)">
-        <div class="create__type create__type--{{type}} box">
+        <div class="create__type create__type--{{type}} box card">
           <p>{{type}}</p>
         </div>
       </div>
@@ -24,7 +24,7 @@
     <div class="col-md-12 col-lg-8">
 
       <div class="box card">
-        <h1>
+        <h1 class="heading">
           <small>Step 2</small>
           Add your content
         </h1>
@@ -55,8 +55,8 @@
                      [(ngModel)]="content.html"
                      required>
               </textarea>
-              Valid: {{blogPostForm.valid | json}}
               <button type="submit" [disabled]="!blogPostForm.form.valid">Post a {{post.type}}</button>
+              Valid: {{blogPostForm.valid | json}}
             </form>
           </div>
 
@@ -76,8 +76,8 @@
                      id="photoUrl"
                      [(ngModel)]="content.photoUrl"
                      required>
-              Valid: {{photoPostForm.valid | json}}
               <button type="submit" [disabled]="!photoPostForm.form.valid">Post a {{post.type}}</button>
+              Valid: {{photoPostForm.valid | json}}
             </form>
           </div>
 

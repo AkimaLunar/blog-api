@@ -1,17 +1,11 @@
-.create__type {
-  height: 8rem;
-  text-align: center;
-  color: white;
+.container {
+  padding-top: 2rem;
+}
+.create__type.box {
+  display: flex; 
+  align-items: center;
 }
 
-.create__type--photo {
-  background-color: blue;
-}
-
-.create__type--blog {
-  background-color: red;
-}
-
-.box {
+.card {
   padding: 2rem;
 }

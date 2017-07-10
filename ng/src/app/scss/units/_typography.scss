@@ -2,6 +2,12 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: $font-bold;
+
+  small {
+    font-size: 1rem;
+    opacity: .75;
+    display: block;
+  }
 }
 
 .font-color {
