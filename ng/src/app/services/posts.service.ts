@@ -47,18 +47,11 @@ export class PostsService {
     const options = new RequestOptions({ headers: headers });
 
     if (this.authService.authenticated()) {
-      console.log(`${API_URL}/posts/`);
-      console.log(_bodyJSON);
-      console.log(options);
 
       return this.http.post(`${API_URL}/posts/`, _bodyJSON, options)
         .toPromise()
         .then(response => response.json() as Post)
         .catch(this.handleError);
-        // .map((response: Response) => {
-        //   console.log(response);
-        //   return response.json();
-        // });
     } else {
       console.log('Boo! You are not logged in.');
     }

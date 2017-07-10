@@ -29,7 +29,7 @@ userSchema.virtual('displayName').get(function() {
 
 userSchema.methods.authorRepr = function() {
   return {
-    userId: this._id,
+    userId: this.auth0_id,
     displayName: this.displayName,
   }
 }

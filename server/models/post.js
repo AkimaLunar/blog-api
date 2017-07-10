@@ -10,7 +10,7 @@ const postSchema = mongoose.Schema({
     },
     timestamp: { type: Date, required: true },
     tags: [
-        { type: String, required: true }
+        { type: String}
     ],
     hearts: [
         { type: mongoose.Schema.Types.ObjectId, ref: 'User' }

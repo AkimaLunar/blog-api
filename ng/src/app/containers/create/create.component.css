@@ -1,0 +1,12 @@
+.container {
+  padding-top: 2rem;
+}
+.create__type.box {
+  display: flex; 
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card {
+  padding: 2rem;
+}

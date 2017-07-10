@@ -114,11 +114,12 @@ postsRouter.post('/', authCheck, (req, res) => {
         }
     }
 
-    if (req.body.type !== "photo") {
+    if (!(allowedTypes.includes(req.body.type))) {
         const message = `Incorrect post type \`${req.body.type}\``
         console.error(message);
         return res.status(400).send(message);
     }
+
     User
         .findOne({'auth0_id':req.body.author.userId})
         .exec()
@@ -127,8 +128,8 @@ postsRouter.post('/', authCheck, (req, res) => {
                 logger.error(chalk.red(`User doesn't excist`));
                 res.status(500).json({message: 'Internal server error'});
             }
-            
-            user.authorRepr()
+
+            return user.authorRepr();
         })
         .then(author => {
             return Post

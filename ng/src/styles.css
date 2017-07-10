@@ -337,6 +337,10 @@ picture {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 800; }
+  .heading small, .user-profile__name small {
+    font-size: 1rem;
+    opacity: .75;
+    display: block; }
 
 .font-color--light {
   color: rgba(255, 255, 255, 0.75); }
@@ -574,6 +578,23 @@ input.input {
   background: #4a4756;
   padding: 1rem 0;
   vertical-align: middle; }
+
+.create__type {
+  height: 8rem;
+  text-align: center;
+  color: white;
+  font-family: "Alegreya", serif;
+  font-size: 3rem;
+  transition: all 250ms ease;
+  text-transform: capitalize; }
+  .create__type--photo {
+    background-color: #8b88cc; }
+    .create__type--photo:hover {
+      background-color: #9794d1; }
+  .create__type--blog {
+    background-color: #889bcc; }
+    .create__type--blog:hover {
+      background-color: #94a5d1; }
 
 .user-profile {
   height: 400px;
