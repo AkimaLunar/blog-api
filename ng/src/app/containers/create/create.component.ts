@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PostsService } from '../../services/posts.service';
 import { AuthService } from '../../services/auth.service';
 import { PostPhotoContent } from '../../models/post-photo-content';
@@ -31,7 +32,8 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private postsService: PostsService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -65,13 +67,15 @@ export class CreateComponent implements OnInit {
     }
   }
 
-  onSelectType(type) {
+  onSelectType(type): void {
     this.post.type = type;
   }
 
-  onPost() {
+  onPost(): void {
     this.post.content = this.contentFactory(this.post.type);
-    console.log(JSON.stringify(this.post));
-    this.postsService.createPost(this.post);
+    this.postsService.createPost(this.post)
+    .then(post => {
+      this.router.navigate([`/${post.type}/${post._id}`]);
+    })
   }
 }

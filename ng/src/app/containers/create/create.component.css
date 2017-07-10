@@ -4,6 +4,7 @@
 .create__type.box {
   display: flex; 
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .card {
