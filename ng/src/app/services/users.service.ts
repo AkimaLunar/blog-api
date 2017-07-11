@@ -34,4 +34,31 @@ export class UsersService {
       .then(response => response.json() as User)
       .catch(this.handleError)
   }
+
+  createUser(auth0Profile): Promise<User> {
+    const _body = {
+      auth0_id: auth0Profile.identities[0].user_id,
+      email: auth0Profile.email,
+      name : {
+        firstName: auth0Profile.nickname
+      },
+      picture: auth0Profile.picture
+    }
+    const _bodyJSON = JSON.stringify(_body);
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.authService.getTokenId()
+    });
+    const options = new RequestOptions({ headers: headers });
+
+    if (this.authService.authenticated()) {
+
+      return this.http.post(`${API_URL}/users/`, _bodyJSON, options)
+        .toPromise()
+        .then(response => response.json() as User)
+        .catch(this.handleError);
+    } else {
+      console.log('Boo! You are not logged in.');
+    }
+  }
 }

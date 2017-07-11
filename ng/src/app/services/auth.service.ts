@@ -14,6 +14,7 @@ export class AuthService {
   lock = new Auth0Lock('r0U8PcRtw9LMakkw0MV9mjnHYb7gk7e3', 'riacarmin.auth0.com');
   loggedIn: boolean;
   loggedIn$ = new BehaviorSubject<boolean>(this.authenticated());
+  // currentUser$ = new BehaviorSubject<User>();
 
   constructor(public router: Router) {
     this.setLoggedIn(this.authenticated());
@@ -29,7 +30,6 @@ export class AuthService {
         localStorage.setItem('accessToken', authResult.accessToken);
         localStorage.setItem('profile', JSON.stringify(profile));
         this.setLoggedIn(this.authenticated());
-
       });
     });
   }
@@ -38,6 +38,10 @@ export class AuthService {
     this.loggedIn$.next(value);
     this.loggedIn = value;
   }
+
+  // setUser(user: User): void {
+  //   this.currentUser$.next(user);
+  // }
 
   login(): void {
     this.lock.show((error: string, profile: Object, id_token: string) => {

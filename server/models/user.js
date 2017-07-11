@@ -4,15 +4,15 @@ const userSchema = mongoose.Schema({
   auth0_id : { type: String, required: true },
   email : { type: String, required: true },
   name : {
-    firstName : { type: String, required: false },
-    lastName : { type: String, required: false }
+    firstName : { type: String },
+    lastName : { type: String }
   },
-  picture: { type: String, required: false },
-  bio : { type: String, required: false },
+  picture: { type: String },
+  bio : { type: String },
   collections: [
       {
-          _id: { type: String, required: true },
-          collection_name: { type: String, required: false },
+          _id: { type: String },
+          collection_name: { type: String },
           posts: [
             { type: mongoose.Schema.Types.ObjectId, ref: 'Post' }
           ]
