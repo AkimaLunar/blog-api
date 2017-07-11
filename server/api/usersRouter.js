@@ -85,17 +85,15 @@ usersRouter.post('/', authCheck, (req, res) => {
         .then(user => {
             if (user) {
                 logger.info(chalk.blue(`User with an ID ${user.auth0_id} already exists.`))
-                return res.status(200).end();
-            }
-            return;
-        })
-        .then(() => {
-            return User
+                return res.status(200).send(user.apiRepr());
+            } else {
+                return User
                 .create(req.body)
                 .then(user => {
                     logger.info(chalk.blue(`Created a user with ID ${user.auth0_id}`))
                     return res.status(201).send(user.apiRepr());
                 })
+            }
         })
         .catch(err => {
             logger.error(chalk.red(err));
