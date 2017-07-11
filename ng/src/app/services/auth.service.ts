@@ -72,10 +72,6 @@ export class AuthService {
 
   self(userId: string) {
     const _currentUser = this.getCurrentUser();
-    if (_currentUser === userId) {
-      return true;
-    } else {
-      return false;
-    }
+    return _currentUser === userId;
   }
 }
