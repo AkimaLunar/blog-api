@@ -69,4 +69,13 @@ export class AuthService {
   getTokenId(): string {
     return localStorage.getItem('idToken');
   }
+
+  self(userId: string) {
+    const _currentUser = this.getCurrentUser();
+    if (_currentUser === userId) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

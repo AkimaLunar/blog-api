@@ -28,8 +28,6 @@ postsRouter.get('/', (req, res) => {
             }
             res.status(200).json(
                 posts.map(post => {
-                    // Post.postTypeFactory(post);
-                    logger.info(chalk.blue(`${post.type}`));
                     return post.postRepr();
                 })
             );
@@ -65,6 +63,25 @@ postsRouter.get('/:id', (req, res) => {
         )
 });
 
+// DELETE BY ID
+
+postsRouter.delete('/:id', authCheck, (req, res) => {
+    const id = req.params.id;
+    Post
+        .findByIdAndRemove({'_id': id})
+        .exec()
+        .then(post => {
+            logger.info(chalk.blue(`Deleted a post with ID ${id}`));
+            res.status(204).end();
+        })
+        .catch(
+            err => {
+                logger.error(chalk.red(err));
+                res.status(500).json({message: 'Internal server error'});
+            }
+        )
+})
+
 // GET BY USER ID
 
 postsRouter.get('/user/:id', (req, res) => {
@@ -92,6 +109,7 @@ postsRouter.get('/user/:id', (req, res) => {
         )
 });
 
+// CREATE
 postsRouter.post('/', authCheck, (req, res) => {
     const allowedTypes = [
         'blog',

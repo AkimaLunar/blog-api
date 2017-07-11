@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Router } from '@angular/router';
 import { POSTS } from './mock-posts';
 import { Post } from '../models/post';
 import { AuthService } from './auth.service';
@@ -16,7 +17,8 @@ export class PostsService {
 
   constructor(
     private http: Http,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   private handleError(error: any): Promise<any> {
@@ -36,6 +38,22 @@ export class PostsService {
       .toPromise()
       .then(response => response.json() as Post)
       .catch(this.handleError);
+  }
+  deletePostById(id: string, authorId:string) {
+    const currentUserId = this.authService.getCurrentUser();
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.authService.getTokenId()
+    });
+    const options = new RequestOptions({ headers: headers });
+    if (currentUserId === authorId) {
+      return this.http.delete(`${API_URL}/posts/${id}`, options)
+        .toPromise()
+        .then(response => {
+          this.router.navigate(['/']);
+        })
+        .catch(this.handleError);
+    }
   }
 
   createPost(body): Promise<Post> {
