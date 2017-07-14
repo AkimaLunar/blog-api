@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
-  providers: [UsersService, AuthService]
+  providers: [UsersService]
 })
 export class UserProfileComponent implements OnInit, OnChanges {
   user: User;

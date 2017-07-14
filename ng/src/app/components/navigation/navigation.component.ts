@@ -9,7 +9,7 @@ import { User } from '../../models/user';
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
-  providers: [AuthService, UsersService]
+  providers: [UsersService]
 })
 export class NavigationComponent implements OnInit, OnChanges {
 
