@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
       this.usersService.getUserById(this.usersService.getCurrentUserId())
         .then(user => {
           this.currentUser = user;
-          console.log(this.currentUser);
           this.usersService.setCurrentUser(this.currentUser);
         });
     }

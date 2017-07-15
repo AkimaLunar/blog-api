@@ -57,7 +57,6 @@ export class UsersService {
   }
 
   setCurrentUser(user: User): void {
-    console.log('Setting!');
     this.currentUser$.next(user);
     this.currentUser = user;
   }

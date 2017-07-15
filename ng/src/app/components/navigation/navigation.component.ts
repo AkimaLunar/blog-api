@@ -14,7 +14,7 @@ export class NavigationComponent implements OnInit, OnChanges {
 
   loggedInSubscription: Subscription;
   loggedIn: Boolean;
-  userSubscribtion: Subscription;
+  userSubscription: Subscription;
   user: User;
   constructor(
     private usersService: UsersService
@@ -24,7 +24,7 @@ export class NavigationComponent implements OnInit, OnChanges {
     this.loggedInSubscription = this.usersService.loggedIn$.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
     });
-    this.userSubscribtion = this.usersService.currentUser$.subscribe(user => this.user = user);
+    this.userSubscription = this.usersService.currentUser$.subscribe(user => this.user = user);
   }
 
   ngOnChanges() {
