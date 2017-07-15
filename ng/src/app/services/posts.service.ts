@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Router } from '@angular/router';
 import { Post } from '../models/post';
-import { AuthService } from './auth.service';
+import { UsersService } from './users.service';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -16,7 +16,7 @@ export class PostsService {
 
   constructor(
     private http: Http,
-    private authService: AuthService,
+    private usersService: UsersService,
     private router: Router
   ) { }
 
@@ -39,10 +39,10 @@ export class PostsService {
       .catch(this.handleError);
   }
   deletePostById(id: string, authorId:string) {
-    const currentUserId = this.authService.getCurrentUser();
+    const currentUserId = this.usersService.getCurrentUserId();
     const headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authService.getTokenId()
+      'Authorization': 'Bearer ' + this.usersService.getTokenId()
     });
     const options = new RequestOptions({ headers: headers });
     if (currentUserId === authorId) {
@@ -59,11 +59,11 @@ export class PostsService {
     const _bodyJSON = JSON.stringify(body);
     const headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authService.getTokenId()
+      'Authorization': 'Bearer ' + this.usersService.getTokenId()
     });
     const options = new RequestOptions({ headers: headers });
 
-    if (this.authService.authenticated()) {
+    if (this.usersService.authenticated()) {
 
       return this.http.post(`${API_URL}/posts/`, _bodyJSON, options)
         .toPromise()

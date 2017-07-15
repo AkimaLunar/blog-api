@@ -4,7 +4,6 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 import { Post } from '../../models/post';
-import { AuthService } from '../../services/auth.service';
 import { PostsService } from '../../services/posts.service';
 import { UsersService } from '../../services/users.service';
 
@@ -12,7 +11,7 @@ import { UsersService } from '../../services/users.service';
   selector: 'app-view-blog',
   templateUrl: './view-blog.component.html',
   styleUrls: ['./view-blog.component.css'],
-  providers: [AuthService, PostsService, UsersService]
+  providers: [PostsService]
 })
 export class ViewBlogComponent implements OnInit {
   self: Boolean;
@@ -21,7 +20,6 @@ export class ViewBlogComponent implements OnInit {
     private postsService: PostsService,
     private route: ActivatedRoute,
     private location: Location,
-    private auth: AuthService,
     private usersService: UsersService
   ) { }
 
@@ -29,11 +27,11 @@ export class ViewBlogComponent implements OnInit {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.postsService.getPostById(params.get('id')))
       .subscribe(post => {
-        this.post = post
-        this.self = this.auth.self(this.post.author.userId);
+        this.post = post;
+        this.self = this.usersService.self(this.post.author.userId);
       });
-    
   }
+
   onEdit() {
     alert('NOT READY!');
   }

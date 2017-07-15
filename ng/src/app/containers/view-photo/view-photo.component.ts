@@ -4,7 +4,6 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 import { Post } from '../../models/post';
-import { AuthService } from '../../services/auth.service';
 import { PostsService } from '../../services/posts.service';
 import { UsersService } from '../../services/users.service';
 
@@ -12,7 +11,7 @@ import { UsersService } from '../../services/users.service';
   selector: 'app-view-photo',
   templateUrl: './view-photo.component.html',
   styleUrls: ['./view-photo.component.css'],
-  providers: [AuthService, PostsService, UsersService]
+  providers: [PostsService]
 })
 export class ViewPhotoComponent implements OnInit {
   post: Post;
@@ -22,7 +21,6 @@ export class ViewPhotoComponent implements OnInit {
     private postsService: PostsService,
     private route: ActivatedRoute,
     private location: Location,
-    private auth: AuthService,
     private usersService: UsersService
   ) { }
 
@@ -31,7 +29,7 @@ export class ViewPhotoComponent implements OnInit {
       .switchMap((params: ParamMap) => this.postsService.getPostById(params.get('id')))
       .subscribe(post => {
         this.post = post;
-        this.self = this.auth.self(this.post.author.userId);
+        this.self = this.usersService.self(this.post.author.userId);
       });
   }
 

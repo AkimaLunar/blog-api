@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 
 import { UsersService } from './services/users.service';
 import { CardService } from './services/card.service';
-import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 
 import { PostListComponent } from './containers/post-list/post-list.component';
@@ -54,7 +53,6 @@ import { CardComponent } from './components/card/card.component';
   ],
   providers: [
     CardService,
-    AuthService,
     AuthGuard,
     UsersService
   ],

@@ -20,7 +20,9 @@ export class UsersService {
   lock = new Auth0Lock('r0U8PcRtw9LMakkw0MV9mjnHYb7gk7e3', 'riacarmin.auth0.com');
   loggedIn: boolean;
   loggedIn$ = new BehaviorSubject<boolean>(this.authenticated());
+  currentUser: User;
   currentUser$ = new Subject<User>();
+  // self$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: Http,
@@ -54,18 +56,31 @@ export class UsersService {
     this.loggedIn = value;
   }
 
-  private setCurrentUser(user: User): void {
-    console.log(JSON.stringify(user));
+  setCurrentUser(user: User): void {
+    console.log('Setting!');
     this.currentUser$.next(user);
+    this.currentUser = user;
   }
+
+  getCurrentUserId(): string {
+    if (this.authenticated()) {
+      const _profile = JSON.parse(localStorage.getItem('profile'));
+      return _profile.identities[0].user_id;
+    }
+  }
+
+  self(userId: string) {
+    const _currentUser = this.getCurrentUserId();
+    return _currentUser === userId;
+  }
+
+  // setSelf(userId: string) {
+  //   currentUser$ last value === getTokenID?
+  // }
 
   authenticated(): boolean {
     return tokenNotExpired('idToken');
   }
-
-  // self(userId: string) {
-    // currentUser$ last value === getTokenID?
-  // }
 
   login(): void {
     this.lock.show((error: string, profile: Object, id_token: string) => {

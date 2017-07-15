@@ -8,13 +8,13 @@ import { User } from '../../models/user';
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
-  providers: [UsersService]
+  providers: []
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, OnChanges {
 
   loggedInSubscription: Subscription;
   loggedIn: Boolean;
-  user$: Subscription;
+  userSubscribtion: Subscription;
   user: User;
   constructor(
     private usersService: UsersService
@@ -24,7 +24,11 @@ export class NavigationComponent implements OnInit {
     this.loggedInSubscription = this.usersService.loggedIn$.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
     });
-    this.user$ = this.usersService.currentUser$.subscribe(user => this.user = user);
+    this.userSubscribtion = this.usersService.currentUser$.subscribe(user => this.user = user);
+  }
+
+  ngOnChanges() {
+    
   }
 
   login() {

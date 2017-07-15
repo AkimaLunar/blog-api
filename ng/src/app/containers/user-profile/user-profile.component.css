@@ -4,3 +4,10 @@
     font-size: 2rem;
     padding: 2rem 0;
 }
+
+.user-profile__log-out {
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
