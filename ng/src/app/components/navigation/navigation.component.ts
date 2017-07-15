@@ -1,5 +1,4 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { UsersService } from '../../services/users.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -11,41 +10,27 @@ import { User } from '../../models/user';
   styleUrls: ['./navigation.component.css'],
   providers: [UsersService]
 })
-export class NavigationComponent implements OnInit, OnChanges {
+export class NavigationComponent implements OnInit {
 
   loggedInSubscription: Subscription;
   loggedIn: Boolean;
+  user$: Subscription;
   user: User;
   constructor(
-    private auth: AuthService,
     private usersService: UsersService
     ) {}
 
   ngOnInit() {
-    this.loggedInSubscription = this.auth.loggedIn$.subscribe(loggedIn => {
+    this.loggedInSubscription = this.usersService.loggedIn$.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
-      this.setUser();
     });
+    this.user$ = this.usersService.currentUser$.subscribe(user => this.user = user);
   }
 
-  ngOnChanges() {
-    if (this.auth.authenticated()) {
-      this.setUser();
-    }
-  }
-
-  setUser(): void {
-
-    const _currentUserId: string = this.auth.getCurrentUser();
-    if (_currentUserId) {
-      this.usersService.getUserById(_currentUserId)
-        .then(user => this.user = user);
-    }
-  }
   login() {
-    this.auth.login();
+    this.usersService.login();
   }
   logout() {
-    this.auth.logout();
+    this.usersService.logout();
   }
 }

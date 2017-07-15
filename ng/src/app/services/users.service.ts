@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { tokenNotExpired } from 'angular2-jwt';
 import { User } from '../models/user';
 
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -20,7 +20,7 @@ export class UsersService {
   lock = new Auth0Lock('r0U8PcRtw9LMakkw0MV9mjnHYb7gk7e3', 'riacarmin.auth0.com');
   loggedIn: boolean;
   loggedIn$ = new BehaviorSubject<boolean>(this.authenticated());
-  currentUser$ = new Observable<User>();
+  currentUser$ = new Subject<User>();
 
   constructor(
     private http: Http,
@@ -39,6 +39,7 @@ export class UsersService {
         localStorage.setItem('accessToken', authResult.accessToken);
         localStorage.setItem('profile', JSON.stringify(profile));
         this.setLoggedIn(this.authenticated());
+        this.createUser(profile);
       });
     });
   }
@@ -51,6 +52,11 @@ export class UsersService {
   private setLoggedIn(value: boolean): void {
     this.loggedIn$.next(value);
     this.loggedIn = value;
+  }
+
+  private setCurrentUser(user: User): void {
+    console.log(JSON.stringify(user));
+    this.currentUser$.next(user);
   }
 
   authenticated(): boolean {
@@ -88,7 +94,7 @@ export class UsersService {
       .catch(this.handleError);
   }
 
-  createUser(auth0Profile): Promise<User> {
+  createUser(auth0Profile): Promise<void> {
     const _body = {
       auth0_id: auth0Profile.identities[0].user_id,
       email: auth0Profile.email,
@@ -108,7 +114,7 @@ export class UsersService {
 
       return this.http.post(`${API_URL}/users/`, _bodyJSON, options)
         .toPromise()
-        .then(response => response.json() as User)
+        .then(response => this.setCurrentUser(response.json() as User))
         .catch(this.handleError);
     } else {
       console.log('Boo! You are not logged in.');

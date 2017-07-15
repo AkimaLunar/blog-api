@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Router } from '@angular/router';
-import { POSTS } from './mock-posts';
 import { Post } from '../models/post';
 import { AuthService } from './auth.service';
 
