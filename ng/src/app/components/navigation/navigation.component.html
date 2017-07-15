@@ -24,13 +24,13 @@
               col-md-3">
   <div class="box navigation__last">
     <div *ngIf="usersService.loggedIn">
-      <p class="username heading font-color--light"><a [routerLink]="['/profile', user._id]">{{user.name.firstName}} {{user.name.lastName}}</a></p>
-      <a [routerLink]="['/profile', user._id]"><img class="avatar--small" src="{{user.picture}}" alt="{{user.name.firstName}} {{user.name.lastName}}, profile photo"></a>
+      <p *ngIf="user" class="username heading font-color--light"><a [routerLink]="['/profile', user._id]">{{user.name.firstName}} {{user.name.lastName}}</a></p>
+      <a *ngIf="user" [routerLink]="['/profile', user._id]"><img class="avatar--small" src="{{user.picture}}" alt="{{user.name.firstName}} {{user.name.lastName}}, profile photo"></a>
       <a [routerLink]="['/create']" class="round-button round-button--default">+ <span class="screen-reader">Create a Post</span></a>
 
     </div>
     <div *ngIf="!usersService.loggedIn">
-      <p class="username heading font-color--light"><a (click)="usersService.login()">Log In</a></p>
+      <p class="username heading font-color--light"><a (click)="onLogin()">Log In</a></p>
     </div>
   </div>
   </div>

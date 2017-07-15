@@ -63,7 +63,6 @@ usersRouter.get('/:id', (req, res) => {
 });
 
 // CREATE A USER
-
 usersRouter.post('/', authCheck, (req, res) => {
     const requiredFields = [
         'auth0_id',
@@ -74,7 +73,7 @@ usersRouter.post('/', authCheck, (req, res) => {
         const field = requiredFields[i];
         if (!(field in req.body)) {
             const message = `Missing \`${field}\` in request body`
-            console.error(message);
+            logger.error(chalk.red(message));
             return res.status(400).send(message);
         }
     }
@@ -99,6 +98,59 @@ usersRouter.post('/', authCheck, (req, res) => {
             logger.error(chalk.red(err));
             res.status(500).json({message: 'Internal server error'});
         })
+})
+
+// UPDATE USER
+usersRouter.put('/:id', authCheck, (req, res) => {
+    const id = req.params.id;
+    const requiredFields = [
+        '_id',
+    ];
+
+    if (id !== req.body._id) {
+        logger.error(chalk.red("Params ID doesn't match the ID in the body"));
+        return res.status(400).send("Internal server error");
+    };
+
+    for (let i=0; i<requiredFields.length; i++) {
+        const field = requiredFields[i];
+        if (!(field in req.body)) {
+            const message = `Missing \`${field}\` in request body`
+            logger.error(chalk.red(message));
+        }
+    };
+
+    const _toUpdate = {
+        name: {
+            firstName: req.body.name.firstName,
+            lastName: req.body.name.lastName
+        },
+        picture: req.body.picture,
+        bio: req.body.bio,
+        collections: req.body.collections,
+        following: req.body.following,
+        followers: req.body.followers
+    };
+
+    User
+        .findOneAndUpdate(
+            {'auth0_id': id},
+            { $set: _toUpdate }
+        )
+        .exec()
+        .then(() => {
+            return User
+                .findOne({'auth0_id': id})
+                .exec()
+        })
+        .then(user => {
+            logger.info(chalk.blue(`Updated user with ID ${user._id}`));
+            res.status(201).json(user.apiRepr())
+        })
+        .catch(err => {
+            logger.error(chalk.red(err));
+            res.status(500).json({message: 'Internal server error'})
+        });
 })
 
 module.exports = { usersRouter };
