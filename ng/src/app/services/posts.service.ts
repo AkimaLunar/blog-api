@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { POSTS } from './mock-posts';
+import { Router } from '@angular/router';
 import { Post } from '../models/post';
-import { AuthService } from './auth.service';
+import { UsersService } from './users.service';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -16,7 +16,8 @@ export class PostsService {
 
   constructor(
     private http: Http,
-    private authService: AuthService
+    private usersService: UsersService,
+    private router: Router
   ) { }
 
   private handleError(error: any): Promise<any> {
@@ -37,16 +38,32 @@ export class PostsService {
       .then(response => response.json() as Post)
       .catch(this.handleError);
   }
+  deletePostById(id: string, authorId:string) {
+    const currentUserId = this.usersService.getCurrentUserId();
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.usersService.getTokenId()
+    });
+    const options = new RequestOptions({ headers: headers });
+    if (currentUserId === authorId) {
+      return this.http.delete(`${API_URL}/posts/${id}`, options)
+        .toPromise()
+        .then(response => {
+          this.router.navigate(['/']);
+        })
+        .catch(this.handleError);
+    }
+  }
 
   createPost(body): Promise<Post> {
     const _bodyJSON = JSON.stringify(body);
     const headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authService.getTokenId()
+      'Authorization': 'Bearer ' + this.usersService.getTokenId()
     });
     const options = new RequestOptions({ headers: headers });
 
-    if (this.authService.authenticated()) {
+    if (this.usersService.authenticated()) {
 
       return this.http.post(`${API_URL}/posts/`, _bodyJSON, options)
         .toPromise()

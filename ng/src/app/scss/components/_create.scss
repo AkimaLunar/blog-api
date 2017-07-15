@@ -1,5 +1,6 @@
 .create {
   $base-color: $color-blue;
+  
   &__type {
     height: 8rem;
     text-align: center;
@@ -8,6 +9,7 @@
     font-size: 3rem;
     transition: $base-transition;
     text-transform: capitalize;
+    cursor: pointer;
 
     &--photo {
       background-color: adjust-hue($base-color, 40%);

@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostsService } from '../../services/posts.service';
-import { AuthService } from '../../services/auth.service';
+import { UsersService } from '../../services/users.service';
 import { PostPhotoContent } from '../../models/post-photo-content';
 import { PostBlogContent } from '../../models/post-blog-content';
 
 interface PostBody {
-    title: string,
-    type: string,
+    title: string;
+    type: string;
     author: {
       userId: string
-    }
-    tags: Array<string>,
-    hearts: Array<string>,
-    content: any
+    };
+    tags: Array<string>;
+    hearts: Array<string>;
+    content: any;
 }
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
-  providers: [PostsService, AuthService]
+  providers: [PostsService]
 })
 export class CreateComponent implements OnInit {
   public types: Array<string> = [
@@ -32,7 +32,7 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private postsService: PostsService,
-    private auth: AuthService,
+    private usersService: UsersService,
     private router: Router
   ) { }
 
@@ -41,7 +41,7 @@ export class CreateComponent implements OnInit {
       title: '',
       type: '',
       author: {
-        userId: this.auth.getCurrentUser()
+        userId: this.usersService.getCurrentUserId()
       },
       tags: [''],
       hearts: [],
@@ -50,9 +50,9 @@ export class CreateComponent implements OnInit {
 
     this.content = {
 
-    }
+    };
   }
-  
+
   contentFactory(type): any {
     if (type === 'photo') {
       return {

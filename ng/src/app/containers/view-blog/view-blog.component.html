@@ -13,7 +13,10 @@
               <hr class="hr">
               <h1 class="heading font-color--dark">{{post.title}}</h1>
               <p class="font-accent">by <a [routerLink]="['/profile', post.author.userId]">{{post.author.displayName}}</a></p>
-              <div [innerHTML]="post.content.html">
+              <div [innerHTML]="post.content.html"></div>
+              <div *ngIf="self">
+                <button class="oval-button oval-button__outline oval-button__outline--warning" (click)="onEdit()">Edit</button>
+                <button class="oval-button oval-button__outline oval-button__outline--error" (click)="onDelete()">Delete</button>
               </div>
             </div>
           </div>

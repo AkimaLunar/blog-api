@@ -586,7 +586,8 @@ input.input {
   font-family: "Alegreya", serif;
   font-size: 3rem;
   transition: all 250ms ease;
-  text-transform: capitalize; }
+  text-transform: capitalize;
+  cursor: pointer; }
   .create__type--photo {
     background-color: #8b88cc; }
     .create__type--photo:hover {

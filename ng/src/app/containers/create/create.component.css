@@ -10,3 +10,7 @@
 .card {
   padding: 2rem;
 }
+
+.create__type p {
+  margin: 0;
+}

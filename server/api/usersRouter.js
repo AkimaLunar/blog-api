@@ -62,4 +62,43 @@ usersRouter.get('/:id', (req, res) => {
         )
 });
 
+// CREATE A USER
+
+usersRouter.post('/', authCheck, (req, res) => {
+    const requiredFields = [
+        'auth0_id',
+        'email'
+    ]
+
+    for (let i=0; i<requiredFields.length; i++) {
+        const field = requiredFields[i];
+        if (!(field in req.body)) {
+            const message = `Missing \`${field}\` in request body`
+            console.error(message);
+            return res.status(400).send(message);
+        }
+    }
+
+    User
+        .findOne({'auth0_id': req.body.auth0_id})
+        .exec()
+        .then(user => {
+            if (user) {
+                logger.info(chalk.blue(`User with an ID ${user.auth0_id} already exists.`))
+                return res.status(200).send(user.apiRepr());
+            } else {
+                return User
+                .create(req.body)
+                .then(user => {
+                    logger.info(chalk.blue(`Created a user with ID ${user.auth0_id}`))
+                    return res.status(201).send(user.apiRepr());
+                })
+            }
+        })
+        .catch(err => {
+            logger.error(chalk.red(err));
+            res.status(500).json({message: 'Internal server error'});
+        })
+})
+
 module.exports = { usersRouter };
