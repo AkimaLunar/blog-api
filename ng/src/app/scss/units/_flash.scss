@@ -1,0 +1,21 @@
+.flash {
+  display: block;
+  padding: .5rem;
+  border-width: 1px;
+  border-style: solid;
+  @each $theme, $color in $ui-colors {
+    &--#{$theme} {
+        background-color: transparentize($color,.25);
+        border-color: $color;
+        color: white;
+        font-weight: $font-regular;
+    }
+  }
+
+  // Usage
+  // .flash .flash--default
+  // .flash .flash--success
+  // .flash .flash--error
+  // .flash .flash--warning
+  // .flash .flash--info 
+}

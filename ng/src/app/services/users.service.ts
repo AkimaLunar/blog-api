@@ -134,4 +134,24 @@ export class UsersService {
       console.log('Boo! You are not logged in.');
     }
   }
+
+  updateUser(user: User): Promise<void> {
+    const _id = this.getCurrentUserId();
+    const _bodyJSON = JSON.stringify(user);
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.getTokenId()
+    });
+    const options = new RequestOptions({ headers: headers });
+
+    if (this.authenticated()) {
+
+      return this.http.put(`${API_URL}/users/${_id}`, _bodyJSON, options)
+        .toPromise()
+        .then(response => this.setCurrentUser(response.json() as User))
+        .catch(this.handleError);
+    } else {
+      console.log('Boo! You are not logged in.');
+    }
+  }
 }

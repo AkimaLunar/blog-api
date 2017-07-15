@@ -15,6 +15,7 @@ import { UsersService } from '../../services/users.service';
 export class UserProfileComponent implements OnInit {
   user: User;
   self: boolean;
+  editing: boolean;
   constructor(
     private usersService: UsersService,
     private route: ActivatedRoute,
@@ -22,6 +23,7 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.editing = false;
     this.route.paramMap
       .switchMap((params: ParamMap) => this.usersService.getUserById(params.get('id')))
       .subscribe(user => {
@@ -35,8 +37,19 @@ export class UserProfileComponent implements OnInit {
 
   }
 
-  logout(){
+  onLogout() {
     this.usersService.logout();
   }
+
+  onEdit() {
+      this.editing = !this.editing;
+  }
+
+  onUpdateUser() {
+    this.usersService.updateUser(this.user);
+    console.log(this.user);
+    this.editing = false;
+  }
+
 
 }

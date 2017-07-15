@@ -42,6 +42,19 @@
 
     &__outline {
       background-color: transparent;
+      &--light,
+      {
+        color: transparentize(white, .75);
+        border: 1px solid transparentize(white, .75);;
+        background-color: transparentize(white, .95);
+        &:hover {
+          color: white;
+          border-color: white;
+          background-color: transparentize(white, .95);
+        }
+      }
+
+
       @each $theme, $color in $ui-colors {
         &--#{$theme} {
           color: $color;

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -10,7 +10,7 @@ import { User } from '../../models/user';
   styleUrls: ['./navigation.component.css'],
   providers: []
 })
-export class NavigationComponent implements OnInit, OnChanges {
+export class NavigationComponent implements OnInit {
 
   loggedInSubscription: Subscription;
   loggedIn: Boolean;
@@ -27,14 +27,10 @@ export class NavigationComponent implements OnInit, OnChanges {
     this.userSubscription = this.usersService.currentUser$.subscribe(user => this.user = user);
   }
 
-  ngOnChanges() {
-    
-  }
-
-  login() {
+  onLogin() {
     this.usersService.login();
   }
-  logout() {
+  onLogout() {
     this.usersService.logout();
   }
 }
