@@ -23,7 +23,7 @@
             <div *ngIf="editing">
               <form
                   #updateUserForm="ngForm" 
-                  (ngSubmit)="onUpdateUser(updateUserForm.value)"
+                  (ngSubmit)="onUpdateUser()"
                   class="user-profile__container">
                 <div class="user-profile__form user-profile__form--half">
                   <label for="firstName">First Name</label>
