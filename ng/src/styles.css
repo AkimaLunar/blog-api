@@ -715,6 +715,11 @@ input.input {
     .user-profile__form--full {
       width: 100%; }
 
+.post__buttons button {
+  display: block;
+  float: right;
+  margin: 1rem .5rem .5rem .5rem; }
+
 * {
   box-sizing: border-box; }
 
