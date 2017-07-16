@@ -49,5 +49,4 @@ export class UserProfileComponent implements OnInit {
     this.usersService.updateUser(this.user);
     this.editing = false;
   }
-
 }
