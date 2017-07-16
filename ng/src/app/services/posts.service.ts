@@ -73,4 +73,23 @@ export class PostsService {
       console.log('Boo! You are not logged in.');
     }
   }
+
+  updatePost(body: Post): Promise<Post> {
+    const _id = body._id;
+    const _bodyJSON = JSON.stringify(body);
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.usersService.getTokenId()
+    });
+    const options = new RequestOptions({ headers: headers });
+
+    if (this.usersService.authenticated()) {
+      return this.http.put(`${API_URL}/posts/${_id}`, _bodyJSON, options)
+        .toPromise()
+        .then(response => response.json() as Post)
+        .catch(this.handleError);
+    } else {
+      console.log('Boo! You are not logged in.');
+    }
+  }
 }

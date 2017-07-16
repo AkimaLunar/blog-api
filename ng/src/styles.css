@@ -200,6 +200,9 @@ select {
 
 label {
   font-weight: 600;
+  opacity: 0.75;
+  font-size: .75rem;
+  text-transform: uppercase;
   margin-bottom: 0.375em; }
   label.required::after {
     content: "*"; }
@@ -416,6 +419,14 @@ picture {
         color: white;
         border-color: white;
         background-color: rgba(255, 255, 255, 0.05); }
+    .oval-button__outline--grey {
+      color: rgba(166, 165, 170, 0.25);
+      border: 1px solid rgba(166, 165, 170, 0.25);
+      background-color: rgba(255, 255, 255, 0.05); }
+      .oval-button__outline--grey:hover {
+        color: #a6a5aa;
+        border-color: #a6a5aa;
+        background-color: rgba(255, 255, 255, 0.25); }
     .oval-button__outline--default {
       color: #88b2cc;
       border: 1px solid #88b2cc;

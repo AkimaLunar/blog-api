@@ -109,7 +109,7 @@ postsRouter.get('/user/:id', (req, res) => {
         )
 });
 
-// CREATE
+// CREATE POST
 postsRouter.post('/', authCheck, (req, res) => {
     const allowedTypes = [
         'blog',
@@ -163,6 +163,74 @@ postsRouter.post('/', authCheck, (req, res) => {
         })
         .then(post => {
             logger.info(chalk.blue(`Created a post with id ${post._id}`));
+            res.status(200).json(post.postRepr())
+        })
+        .catch(
+            err => {
+                logger.error(chalk.red(err));
+                res.status(500).json({message: 'Internal server error'});
+            }
+        )
+});
+
+// UPDATE POST
+
+postsRouter.put('/:id', authCheck, (req, res) => {
+    const allowedTypes = [
+        'blog',
+        'photo'
+    ];
+    const requiredFields = [
+        'title',
+        'type',
+        'author',
+        'tags',
+        'hearts',
+        'content'
+    ];
+    for (let i=0; i<requiredFields.length; i++) {
+        const field = requiredFields[i];
+        if (!(field in req.body)) {
+            const message = `Missing \`${field}\` in request body`
+            console.error(message);
+            return res.status(400).send(message);
+        }
+    }
+
+    if (!(allowedTypes.includes(req.body.type))) {
+        const message = `Incorrect post type \`${req.body.type}\``
+        console.error(message);
+        return res.status(400).send(message);
+    }
+
+    User
+        .findOne({'auth0_id':req.body.author.userId})
+        .exec()
+        .then(user => {
+            if (!user) {
+                logger.error(chalk.red(`User doesn't excist`));
+                res.status(500).json({message: 'Internal server error'});
+            }
+
+            return user.authorRepr();
+        })
+        .then(author => {
+            return Post
+                .findByIdAndUpdate(
+                    req.params.id,
+                    { $set: {
+                        title: req.body.title,
+                        author: author,
+                        tags: req.body.tags,
+                        hearts:req.body.hearts,
+                        content: JSON.stringify(req.body.content)
+                    }   }
+                )
+                .exec()
+                .then(post => post);
+        })
+        .then(post => {
+            logger.info(chalk.blue(`Updated a post with id ${post._id}`));
             res.status(200).json(post.postRepr())
         })
         .catch(

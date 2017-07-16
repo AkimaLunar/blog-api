@@ -54,6 +54,20 @@
         }
       }
 
+      &--grey,
+      {
+        color: transparentize($color-medium-grey, .75);
+        border: 1px solid transparentize($color-medium-grey, .75);;
+        background-color: transparentize(white, .95);
+        &:hover {
+          color: $color-medium-grey;
+          border-color: $color-medium-grey;
+          background-color: transparentize(white, .75);
+        }
+      }
+
+
+
 
       @each $theme, $color in $ui-colors {
         &--#{$theme} {

@@ -15,6 +15,7 @@ import { UsersService } from '../../services/users.service';
 })
 export class ViewBlogComponent implements OnInit {
   self: Boolean;
+  editing: Boolean;
   post: Post;
   constructor(
     private postsService: PostsService,
@@ -24,6 +25,7 @@ export class ViewBlogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.editing = false;
     this.route.paramMap
       .switchMap((params: ParamMap) => this.postsService.getPostById(params.get('id')))
       .subscribe(post => {
@@ -33,10 +35,21 @@ export class ViewBlogComponent implements OnInit {
   }
 
   onEdit() {
-    alert('NOT READY!');
+    this.editing = !this.editing;
   }
   onDelete() {
-    this.postsService.deletePostById(this.post._id, this.post.author.userId);
+    if (window.confirm('Do you really want to delete your post?')) {
+      this.postsService.deletePostById(this.post._id, this.post.author.userId);
+    }
+  }
+
+  onUpdatePost() {
+    if (self) {
+      this.postsService.updatePost(this.post);
+      this.editing = false;
+    } else {
+      alert('Something is not right...');
+    }
   }
 
 }

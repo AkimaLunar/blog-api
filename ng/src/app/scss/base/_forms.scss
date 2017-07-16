@@ -15,6 +15,9 @@ select {
 
 label {
   font-weight: 600;
+  opacity: 0.75;
+  font-size: .75rem;
+  text-transform: uppercase;
   margin-bottom: $small-spacing / 2;
 
   &.required::after {
