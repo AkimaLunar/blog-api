@@ -47,7 +47,6 @@ export class UserProfileComponent implements OnInit {
 
   onUpdateUser() {
     this.usersService.updateUser(this.user);
-    console.log(this.user);
     this.editing = false;
   }
 

@@ -24,7 +24,18 @@ const userSchema = mongoose.Schema({
 })
 
 userSchema.virtual('displayName').get(function() {
-  return `${this.name.firstName} ${this.name.lastName}`
+    if (this.name.firstName && this.name.lastName) {
+      return `${this.name.firstName} ${this.name.lastName}`
+    }
+    if (this.name.firstName) {
+      return `${this.name.firstName}`
+    }
+    if (this.name.firstName) {
+      return `${this.name.firstName}`
+    } else {
+      return this.email.match(/[^@]*/).join();
+    }
+
 })
 
 userSchema.methods.authorRepr = function() {
