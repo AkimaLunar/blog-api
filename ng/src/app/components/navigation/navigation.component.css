@@ -2,6 +2,7 @@
 .avatar--small,
 .round-button {
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .username {
