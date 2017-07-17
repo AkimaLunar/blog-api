@@ -4,6 +4,7 @@ import { PostsService } from '../../services/posts.service';
 import { UsersService } from '../../services/users.service';
 import { PostPhotoContent } from '../../models/post-photo-content';
 import { PostBlogContent } from '../../models/post-blog-content';
+import { QuillEditorComponent } from 'ngx-quill/src/quill-editor.component';
 
 interface PostBody {
     title: string;
@@ -29,6 +30,7 @@ export class CreateComponent implements OnInit {
   ];
   private post: PostBody;
   private content: any;
+  public theme: 'bubble';
 
   constructor(
     private postsService: PostsService,

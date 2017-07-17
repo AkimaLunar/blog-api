@@ -26,6 +26,8 @@ import { CardPhotoComponent } from './components/card-photo/card-photo.component
 import { CardDirective } from './directives/card.directive';
 import { CardComponent } from './components/card/card.component';
 
+import { QuillModule } from 'ngx-quill'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,8 @@ import { CardComponent } from './components/card/card.component';
     Routing,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    QuillModule
   ],
   providers: [
     CardService,
