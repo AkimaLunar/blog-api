@@ -60,8 +60,10 @@
                       minlength="5">
                   <p *ngIf="bioRef.errors?.minlength" class="flash flash--error">This field must be longer than <strong>{{bioRef.errors?.minlength.requiredLength}}</strong> characters. You only have <strong>{{bioRef.errors?.minlength.actualLength}}</strong> so far</p>
                 </div>
-                <button class="oval-button oval-button__outline oval-button__outline--light" (click)="onEdit()">Cancel</button>
-                <button class="oval-button oval-button__outline oval-button__outline--success" [disabled]="!updateUserForm.form.valid">Save</button>
+                <div>
+                  <button class="oval-button oval-button__outline oval-button__outline--light" (click)="onEdit()">Cancel</button>
+                  <button class="oval-button oval-button__outline oval-button__outline--success" [disabled]="!updateUserForm.form.valid">Save</button>
+                </div>
               </form>
             </div>
             <p *ngIf="!self"><button class="oval-button oval-button__fill oval-button__fill--default">Follow</button></p>

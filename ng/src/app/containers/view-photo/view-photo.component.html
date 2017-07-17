@@ -3,9 +3,11 @@
   <div *ngIf="post" class="row main">
 
       <article *ngIf="!editing" class="col-md-12 col-lg-8">
-        <img src="{{post.content.photoUrl}}" alt="{{post.title}}">
-        <div class="card card__inner">
-          <p>{{post.title}} <span *ngIf="post.author.displayName">by <a [routerLink]="['/profile', post.author.userId]">{{post.author.displayName}}</a></span></p>
+        <img class="post__image" src="{{post.content.photoUrl}}" alt="{{post.title}}">
+        <div class="card card__photo card__inner">
+          <hr class="hr">
+          <h1>{{post.title}}</h1>
+          <p class="font-color--medium-grey"> <span *ngIf="post.author.displayName">by <a [routerLink]="['/profile', post.author.userId]">{{post.author.displayName}}</a></span></p>
           <div *ngIf="self" class="post__buttons">
             <button class="oval-button oval-button__outline oval-button__outline--error" (click)="onDelete()">Delete</button>
             <button class="oval-button oval-button__outline oval-button__outline--success" (click)="onEdit()">Edit</button>

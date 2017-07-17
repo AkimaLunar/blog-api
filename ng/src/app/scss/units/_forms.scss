@@ -1,3 +1,16 @@
+// .ng-valid[required],
+// .ng-valid.required {
+//   border-bottom: 4px solid $color-vista;
+// }
+
+.ng-invalid:not(form) {
+  border-bottom: 4px solid $color-mandy;
+}
+
+.ng-invalid:not(form).ng-untouched {
+ border-bottom: 4px solid $color-light-grey;
+}
+
 input.input {
     padding: .75rem 1.25rem;
     height: 2.25rem;

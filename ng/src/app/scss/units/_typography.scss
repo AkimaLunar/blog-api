@@ -13,7 +13,13 @@
 .font-color {
   @each $theme, $color in $grey-colors {
     &--#{$theme} {
-        color: $color;
+      color: $color;
+    }
+  }
+
+  @each $theme, $color in $ui-colors {
+    &--#{$theme} {
+      color: $color;
     }
   }
 }
