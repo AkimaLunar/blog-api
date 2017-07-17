@@ -3,34 +3,32 @@ const chaiHttp = require('chai-http');
 const should = chai.should();
 chai.use(chaiHttp);
 
-// const faker = require('faker');
-
 const mongoose = require('mongoose');
+const TEST_DATABASE_URL = 'mongodb://blueOperator:BombasticJewel!@ds145148.mlab.com:45148/rias-test-blog-api';
 
-const { BlogPost } = require('../models.js')
+const { Post } = require('../models/post.js')
 const { app, runServer, closeServer } = require('../server.js');
-const { TEST_DATABASE_URL } = require('../config.js');
 
-// DATA
-
-function seedBlogPostData(){
+// SEEDING DATA
+function seedPostData(){
     console.info('Seeding data');
     const seedData = [];
 
     for(let i=0; i<10; i++){
-        seedData.push(generateBlogPost());
+        seedData.push(generatePost());
     }
 
-    return BlogPost.insertMany(seedData);
+    return Post.insertMany(seedData);
 }
 
-function generateBlogPost(){
+function generatePost(){
     return {
         title : "Hello" + Math.round(Math.random() * 100),
-        content : "Blabla",
+        content : "Stringified JSON",
+        type : "blog",
         author : {
-            firstName : "Dick",
-            lastName : "McShmufferson"
+            userId : "dhbvlaksbdvlka",
+            displayName : "Smuck McShmufferson"
         },
         timestamp: new Date()
     }
@@ -44,13 +42,14 @@ function tearDownDb(){
 
 // TESTS
 
-describe('Blog API', function(){
+describe('Posts API', function(){
     before(function(){
-        return runServer(TEST_DATABASE_URL, 8181);
+        // return runServer(TEST_DATABASE_URL, 8181);
+        return runServer('mongodb://blueOperator:BombasticJewel!@ds145148.mlab.com:45148/rias-test-blog-api', 8181);
     })
 
     beforeEach(function(){
-        return seedBlogPostData();
+        return seedPostData();
     })
 
     afterEach(function(){
@@ -62,10 +61,10 @@ describe('Blog API', function(){
     })
 
     describe('GET endpoint', function(){
-        it('should retrieve all blog posts on GET', function(){
+        it('should retrieve all posts on GET', function(){
             let res;
             return chai.request(app)
-                .get('/api')
+                .get('/api/posts')
                 .then(function(_res){
                     res = _res;
                     res.should.have.status(200);
@@ -74,14 +73,15 @@ describe('Blog API', function(){
                     res.body.forEach(function(post) {
                         post.should.be.a('object');
                         post.should.have.all.keys(
-                            "id",
+                            "_id",
                             "title",
+                            "type",
                             "content",
                             "author",
                             "timestamp"
                         );
                     });
-                    return BlogPost.count();
+                    return Post.count();
                 })
                 .then(function(count){
                     console.log(count + " " +  res.body.length)
@@ -90,15 +90,15 @@ describe('Blog API', function(){
                 })
         });
 
-        it('should retrieve a correct blog post with an ID on GET', function(){
+        it('should retrieve a correct post with an ID on GET', function(){
             let postId;
 
             return chai.request(app)
-                .get('/api')
+                .get('/api/posts')
                 .then(function(res){
                     postId = res.body[0].id;
                     return chai.request(app)
-                        .get(`/api/${postId}`)
+                        .get(`/api/posts/${postId}`)
                 })
 
                 .then(function(res){
@@ -108,6 +108,7 @@ describe('Blog API', function(){
                     res.body.should.include.keys(
                         "id",
                         "title",
+                        "type",
                         "content",
                         "author",
                         "timestamp"
@@ -118,18 +119,19 @@ describe('Blog API', function(){
     })
 
     describe('POST endpoint', function(){
-        it('should create a new blog post on POST', function(){
-            const newBlogPost = {
+        it('should create a new post on POST', function(){
+            const newPost = {
                 title:    "New Post",
                 content:  "Bloblablablo",
-                author:   {
-                    firstName: "Ria",
-                    lastName: "Carmin"
+                type:     "blog",
+                author : {
+                    userId : "dhbvlaksbdvlka",
+                    displayName : "Smuck McShmufferson"
                 },
             };
             return chai.request(app)
-                .post('/api')
-                .send(newBlogPost)
+                .post('/api/posts')
+                .send(newPost)
                 .then(function(res){
                     res.should.have.status(201);
                     res.should.be.json;
@@ -137,13 +139,13 @@ describe('Blog API', function(){
                     res.body.should.include.keys(
                         "id",
                         "title",
+                        "type",
                         "content",
                         "author",
                         "timestamp"
                     );
-                    res.body.should.deep.equal(Object.assign(newBlogPost, {
+                    res.body.should.deep.equal(Object.assign(newPost, {
                         "id": res.body.id,
-                        "author": newBlogPost.author.firstName + " " + newBlogPost.author.lastName,
                         "timestamp": res.body.timestamp
                     }));
                 })
@@ -151,22 +153,23 @@ describe('Blog API', function(){
     })
 
     describe('PUT endpoint', function(){
-        it('should update a blog post with ID on PUT', function(){
-            const updatedBlogPost = {
+        it('should update a post with ID on PUT', function(){
+            const updatedPost = {
                 title:    "Updated Post",
                 content:  "Bloblablabla 2",
-                author:   {
-                    firstName: "Ria",
-                    lastName: "Carmin"
+                type:     "blog",
+                author : {
+                    userId : "dhbvlaksbdvlka",
+                    displayName : "Smuck McShmufferson"
                 },
             };
             return chai.request(app)
-                .get('/api')
+                .get('/apiposts/')
                 .then(function(res){
-                    updatedBlogPost.id = res.body[0].id;
+                    updatedPost.id = res.body[0].id;
                     return chai.request(app)
-                        .put(`/api/${res.body[0].id}`)
-                        .send(updatedBlogPost);
+                        .put(`/api/posts/${res.body[0].id}`)
+                        .send(updatedPost);
                 })
 
                 .then(function(res){
@@ -176,12 +179,12 @@ describe('Blog API', function(){
                     res.body.should.include.keys(
                         "id",
                         "title",
+                        "type",
                         "content",
                         "author",
                         "timestamp"
                     );
-                    res.body.should.deep.equal(Object.assign(updatedBlogPost, {
-                        "author": updatedBlogPost.author.firstName + " " + updatedBlogPost.author.lastName,
+                    res.body.should.deep.equal(Object.assign(updatedPost, {
                         "timestamp": res.body.timestamp
                     }));
                 });
@@ -190,10 +193,10 @@ describe('Blog API', function(){
     describe('DELETE endpoint', function(){
         it('should delete a blog post with ID on DELETE', function(){
             return chai.request(app)
-                .get('/api')
+                .get('/api/posts')
                 .then(function(res) {
                     return chai.request(app)
-                    .delete(`/api/${res.body[0].id}`);
+                    .delete(`/api/posts/${res.body[0].id}`);
                 })
                 .then(function(res) {
                     res.should.have.status(204);
