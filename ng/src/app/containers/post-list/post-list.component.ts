@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Post } from '../../models/post';
 import { PostsService } from '../../services/posts.service';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-post-list',
@@ -11,7 +12,10 @@ import { PostsService } from '../../services/posts.service';
 })
 export class PostListComponent implements OnInit {
   posts: Post[];
-  constructor(private postsService: PostsService) { }
+  constructor(
+    private postsService: PostsService,
+    private usersService: UsersService
+  ) { }
 
   ngOnInit() {
     this.postsService.getPosts()
