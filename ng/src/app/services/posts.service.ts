@@ -74,6 +74,20 @@ export class PostsService {
     }
   }
 
+  // CREATE DEMO POST
+  createDemoPost(body): Promise<Post> {
+    const _bodyJSON = JSON.stringify(body);
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(`${API_URL}/posts/demo`, _bodyJSON, options)
+      .toPromise()
+      .then(response => response.json() as Post)
+      .catch(this.handleError);
+  }
+  // --------------------------------------------------------------------------
+
   updatePost(body: Post): Promise<Post> {
     const _id = body._id;
     const _bodyJSON = JSON.stringify(body);

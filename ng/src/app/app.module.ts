@@ -25,6 +25,9 @@ import { CardBlogComponent } from './components/card-blog/card-blog.component';
 import { CardPhotoComponent } from './components/card-photo/card-photo.component';
 import { CardDirective } from './directives/card.directive';
 import { CardComponent } from './components/card/card.component';
+import { CardDemoComponent } from './components/card-demo/card-demo.component';
+import { ViewDemoComponent } from './containers/view-demo/view-demo.component';
+import { CreateDemoComponent } from './containers/create-demo/create-demo.component';
 
 import { QuillModule } from 'ngx-quill'
 
@@ -44,7 +47,10 @@ import { QuillModule } from 'ngx-quill'
     ViewPhotoComponent,
     ViewBlogComponent,
     CardDirective,
-    CardComponent
+    CardComponent,
+    CardDemoComponent,
+    ViewDemoComponent,
+    CreateDemoComponent
   ],
   entryComponents: [ CardBlogComponent, CardPhotoComponent ],
   imports: [

@@ -6,7 +6,9 @@ import { PostListComponent } from './containers/post-list/post-list.component';
 import { UserProfileComponent } from './containers/user-profile/user-profile.component';
 import { CollectionComponent } from './containers/collection/collection.component';
 import { ViewBlogComponent } from './containers/view-blog/view-blog.component';
+import { ViewDemoComponent } from './containers/view-demo/view-demo.component';
 import { CreateComponent } from './containers/create/create.component';
+import { CreateDemoComponent } from './containers/create-demo/create-demo.component';
 import { PageNotFoundComponent } from './containers/page-not-found/page-not-found.component';
 
 import { ViewPhotoComponent } from './containers/view-photo/view-photo.component';
@@ -14,6 +16,8 @@ import { ViewPhotoComponent } from './containers/view-photo/view-photo.component
 
 const routes = [
     { path: '', component: PostListComponent },
+    { path: 'demo', component: ViewDemoComponent },
+    { path: 'demo/create', component: CreateDemoComponent },
     { path: 'profile/:id', component: UserProfileComponent },
     { path: 'profile/:id/:collection', component: CollectionComponent },
     { path: 'blog/:id', component: ViewBlogComponent },

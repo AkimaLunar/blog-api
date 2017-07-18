@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 import { Post } from '../../models/post';
+import { User } from '../../models/user';
 import { PostsService } from '../../services/posts.service';
 import { UsersService } from '../../services/users.service';
 
@@ -17,6 +18,7 @@ export class ViewBlogComponent implements OnInit {
   self: Boolean;
   editing: Boolean;
   post: Post;
+  author: User;
   constructor(
     private postsService: PostsService,
     private route: ActivatedRoute,
@@ -31,7 +33,12 @@ export class ViewBlogComponent implements OnInit {
       .subscribe(post => {
         this.post = post;
         this.self = this.usersService.self(this.post.author.userId);
+        this.getAuthor(post.author.userId);
       });
+  }
+  getAuthor(id: string): void {
+    this.usersService.getUserById(id)
+      .then(user => this.author = user);
   }
 
   onEdit() {
