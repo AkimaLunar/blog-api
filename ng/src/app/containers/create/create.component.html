@@ -50,8 +50,13 @@
                      required
                      [(ngModel)]="content.excerpt">
 
-              <!-- <label for="html">Content (HTML)</label> -->
-              <quill-editor></quill-editor>
+              <label>Blog Post</label>
+              <quill-editor
+                theme="bubble"
+                placeholder="Write your blog post here…"
+                [(ngModel)]="content.html"
+                name="content.html">
+              </quill-editor>
               <!-- <textarea
                      name="html"
                      id="html"
