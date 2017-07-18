@@ -17,13 +17,13 @@ interface PostBody {
 }
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css'],
+  selector: 'app-create-demo',
+  templateUrl: './create-demo.component.html',
+  styleUrls: ['./create-demo.component.css'],
   providers: [PostsService]
 })
-export class CreateComponent implements OnInit {
-  public types: Array<string> = [
+export class CreateDemoComponent implements OnInit {
+public types: Array<string> = [
     'blog',
     'photo'
   ];
@@ -41,7 +41,7 @@ export class CreateComponent implements OnInit {
       title: '',
       type: '',
       author: {
-        userId: this.usersService.getCurrentUserId()
+        userId: '000'
       },
       tags: [''],
       hearts: [],
@@ -57,13 +57,13 @@ export class CreateComponent implements OnInit {
     if (type === 'photo') {
       return {
         photoUrl: this.content.photoUrl,
-      }
+      };
     }
     if (type === 'blog') {
       return {
         excerpt: this.content.excerpt,
         html: this.content.html
-      }
+      };
     }
   }
 
@@ -73,7 +73,8 @@ export class CreateComponent implements OnInit {
 
   onPost(): void {
     this.post.content = this.contentFactory(this.post.type);
-    this.postsService.createPost(this.post)
+    console.log(this.post);
+    this.postsService.createDemoPost(this.post)
     .then(post => {
       this.router.navigate([`/${post.type}/${post._id}`]);
     });

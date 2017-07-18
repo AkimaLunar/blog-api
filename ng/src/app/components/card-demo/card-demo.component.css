@@ -3,6 +3,9 @@
     background: linear-gradient(#49525e, #3d394b) left repeat;
 }
 
+.card__inner {
+    padding-top: 1rem;
+}
 .card__bottom {
     position: absolute;
     bottom: 1rem;
@@ -16,7 +19,7 @@
 }
 
 .font-accent {
-    font-size: 2rem;
+    font-size: 1.75rem;
 }
 
 .hr {
