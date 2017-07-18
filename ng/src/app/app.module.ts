@@ -27,6 +27,7 @@ import { CardDirective } from './directives/card.directive';
 import { CardComponent } from './components/card/card.component';
 import { CardDemoComponent } from './components/card-demo/card-demo.component';
 import { ViewDemoComponent } from './containers/view-demo/view-demo.component';
+import { CreateDemoComponent } from './containers/create-demo/create-demo.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ViewDemoComponent } from './containers/view-demo/view-demo.component';
     CardDirective,
     CardComponent,
     CardDemoComponent,
-    ViewDemoComponent
+    ViewDemoComponent,
+    CreateDemoComponent
   ],
   entryComponents: [ CardBlogComponent, CardPhotoComponent ],
   imports: [

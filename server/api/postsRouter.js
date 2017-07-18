@@ -241,4 +241,64 @@ postsRouter.put('/:id', authCheck, (req, res) => {
         )
 });
 
+
+// CREATE DEMO POST
+
+// CREATE POST
+postsRouter.post('/demo', (req, res) => {
+    console.log(req.body);
+    const allowedTypes = [
+        'blog',
+        'photo'
+    ];
+    const requiredFields = [
+        'title',
+        'type',
+        'author',
+        'tags',
+        'hearts',
+        'content'
+    ];
+    for (let i=0; i<requiredFields.length; i++) {
+        const field = requiredFields[i];
+        if (!(field in req.body)) {
+            const message = `Missing \`${field}\` in request body`
+            console.error(message);
+            return res.status(400).send(message);
+        }
+    }
+
+    if (!(allowedTypes.includes(req.body.type))) {
+        const message = `Incorrect post type \`${req.body.type}\``
+        console.error(message);
+        return res.status(400).send(message);
+    }
+
+    Post
+        .create({
+            title: req.body.title,
+            type: req.body.type,
+            author: {
+                userId: "000",
+                displayName: "anonymous"
+            },
+            timestamp: new Date,
+            tags: req.body.tags,
+            hearts:req.body.hearts,
+            content: JSON.stringify(req.body.content)
+        })
+        .then(post => {
+            logger.info(chalk.blue(`Created a post with id ${post._id}`));
+            res.status(200).json(post.postRepr())
+        })
+        .catch(
+            err => {
+                logger.error(chalk.red(err));
+                res.status(500).json({message: 'Internal server error'});
+            }
+        )
+});
+
+// ---------------------------------------------------------------------------------
+
 module.exports = { postsRouter };
