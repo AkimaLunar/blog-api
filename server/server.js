@@ -11,13 +11,27 @@ const chalk           = require('chalk');
 const cors            = require('cors');
 const app             = express();
 
-app.use(cors())
+const forceSSL = function() {
+  return function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect(
+       ['https://', req.get('Host'), req.url].join('')
+      );
+    }
+    next();
+  }
+}
+
+app.use(cors());
+app.use(forceSSL());
+app.use(express.static(__dirname + '/public'));
 
 app.use('/api/posts', postsRouter);
 app.use('/api/users', usersRouter);
-app.get('*', function(req, res){
-    return res.status(200).json({message: 'Meenk API'});
-})
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/public/index.html'));
+});
+
 let server;
 const runServer = function(databaseUrl=process.env.DATABASE_URL, port=process.env.PORT){
     return new Promise((resolve, reject) => {
