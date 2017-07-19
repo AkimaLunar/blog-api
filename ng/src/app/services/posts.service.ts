@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 // @TODO refactor for production
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'https://protected-tor-84468.herokuapp.com/api';
 
 @Injectable()
 export class PostsService {

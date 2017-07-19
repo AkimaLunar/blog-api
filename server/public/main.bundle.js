@@ -42,7 +42,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 // @TODO refactor for production
-var API_URL = 'http://localhost:8080/api';
+var API_URL = 'https://protected-tor-84468.herokuapp.com/api';
 var UsersService = (function () {
     // self$ = new BehaviorSubject<boolean>(false);
     function UsersService(http, router) {
@@ -221,7 +221,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 // @TODO refactor for production
-var API_URL = 'http://localhost:8080/api';
+var API_URL = 'https://protected-tor-84468.herokuapp.com/api';
 var PostsService = (function () {
     function PostsService(http, usersService, router) {
         this.http = http;
