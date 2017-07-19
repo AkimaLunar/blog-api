@@ -1,0 +1,53 @@
+// .ng-valid[required],
+// .ng-valid.required {
+//   border-bottom: 4px solid $color-vista;
+// }
+
+.ng-invalid:not(form) {
+  border-bottom: 4px solid $color-mandy;
+}
+
+.ng-invalid:not(form).ng-untouched {
+ border-bottom: 4px solid $color-light-grey;
+}
+
+input.input {
+    padding: .75rem 1.25rem;
+    height: 2.25rem;
+    border-radius: 1.125rem;
+    transition: $base-transition;
+
+    &--light {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255, .2);
+
+        &::-webkit-input-placeholder {
+            color: $color-white;
+        }
+        &::-moz-placeholder {
+            color: $color-white;
+        }
+        &:-ms-input-placeholder {
+            color: $color-white;
+        }
+        &:-moz-placeholder {
+            color: $color-white;
+        }
+        &:focus {
+            background:  white;
+            color: $action-color;
+            &::-webkit-input-placeholder {
+                color: $color-grey;
+            }
+            &::-moz-placeholder {
+                color: $color-grey;
+            }
+            &:-ms-input-placeholder {
+                color: $color-grey;
+            }
+            &:-moz-placeholder {
+                color: $color-grey;
+            }
+        }
+    }
+}

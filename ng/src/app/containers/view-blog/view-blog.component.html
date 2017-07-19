@@ -1,0 +1,81 @@
+<app-breadcrumbs></app-breadcrumbs>
+<div class="container">
+  <div *ngIf="post" class="row main">
+
+    <article class="col-md-12 col-lg-8">
+      <div class="card card__inner">
+        <div class="box">
+          <div class="row">
+            <div class="col-xs-12 col-md-3">
+              <a *ngIf="author" [routerLink]="['/profile', post.author.userId]"><img class="avatar--medium" src="{{author.picture}}" alt="{{post.author.displayName}}, profile photo"></a>
+            </div>
+
+            <div *ngIf="!editing" class="col-xs-12 col-md-9">
+              <hr class="hr">
+              <h1 class="heading font-color--dark">{{post.title}}</h1>
+              <p class="font-accent">by <a [routerLink]="['/profile', post.author.userId]">{{post.author.displayName}}</a></p>
+              <div [innerHTML]="post.content.html"></div>
+              <div *ngIf="self" class="post__buttons">
+                <button class="oval-button oval-button__outline oval-button__outline--error" (click)="onDelete()">Delete</button>
+                <button class="oval-button oval-button__outline oval-button__outline--success" (click)="onEdit()">Edit</button>
+              </div>
+            </div>
+
+             <form
+                *ngIf="editing"
+                #updateBlogPostForm="ngForm" 
+                (ngSubmit)="onUpdatePost()"
+                class="col-xs-12 col-md-9">
+                <hr class="hr">
+                <label for="title">Title</label>
+                <input
+                  #title="ngModel"
+                  id="title"
+                  name="title"
+                  [(ngModel)]="post.title"
+                  type="text"
+                  required>
+                <p *ngIf="title.errors?.required" class="flash flash--error">You need a title.</p>
+
+                <label for="excerpt">Excerpt</label>
+                <input
+                  #contentExcerpt="ngModel"
+                  id="excerpt"
+                  name="content.excerpt"
+                  [(ngModel)]="post.content.excerpt"
+                  type="text"
+                  required>
+                <p *ngIf="contentExcerpt.errors?.required" class="flash flash--error">Say a few words about your blog post..</p>
+
+                <label for="html">Content</label>
+                <textarea
+                  #contentHtml="ngModel"
+                  id="html"
+                  name="content.html"
+                  [(ngModel)]="post.content.html"
+                  required>
+                </textarea>
+                <p *ngIf="contentHtml.errors?.required" class="flash flash--error">Say a few words about your blog post..</p>
+                <div class="post__buttons">
+                  <button type="submit" class="oval-button oval-button__fill oval-button__fill--success" [disabled]="!updateBlogPostForm.form.valid">Save</button> 
+                  <button class="oval-button oval-button__outline oval-button__outline--grey" (click)="onEdit()">Cancel</button>
+                </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <aside class="col-md-12 col-lg-4">
+      <p class="heading font-color--medium-grey">Other Posts</p>
+      <ul>
+        <li><a href="">Lorem ipsum dolor sit amet</a></li>
+        <li><a href="">Consectetur adipisicing elit. Commodi quia omnis repudiandae animi unde.</a></li>
+        <li><a href=""> iusto explicabo</a></li>
+        <li><a href="">Dolore veritatis dolores similique?</a></li>
+        <li><a href=""> Laboriosam quisquam ex inventore sit maxime quas.</a></li>
+      </ul>
+    </aside>
+  </div>
+</div>

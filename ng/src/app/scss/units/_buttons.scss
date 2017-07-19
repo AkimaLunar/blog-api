@@ -1,0 +1,100 @@
+// Round Button
+
+.round-button {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    transition: $base-transition;
+    font-weight: $font-bold;
+    color: $color-white;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2.75rem;
+
+    // UI Colors
+    @each $theme, $color in $ui-colors {
+      &--#{$theme} {
+        background-color: $color;
+        &:hover {
+          background-color: lighten($color, 10%);
+        }
+      }
+
+    // Usage
+    // .round-button--default
+    // .round-button--success
+    // .round-button--error
+    // .round-button--warning
+    // .round-button--info
+   }
+}
+
+// Oval Button
+
+.oval-button {
+    padding: .5rem 3.25rem;
+    height: 2.25rem;
+    border-radius: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: $base-transition;
+
+    &__outline {
+      background-color: transparent;
+      &--light,
+      {
+        color: transparentize(white, .75);
+        border: 1px solid transparentize(white, .75);;
+        background-color: transparentize(white, .95);
+        &:hover {
+          color: white;
+          border-color: white;
+          background-color: transparentize(white, .95);
+        }
+      }
+
+      &--grey,
+      {
+        color: transparentize($color-medium-grey, .75);
+        border: 1px solid transparentize($color-medium-grey, .75);;
+        background-color: transparentize(white, .95);
+        &:hover {
+          color: $color-medium-grey;
+          border-color: $color-medium-grey;
+          background-color: transparentize(white, .75);
+        }
+      }
+
+
+
+
+      @each $theme, $color in $ui-colors {
+        &--#{$theme} {
+          color: $color;
+          border: 1px solid $color;
+          background-color: transparent;
+          &:hover {
+            background-color: $color;
+            color: $color-white;
+          }
+        }
+      }
+    }
+
+    &__fill {
+      background-color: transparent;
+      @each $theme, $color in $ui-colors {
+        &--#{$theme} {
+          color: $color-white;
+          font-weight: $font-bold;
+          border: 1px solid $color;
+          background-color: $color;
+          &:hover {
+            background-color: lighten($color, 10%);
+            border-color: lighten($color, 10%);
+          }
+        }
+      }
+    }
+}

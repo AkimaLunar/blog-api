@@ -1,0 +1,23 @@
+.card__inner {
+    padding-top: 2rem;
+}
+
+h1 {
+    color: #88b2cc;
+    font-size: 3rem;
+    text-transform: uppercase;
+    border-right: 600px solid rgba(136, 178, 204, .2);
+    padding-right: 1rem;
+}
+
+.demo__first {
+    margin-top: 5.75rem;
+    margin-bottom: 1rem;
+}
+
+.demo__button {
+    margin-bottom: 1.75rem;
+    display: block;
+    text-align: center;
+    height: 2.5rem;
+}

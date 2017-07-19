@@ -1,0 +1,87 @@
+<div class="user-profile__outer">
+  <div class="container">
+    <div *ngIf="user" class="row user-profile">
+
+        <div class="col-xs-12 col-md-4 user-profile__left">
+          <div class="box">
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-8 user-profile__right">
+          <div class="box">
+            <img src="{{user.picture}}" class="user-profile__avatar avatar--large">
+            <p *ngIf="self" class="user-profile__settings">
+              <a class="heading font-color--light" (click)="onEdit()">Edit</a>
+              |
+              <a class="heading font-color--light" (click)="onLogout()">Log Out</a>
+            </p>
+            <div *ngIf="!editing">
+              <h1 class="user-profile__name">{{user.name.firstName}} {{user.name.lastName}}</h1>
+              <p class="user-profile__bio">{{user.bio}}</p>
+              <p class="user-profile__stats">followers {{user.followers.length}}   |   following {{user.followers.length}}   |   posts ###</p>
+            </div>
+            <div *ngIf="editing">
+              <form
+                  #updateUserForm="ngForm" 
+                  (ngSubmit)="onUpdateUser()"
+                  class="user-profile__container">
+                <div class="user-profile__form user-profile__form--half">
+                  <label for="firstName">First Name</label>
+                  <input
+                    #firstNameRef="ngModel"
+                    id="firstName"
+                    name="name.firstName"
+                    [(ngModel)]="user.name.firstName"
+                    type="text"
+                    required>
+                  <p *ngIf="firstNameRef.errors?.required" class="flash flash--error">Your first name is required</p>
+                </div>
+
+                <div class=" user-profile__form user-profile__form--half">
+                  <label for="lastName">Last Name</label>
+                  <input
+                    #lastNameRef="ngModel"
+                    id="lastName"
+                    name="name.lastName"
+                    [(ngModel)]="user.name.lastName"
+                    type="text"
+                    required>
+                    <p *ngIf="lastNameRef.errors?.required" class="flash flash--error">Your last name is required</p>
+                </div>
+
+                <div class="user-profile__form user-profile__form--full">
+                  <label for="bio">Bio</label>
+                  <input
+                      #bioRef="ngModel"
+                      id="bio"
+                      name="bio"
+                      [(ngModel)]="user.bio"
+                      type="text"
+                      minlength="5">
+                  <p *ngIf="bioRef.errors?.minlength" class="flash flash--error">This field must be longer than <strong>{{bioRef.errors?.minlength.requiredLength}}</strong> characters. You only have <strong>{{bioRef.errors?.minlength.actualLength}}</strong> so far</p>
+                </div>
+                <div>
+                  <button class="oval-button oval-button__outline oval-button__outline--light" (click)="onEdit()">Cancel</button>
+                  <button class="oval-button oval-button__outline oval-button__outline--success" [disabled]="!updateUserForm.form.valid">Save</button>
+                </div>
+              </form>
+            </div>
+            <p *ngIf="!self"><button class="oval-button oval-button__fill oval-button__fill--default">Follow</button></p>
+          </div>
+        </div>
+
+    </div>
+    <div class="user-profile__error" *ngIf="!user">
+      <p class="font-color--light user-profile__bio">Profile doesn&rsquo;t exist.</p>
+      </div>
+  </div>
+</div>
+<p>
+
+<div class="container">
+  <main class="row main">
+    <app-card-collection class="col-xs-12 col-sm-6 col-md-4"></app-card-collection>
+  </main>
+</div>
+
+

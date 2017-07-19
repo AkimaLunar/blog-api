@@ -1,0 +1,100 @@
+.user-profile {
+    height: 400px;
+    color:$color-white;
+    &__outer {
+        background: darken($color-plum-3, 2%);
+    }
+    &__left,
+    &__right {
+        height: 100%;
+        position: relative;
+    }
+    &__left {
+        background-color: $color-plum-3;
+    }
+
+    &__right {
+        background-color: $color-plum-2;
+        text-align: center;
+        padding-top: 80px;
+    }
+    &__avatar {
+        left: -140px;
+        position: absolute;
+        top: 60px;
+    }
+    &__name {
+        @extend .heading;
+        font-size: 3rem;
+        &:before {
+            content: '';
+            display: block;
+            margin: 0 auto;
+            margin-bottom: .75rem;
+            height: .75rem;
+            border: none;
+            background-color: $action-color;
+            width: 20%;
+        }
+    }
+    &__bio {
+        font-family: $accent-font-family;
+        font-size: 1.5rem;
+    }
+
+    &__stats {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    &__error {
+        min-height: 300px;
+        text-align: center;
+        font-size: 2rem;
+        padding: 2rem 0;
+    }
+
+    &__settings {
+        display: inline-block;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        font-size: .75rem;
+        cursor: pointer;
+
+        a {
+            margin-left: .5rem;
+            padding-right: .5rem;
+        }
+    }
+
+    &__container {
+        padding-right: 1.25rem;
+        padding-left: 10rem;
+        text-align: right;
+
+    }
+
+    &__form {
+        text-align: left;
+        label {
+            opacity: 0.75;
+            font-size: .75rem;
+            text-transform: uppercase;
+        }
+
+        &--half,
+        &--full {
+            float: left;
+            padding: 0 .5rem;
+        }
+        &--half {
+            width: 50%;
+        }
+
+        &--full {
+            width: 100%;
+        }
+    }
+
+}

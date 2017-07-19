@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-8">
+
+      <div class="box">
+        <h1 class="heading">
+          <small>Step 1</small>
+          Choose a post type
+        </h1>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+      <div *ngFor="let type of types" class="col-sm-4" (click)="onSelectType(type)">
+        <div class="create__type create__type--{{type}} box card">
+          <p>{{type}}</p>
+        </div>
+      </div>
+
+  </div>
+  <div *ngIf="post.type" class="row">
+    <div class="col-md-12 col-lg-8">
+
+      <div class="box card">
+        <h1 class="heading">
+          <small>Step 2</small>
+          Add your content
+        </h1>
+        <div [ngSwitch]="post.type">
+          <div *ngSwitchCase="'blog'" class="create__containter create__containter--active">
+            <form #blogPostForm="ngForm" (ngSubmit)="onPost()">
+
+              <label for="title">Title<span *ngIf="title.errors?.required" class="font-color--error"> required</span></label>
+              <input 
+                     #title="ngModel"
+                     type="text"
+                     name="title"
+                     id="title"
+                     required
+                     [(ngModel)]="post.title">
+
+              <label for="excerpt">Excerpt <span *ngIf="exerpt.errors?.required" class="font-color--error"> required</span></label>
+              <input 
+                     #exerpt="ngModel"
+                     type="text"
+                     name="excerpt"
+                     id="excerpt"
+                     required
+                     [(ngModel)]="content.excerpt">
+
+              <label for="html">Content (HTML)</label>
+              <textarea
+                     name="html"
+                     id="html"
+                     cols="30"
+                     rows="10"
+                     [(ngModel)]="content.html"
+                     required>
+              </textarea>
+              <button type="submit" [disabled]="!blogPostForm.form.valid">Post a {{post.type}}</button>
+            </form>
+          </div>
+
+          <div *ngSwitchCase="'photo'" class="create__containter create__containter--active">
+            <form #photoPostForm="ngForm" (ngSubmit)="onPost()">
+
+              <label for="title">Title<span *ngIf="title.errors?.required" class="font-color--error"> required</span></label>
+              <input 
+                     #title="ngModel"
+                     type="text"
+                     name="title"
+                     id="title"
+                     [(ngModel)]="post.title"
+                     required>
+
+              <label for="photoUrl">Photo URL<span *ngIf="photoUrl.errors?.required" class="font-color--error"> required</span></label>
+              <input 
+                     #photoUrl="ngModel"
+                     type="text"
+                     name="photoUrl"
+                     id="photoUrl"
+                     [(ngModel)]="content.photoUrl"
+                     required>
+              <button type="submit" [disabled]="!photoPostForm.form.valid">Post a {{post.type}}</button>
+            </form>
+          </div>
+
+          <div *ngSwitchDefault class="create__containter create__containter--disabled">
+            <p> Please, select a post type</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,43 @@
+<nav class="navigation">
+  <div class="container">
+  <div class="row middle-xs">
+
+  <div class="col-xs-12
+              col-md-1">
+  <div class="box">
+
+    <h1><a routerLink="/">Meenk</a></h1>
+
+  </div>
+  </div>
+
+  <div class="col-xs-12
+              col-md-8">
+  <div class="box">
+    <form action="PUT">
+      <input class="navigation__search input input--light" type="text" placeholder="Search for a bit of perfect…">
+    </form>
+  </div>
+  </div>
+
+  <div class="col-xs-12
+              col-md-3">
+  <div class="box navigation__last">
+    <div *ngIf="usersService.loggedIn">
+      <p *ngIf="user" class="username heading font-color--light"><a [routerLink]="['/profile', user._id]">{{user.name.firstName}} {{user.name.lastName}}</a></p>
+      <a *ngIf="user" [routerLink]="['/profile', user._id]"><img class="avatar--small" src="{{user.picture}}" alt="{{user.name.firstName}} {{user.name.lastName}}, profile photo"></a>
+      <a [routerLink]="['/create']" class="round-button round-button--default">+ <span class="screen-reader">Create a Post</span></a>
+
+    </div>
+    <div *ngIf="!usersService.loggedIn">
+      <p class="username heading font-color--light">
+        <a (click)="onLogin()">Log In</a>
+        <a class="oval-button oval-button__fill oval-button__fill--default" (click)="onLogin()">Sign Up</a>
+      </p>
+    </div>
+  </div>
+  </div>
+ 
+  </div>
+  </div>
+</nav>

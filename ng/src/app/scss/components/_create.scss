@@ -1,0 +1,28 @@
+.create {
+  $base-color: $color-blue;
+  
+  &__type {
+    height: 8rem;
+    text-align: center;
+    color: white;
+    font-family: $accent-font-family;
+    font-size: 3rem;
+    transition: $base-transition;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    &--photo {
+      background-color: adjust-hue($base-color, 40%);
+      &:hover {
+        background-color: tint(adjust-hue($base-color, 40%), 10%);
+      }
+    }
+
+    &--blog {
+      background-color: adjust-hue($base-color, 20%);
+      &:hover {
+        background-color: tint(adjust-hue($base-color, 20%), 10%);
+      }
+    }
+  }
+}

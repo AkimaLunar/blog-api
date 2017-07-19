@@ -1,0 +1,42 @@
+.username,
+.avatar--small,
+.round-button {
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.username {
+    display: inline-block;
+    margin-top: .75rem;
+    font-size: .75rem;
+    font-weight: 400;
+}
+
+.username a,
+.username a:hover,
+.username a:visited {
+    color: rgba(255,255,255,0.75);
+}
+.navigation__last {
+    text-align: right;
+    align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+}
+
+h1 {
+    color: white;
+    font-weight: 400;
+    font-size: 1.25rem;
+    margin-top: .8rem;
+}
+
+.navigation__search {
+    margin-top: .85rem;
+}
+
+.oval-button {
+    padding: .5rem 1.25rem;
+    margin-left: .5rem;
+}
+

@@ -1,0 +1,27 @@
+.card {
+    background: -webkit-linear-gradient(#49525e, #3d394b) left repeat;
+    background: linear-gradient(#49525e, #3d394b) left repeat;
+}
+
+.card__inner {
+    padding-top: 1rem;
+}
+.card__bottom {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.card__bottom a {
+    padding: .5rem 6rem;
+}
+
+.font-accent {
+    font-size: 1.75rem;
+}
+
+.hr {
+    background-color: white;
+}
