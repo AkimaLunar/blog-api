@@ -4,6 +4,7 @@ import { PostsService } from '../../services/posts.service';
 import { UsersService } from '../../services/users.service';
 import { PostPhotoContent } from '../../models/post-photo-content';
 import { PostBlogContent } from '../../models/post-blog-content';
+import { QuillEditorComponent } from 'ngx-quill/src/quill-editor.component';
 
 interface PostBody {
     title: string;
@@ -29,6 +30,13 @@ public types: Array<string> = [
   ];
   private post: PostBody;
   private content: any;
+  private quillConfig = {
+    toolbar: [
+      [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      ['link']
+    ]
+  };
 
   constructor(
     private postsService: PostsService,

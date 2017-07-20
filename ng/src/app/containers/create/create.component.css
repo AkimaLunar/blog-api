@@ -9,8 +9,10 @@
 
 .card {
   padding: 2rem;
+  overflow: visible;
 }
 
 .create__type p {
   margin: 0;
 }
+

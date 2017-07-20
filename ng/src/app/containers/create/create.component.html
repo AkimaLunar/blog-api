@@ -50,15 +50,23 @@
                      required
                      [(ngModel)]="content.excerpt">
 
-              <label for="html">Content (HTML)</label>
-              <textarea
+              <label>Blog Post</label>
+              <quill-editor
+                theme="bubble"
+                placeholder="Write your blog post here…"
+                [(ngModel)]="content.html"
+                name="content.html"
+                [modules]="quillConfig"
+              >
+              </quill-editor>
+              <!-- <textarea
                      name="html"
                      id="html"
                      cols="30"
                      rows="10"
                      [(ngModel)]="content.html"
                      required>
-              </textarea>
+              </textarea> -->
               <button type="submit" [disabled]="!blogPostForm.form.valid">Post a {{post.type}}</button>
             </form>
           </div>
