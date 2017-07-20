@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
+import { QuillEditorComponent } from 'ngx-quill/src/quill-editor.component';
 
 import { Post } from '../../models/post';
 import { User } from '../../models/user';
@@ -19,6 +20,13 @@ export class ViewBlogComponent implements OnInit {
   editing: Boolean;
   post: Post;
   author: User;
+  private quillConfig = {
+    toolbar: [
+      [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      ['link']
+    ]
+  };
   constructor(
     private postsService: PostsService,
     private route: ActivatedRoute,

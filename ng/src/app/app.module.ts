@@ -29,6 +29,8 @@ import { CardDemoComponent } from './components/card-demo/card-demo.component';
 import { ViewDemoComponent } from './containers/view-demo/view-demo.component';
 import { CreateDemoComponent } from './containers/create-demo/create-demo.component';
 
+import { QuillModule } from 'ngx-quill'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,8 @@ import { CreateDemoComponent } from './containers/create-demo/create-demo.compon
     Routing,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    QuillModule
   ],
   providers: [
     CardService,
