@@ -2,4 +2,3 @@ node_modules
 .env
 /.sass-cache/*
 *.scssc
-server/public
