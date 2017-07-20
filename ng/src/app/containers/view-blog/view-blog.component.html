@@ -48,6 +48,14 @@
                 <p *ngIf="contentExcerpt.errors?.required" class="flash flash--error">Say a few words about your blog post..</p>
 
                 <label for="html">Content</label>
+                <quill-editor
+                  theme="bubble"
+                  placeholder="Write your blog post here…"
+                  [(ngModel)]="post.content.html"
+                  name="content.html"
+                  [modules]="quillConfig"
+                >
+              </quill-editor>
                 <textarea
                   #contentHtml="ngModel"
                   id="html"

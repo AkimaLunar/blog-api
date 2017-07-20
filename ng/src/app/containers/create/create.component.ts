@@ -32,13 +32,9 @@ export class CreateComponent implements OnInit {
   private content: any;
   private quillConfig = {
     toolbar: [
-      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
       [{ 'header': 1 }, { 'header': 2 }],               // custom button values
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-
-      ['clean'],                                         // remove formatting button
-
-      ['link']                         // link and image, video
+      ['link']
     ]
   };
 
