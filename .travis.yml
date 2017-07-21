@@ -3,7 +3,7 @@ node_js: node
 env:
   - TEST_DIR=server
 script: cd $TEST_DIR && npm install && npm test
-before_deploy: cd ../ng && ng build && cd ../server 
+before_deploy: cd ../ng && npm install @angular/cli && ng build && cd ../server 
 deploy:
   provider: heroku
   api_key:
