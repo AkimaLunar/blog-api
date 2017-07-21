@@ -11,3 +11,7 @@ hr {
 textarea {
     height: 30rem;
 }
+
+form {
+    height: 100%;
+}

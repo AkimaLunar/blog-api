@@ -55,8 +55,7 @@
                   name="content.html"
                   [modules]="quillConfig"
                 >
-              </quill-editor>
-                <p *ngIf="updateBlogPostForm.errors?" class="flash flash--error">Say a few words about your blog post...</p>
+                </quill-editor>
                 <div class="post__buttons">
                   <button type="submit" class="oval-button oval-button__fill oval-button__fill--success" [disabled]="!updateBlogPostForm.form.valid">Save</button> 
                   <button class="oval-button oval-button__outline oval-button__outline--grey" (click)="onEdit()">Cancel</button>
