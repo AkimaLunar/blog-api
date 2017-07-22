@@ -5,19 +5,23 @@ import 'rxjs/add/operator/switchMap';
 
 import { User } from '../../models/user';
 import { UsersService } from '../../services/users.service';
+import { Post } from '../../models/post';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
-  providers: []
+  providers: [PostsService]
 })
 export class UserProfileComponent implements OnInit {
   user: User;
   self: boolean;
   editing: boolean;
+  posts: Post[];
   constructor(
     private usersService: UsersService,
+    private postsService: PostsService,
     private route: ActivatedRoute,
     private location: Location,
   ) { }
@@ -29,6 +33,8 @@ export class UserProfileComponent implements OnInit {
       .subscribe(user => {
         this.user = user;
         this.self = this.usersService.self(this.user._id);
+        this.postsService.getPostsByUserId(user._id)
+          .then(posts => this.posts = posts);
       });
 
   }
