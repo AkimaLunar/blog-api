@@ -2,7 +2,7 @@
 <div class="container">
   <div *ngIf="post" class="row main">
 
-      <article *ngIf="!editing" class="col-md-12 col-lg-8">
+      <article *ngIf="!editing" class="col-xs-12 col-lg-8">
         <img class="post__image" src="{{post.content.photoUrl}}" alt="{{post.title}}">
         <div class="card card__photo card__inner">
           <hr class="hr">
@@ -15,12 +15,11 @@
         </div>
       </article>
 
-      <div *ngIf="editing" class="col-md-12 col-lg-8">
+      <div *ngIf="editing" class="col-xs-12 col-lg-8">
         <div class="card card__inner">
           <form
                 #updatePhotoPostForm="ngForm" 
-                (ngSubmit)="onUpdatePost()"
-                class="col-xs-12 col-md-9">
+                (ngSubmit)="onUpdatePost()">
                 <hr class="hr">
                 <label for="title">Title</label>
                 <input
@@ -51,7 +50,7 @@
 
       </div>
 
-      <aside class="col-md-12 col-lg-4">
+      <aside class="col-xs-12 col-lg-4">
         <p class="heading font-color--medium-grey">Other Posts</p>
         <ul>
           <li><a href="">Lorem ipsum dolor sit amet</a></li>

@@ -3,4 +3,7 @@
     background: $color-plum-2;
     padding: 1rem 0;
     vertical-align: middle;
+    @media only screen and (max-width: 64em) {
+        padding: .75rem .5rem;
+    }
 }

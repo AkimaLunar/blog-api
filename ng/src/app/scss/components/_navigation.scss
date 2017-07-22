@@ -1,4 +1,12 @@
 .navigation {
     min-height: 4rem;
     background: $color-plum;
+    @media only screen and (max-width: 64em) {
+        padding: .5rem;
+    }
+    &__logo {
+        display: block;
+        margin: 0 auto;
+        width: 8rem;
+    }
 }
