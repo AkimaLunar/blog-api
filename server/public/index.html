@@ -24,8 +24,57 @@
   <link href="https://fonts.googleapis.com/css?family=Alegreya:400i,700i|Open+Sans:400,800" rel="stylesheet">
 
   <script src="https://cdn.auth0.com/js/lock/10.17/lock.min.js"></script>
+  <style>
+
+    .meenk-logo-loader-window {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .meenk-logo-loader-wrapper {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .meenk-logo-loader {
+        fill: #88b2cc;
+        animation-duration: 1.5s;
+        animation-name: loaderPulse;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+
+    }
+
+    @keyframes loaderPulse {
+      from {
+        fill: #88b2cc;
+      }
+
+      to {
+        fill: #fff;
+      }
+}
+
+</style>
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-root>
+    <div class="meenk-logo-loader-window">
+    <div class="meenk-logo-loader-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 123.79">
+        <defs><style>   </style></defs>
+        <title>Meenk Logo Diamond</title>
+        <g id="Layer_2" data-name="Layer 2">
+          <g id="Layer_1-2" data-name="Layer 1">
+            <path class="meenk-logo-loader" d="M116.32,0H43.39L0,43.55l80,80.24,80-80.25ZM43,45V76.19L13.57,45Zm72-4H86.4L115,9.4Zm-35-.07L48.24,7h63.52L80,40.93ZM73.6,41H45V9.4Zm72.82,4L117,76.19V45Zm.43-4H117V11.22ZM43,11V41H13.12Zm2,67.68V45h70V78.66l-35,33.9Z"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    </div>
+  </app-root>
 <script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
 </html>
