@@ -1697,6 +1697,16 @@ body {
     .main {
       margin-top: 1rem; } }
 
+.meenk-logo-loader-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-content: center; }
+
+.meenk-logo-loader {
+  width: 2rem;
+  fill: #fff; }
+
 .container, .container-fluid {
   margin-right: auto;
   margin-left: auto; }
