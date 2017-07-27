@@ -649,8 +649,10 @@ input.input {
       padding: .5rem; } }
   .navigation__logo {
     display: block;
-    margin: 0 auto;
     width: 8rem; }
+    @media only screen and (max-width: 64em) {
+      .navigation__logo {
+        margin: 0 auto; } }
 
 .breadcrumbs {
   min-height: 4rem;
@@ -1728,9 +1730,7 @@ body {
   -ms-flex-direction: row;
   flex-direction: row;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -.5rem;
-  margin-left: -.5rem; }
+  flex-wrap: wrap; }
 
 .row.reverse {
   -webkit-box-orient: horizontal;
