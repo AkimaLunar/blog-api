@@ -1,6 +1,3 @@
-.container {
-  padding-top: 2rem;
-}
 .create__type.box {
   display: flex; 
   align-items: center;
@@ -9,8 +6,28 @@
 
 .card {
   padding: 2rem;
+  overflow: visible;
+  min-height: initial;
 }
 
 .create__type p {
   margin: 0;
+}
+
+@media only screen and (max-width: 64em) {
+    .create__container.card {
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0 0 1rem 0;
+    }
+
+    .create__heading {
+      padding: 0 2rem;
+    }
+}
+
+@media only screen and (min-width: 64em) {
+  .container {
+    padding-top: 2rem;
+  }
 }

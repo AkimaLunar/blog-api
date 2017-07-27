@@ -29,7 +29,8 @@ import { CardDemoComponent } from './components/card-demo/card-demo.component';
 import { ViewDemoComponent } from './containers/view-demo/view-demo.component';
 import { CreateDemoComponent } from './containers/create-demo/create-demo.component';
 
-import { QuillModule } from 'ngx-quill'
+import { QuillModule } from 'ngx-quill';
+import { CardLoadingComponent } from './components/card-loading/card-loading.component'
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { QuillModule } from 'ngx-quill'
     CardComponent,
     CardDemoComponent,
     ViewDemoComponent,
-    CreateDemoComponent
+    CreateDemoComponent,
+    CardLoadingComponent
   ],
   entryComponents: [ CardBlogComponent, CardPhotoComponent ],
   imports: [

@@ -1,6 +1,8 @@
 .user-profile {
-    height: 400px;
     color:$color-white;
+    @media only screen and (min-width: 64em) {
+        height: 400px;
+    }
     &__outer {
         background: darken($color-plum-3, 2%);
     }
@@ -11,6 +13,9 @@
     }
     &__left {
         background-color: $color-plum-3;
+        @media only screen and (max-width: 64em) {
+            display: none;
+        }
     }
 
     &__right {
@@ -22,6 +27,16 @@
         left: -140px;
         position: absolute;
         top: 60px;
+        @media only screen and (max-width: 64em) {
+            position: initial;
+            display: block;
+            margin: 0 auto;
+            height: 180px;
+            width: 180px;
+            -webkit-clip-path: circle(90px);
+            clip-path: circle(90px);
+            margin-bottom: 1rem;
+        }
     }
     &__name {
         @extend .heading;
@@ -45,6 +60,10 @@
     &__stats {
         text-transform: uppercase;
         letter-spacing: 2px;
+        @media only screen and (max-width: 64em) {
+            font-size: .7rem;
+            margin-bottom: .7rem;
+        }
     }
 
     &__error {
@@ -69,9 +88,12 @@
     }
 
     &__container {
-        padding-right: 1.25rem;
-        padding-left: 10rem;
+        padding: 1rem;
         text-align: right;
+        @media only screen and (min-width: 64em) {
+            padding-right: 1.25rem;
+            padding-left: 10rem;
+        }
 
     }
 

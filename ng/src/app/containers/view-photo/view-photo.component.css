@@ -12,3 +12,18 @@ hr {
     border-radius: 0 0px 10px 10px;
     min-height: initial;
 }
+
+@media only screen and (max-width: 64em) {
+    .card {
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0 0 1rem 0;
+    }
+    .card__inner {
+        padding: 1.5rem;
+    }
+
+    .main {
+        margin-top: 0;
+    }
+}

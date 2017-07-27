@@ -1,0 +1,7 @@
+.card {
+    height: 240px;
+}
+
+.card__inner {
+    padding-top: 1rem;
+}

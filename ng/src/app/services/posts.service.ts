@@ -38,6 +38,12 @@ export class PostsService {
       .then(response => response.json() as Post)
       .catch(this.handleError);
   }
+  getPostsByUserId(id: string): Promise<Post[]> {
+    return this.http.get(`${API_URL}/posts/user/${id}`)
+      .toPromise()
+      .then(response => response.json() as Post[])
+      .catch(this.handleError);
+  }
   deletePostById(id: string, authorId:string) {
     const currentUserId = this.usersService.getCurrentUserId();
     const headers = new Headers({

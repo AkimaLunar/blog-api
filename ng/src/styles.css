@@ -419,6 +419,9 @@ picture {
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 250ms ease; }
+  @media only screen and (max-width: 64em) {
+    .oval-button {
+      padding: .5rem 2.25rem; } }
   .oval-button__outline {
     background-color: transparent; }
     .oval-button__outline--light {
@@ -606,8 +609,11 @@ input.input {
   overflow: hidden;
   display: block;
   position: relative;
-  margin-bottom: 10px;
-  min-height: 240px; }
+  margin-bottom: 1rem;
+  min-height: 260px; }
+  @media only screen and (max-width: 64em) {
+    .card {
+      margin: .3rem .5rem; } }
   .card__inner {
     padding: .5rem; }
   .card__photo {
@@ -635,15 +641,52 @@ input.input {
       text-align: center;
       padding: 2rem .5rem; }
 
+.card-loading__header, .card-loading__author, .card-loading__text, .card-loading__hr {
+  animation-duration: 1.5s;
+  animation-name: cardLoadingPulse;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out; }
+.card-loading__header, .card-loading__author, .card-loading__text {
+  height: 1rem;
+  background-color: #a6a5aa;
+  margin: .5rem 0; }
+.card-loading__header--1 {
+  width: 70%; }
+.card-loading__header--2 {
+  width: 50%;
+  margin-bottom: 1rem; }
+.card-loading__author {
+  width: 25%; }
+.card-loading__text {
+  width: 100%; }
+
+@keyframes cardLoadingPulse {
+  from {
+    opacity: .4; }
+  to {
+    opacity: .1; } }
 .navigation {
   min-height: 4rem;
   background: #5d5762; }
+  @media only screen and (max-width: 64em) {
+    .navigation {
+      padding: .5rem; } }
+  .navigation__logo {
+    display: block;
+    width: 8rem; }
+    @media only screen and (max-width: 64em) {
+      .navigation__logo {
+        margin: 0 auto; } }
 
 .breadcrumbs {
   min-height: 4rem;
   background: #4a4756;
   padding: 1rem 0;
   vertical-align: middle; }
+  @media only screen and (max-width: 64em) {
+    .breadcrumbs {
+      padding: .75rem .5rem; } }
 
 .create__type {
   height: 8rem;
@@ -1572,8 +1615,10 @@ input.input {
   visibility: visible; }
 
 .user-profile {
-  height: 400px;
   color: rgba(255, 255, 255, 0.75); }
+  @media only screen and (min-width: 64em) {
+    .user-profile {
+      height: 400px; } }
   .user-profile__outer {
     background: #353341; }
   .user-profile__left, .user-profile__right {
@@ -1581,6 +1626,9 @@ input.input {
     position: relative; }
   .user-profile__left {
     background-color: #3a3747; }
+    @media only screen and (max-width: 64em) {
+      .user-profile__left {
+        display: none; } }
   .user-profile__right {
     background-color: #4a4756;
     text-align: center;
@@ -1589,6 +1637,16 @@ input.input {
     left: -140px;
     position: absolute;
     top: 60px; }
+    @media only screen and (max-width: 64em) {
+      .user-profile__avatar {
+        position: initial;
+        display: block;
+        margin: 0 auto;
+        height: 180px;
+        width: 180px;
+        -webkit-clip-path: circle(90px);
+        clip-path: circle(90px);
+        margin-bottom: 1rem; } }
   .user-profile__name {
     font-size: 3rem; }
     .user-profile__name:before {
@@ -1606,6 +1664,10 @@ input.input {
   .user-profile__stats {
     text-transform: uppercase;
     letter-spacing: 2px; }
+    @media only screen and (max-width: 64em) {
+      .user-profile__stats {
+        font-size: .7rem;
+        margin-bottom: .7rem; } }
   .user-profile__error {
     min-height: 300px;
     text-align: center;
@@ -1622,9 +1684,12 @@ input.input {
       margin-left: .5rem;
       padding-right: .5rem; }
   .user-profile__container {
-    padding-right: 1.25rem;
-    padding-left: 10rem;
+    padding: 1rem;
     text-align: right; }
+    @media only screen and (min-width: 64em) {
+      .user-profile__container {
+        padding-right: 1.25rem;
+        padding-left: 10rem; } }
   .user-profile__form {
     text-align: left; }
     .user-profile__form label {
@@ -1655,6 +1720,9 @@ body {
 .main {
   margin-top: 2rem;
   margin-bottom: 2rem; }
+  @media only screen and (max-width: 64em) {
+    .main {
+      margin-top: 1rem; } }
 
 .container, .container-fluid {
   margin-right: auto;
@@ -1677,9 +1745,7 @@ body {
   -ms-flex-direction: row;
   flex-direction: row;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -.5rem;
-  margin-left: -.5rem; }
+  flex-wrap: wrap; }
 
 .row.reverse {
   -webkit-box-orient: horizontal;

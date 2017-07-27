@@ -1,7 +1,6 @@
 @import "user-profile";
 @import "post";
 
-
 * {
     box-sizing: border-box;
 }
@@ -14,4 +13,7 @@ body {
 .main {
     margin-top: 2rem;
     margin-bottom: 2rem;
+    @media only screen and (max-width: 64em) {
+        margin-top: 1rem;
+    }
 }
