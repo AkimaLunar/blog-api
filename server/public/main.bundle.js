@@ -117,6 +117,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__containers_view_demo_view_demo_component__ = __webpack_require__("../../../../../src/app/containers/view-demo/view-demo.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__containers_create_demo_create_demo_component__ = __webpack_require__("../../../../../src/app/containers/create-demo/create-demo.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_ngx_quill__ = __webpack_require__("../../../../ngx-quill/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_card_loading_card_loading_component__ = __webpack_require__("../../../../../src/app/components/card-loading/card-loading.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -124,6 +125,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -176,7 +178,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_22__components_card_card_component__["a" /* CardComponent */],
             __WEBPACK_IMPORTED_MODULE_23__components_card_demo_card_demo_component__["a" /* CardDemoComponent */],
             __WEBPACK_IMPORTED_MODULE_24__containers_view_demo_view_demo_component__["a" /* ViewDemoComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__containers_create_demo_create_demo_component__["a" /* CreateDemoComponent */]
+            __WEBPACK_IMPORTED_MODULE_25__containers_create_demo_create_demo_component__["a" /* CreateDemoComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__components_card_loading_card_loading_component__["a" /* CardLoadingComponent */]
         ],
         entryComponents: [__WEBPACK_IMPORTED_MODULE_19__components_card_blog_card_blog_component__["a" /* CardBlogComponent */], __WEBPACK_IMPORTED_MODULE_20__components_card_photo_card_photo_component__["a" /* CardPhotoComponent */]],
         imports: [
@@ -335,7 +338,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/card-blog/card-blog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<article class=\"box\">\r\n  <div class=\"card\">\r\n    <!-- <img src=\"https://placeholdit.co//i/555x250\"> -->\r\n    <div class=\"card__inner\">\r\n      <hr class=\"hr\">\r\n      <h1 class=\"heading font-color--dark\">{{post.title.slice(0, 40).concat('…')}}</h1>\r\n      <p class=\"font-accent\">by <a [routerLink]=\"['/profile', post.author.userId]\">{{post.author.displayName}}</a></p>\r\n      <p>{{post.content.excerpt}}</p>\r\n      <div class=\"card__bottom\">\r\n        <p><a [routerLink]=\"['/blog', post._id]\" class=\"oval-button oval-button__outline oval-button__outline--default\">Read</a></p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</article>"
+module.exports = "<article class=\"box\">\r\n  <div class=\"card\">\r\n    <!-- <img src=\"https://placeholdit.co//i/555x250\"> -->\r\n    <div class=\"card__inner\">\r\n      <hr class=\"hr\">\r\n      <h1 class=\"heading font-color--dark\">{{displayTitle}}</h1>\r\n      <p class=\"font-accent\">by <a [routerLink]=\"['/profile', post.author.userId]\">{{post.author.displayName}}</a></p>\r\n      <p>{{post.content.excerpt}}</p>\r\n      <div class=\"card__bottom\">\r\n        <p><a [routerLink]=\"['/blog', post._id]\" class=\"oval-button oval-button__outline oval-button__outline--default\">Read</a></p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</article>"
 
 /***/ }),
 
@@ -361,6 +364,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var CardBlogComponent = (function () {
     function CardBlogComponent() {
     }
+    CardBlogComponent.prototype.ngOnInit = function () {
+        if (this.post.title.length > 40) {
+            this.displayTitle = this.post.title.slice(0, 40).concat('…');
+        }
+        else {
+            this.displayTitle = this.post.title;
+        }
+    };
     CardBlogComponent.prototype.ngOnChanges = function (changes) {
         if (!this.component) {
             return;
@@ -506,6 +517,67 @@ CardDemoComponent = __decorate([
 ], CardDemoComponent);
 
 //# sourceMappingURL=card-demo.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/card-loading/card-loading.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".card {\r\n    height: 240px;\r\n}\r\n\r\n.card__inner {\r\n    padding-top: 1rem;\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/card-loading/card-loading.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<article class=\"box\">\r\n  <div class=\"card\">\r\n    <div class=\"card__inner\">\r\n      <hr class=\"hr card-loading__hr\">\r\n      <div class=\"card-loading__header card-loading__header--1\">&nbsp;</div>\r\n      <div class=\"card-loading__header card-loading__header--2\">&nbsp;</div>\r\n      <div class=\"card-loading__author\">&nbsp;</div>\r\n      <div class=\"card-loading__text\">&nbsp;</div>\r\n      <div class=\"card-loading__text\">&nbsp;</div>\r\n      <div class=\"card-loading__text\">&nbsp;</div>\r\n\r\n    </div>\r\n  </div>\r\n</article>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/card-loading/card-loading.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CardLoadingComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CardLoadingComponent = (function () {
+    function CardLoadingComponent() {
+    }
+    CardLoadingComponent.prototype.ngOnInit = function () {
+    };
+    return CardLoadingComponent;
+}());
+CardLoadingComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-card-loading',
+        template: __webpack_require__("../../../../../src/app/components/card-loading/card-loading.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/card-loading/card-loading.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], CardLoadingComponent);
+
+//# sourceMappingURL=card-loading.component.js.map
 
 /***/ }),
 
@@ -1106,7 +1178,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/containers/post-list/post-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <main class=\"row main\">\r\n    <div *ngIf=\"!usersService.loggedIn\" class=\"col-xs-12 col-sm-6\">\r\n      <app-card-demo></app-card-demo>\r\n    </div>\r\n    <div *ngFor=\"let post of posts\" class=\"col-xs-12 col-sm-6 col-md-3\">\r\n      <app-card [post]=\"post\"></app-card>\r\n    </div>\r\n  </main>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <main class=\"row main\">\r\n    <div *ngIf=\"!usersService.loggedIn\" class=\"col-xs-12 col-sm-6\">\r\n      <app-card-demo></app-card-demo>\r\n    </div>\r\n     <div *ngIf=\"!posts\" class=\"col-xs-12 col-sm-6 col-md-3\"> \r\n      <app-card-loading></app-card-loading>\r\n    </div>\r\n     <div *ngIf=\"!posts\" class=\"col-xs-12 col-sm-6 col-md-3\"> \r\n      <app-card-loading></app-card-loading>\r\n    </div>\r\n     <div *ngIf=\"!posts\" class=\"col-xs-12 col-sm-6 col-md-3\"> \r\n      <app-card-loading></app-card-loading>\r\n    </div>\r\n     <div *ngIf=\"!posts\" class=\"col-xs-12 col-sm-6 col-md-3\"> \r\n      <app-card-loading></app-card-loading>\r\n    </div>\r\n     <div *ngIf=\"!posts\" class=\"col-xs-12 col-sm-6 col-md-3\"> \r\n      <app-card-loading></app-card-loading>\r\n    </div>\r\n     <div *ngIf=\"!posts\" class=\"col-xs-12 col-sm-6 col-md-3\"> \r\n      <app-card-loading></app-card-loading>\r\n    </div>\r\n     <div *ngIf=\"!posts\" class=\"col-xs-12 col-sm-6 col-md-3\"> \r\n      <app-card-loading></app-card-loading>\r\n    </div>\r\n    <div *ngFor=\"let post of posts\" class=\"col-xs-12 col-sm-6 col-md-3\">\r\n      <app-card [post]=\"post\"></app-card>\r\n    </div>\r\n  </main>\r\n</div>"
 
 /***/ }),
 
@@ -1835,13 +1907,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 // @TODO refactor for production
 var API_URL = 'https://protected-tor-84468.herokuapp.com/api';
+var lockOptions = {
+    theme: {
+        logo: 'https://protected-tor-84468.herokuapp.com/assets/Logo-Auth0-Lock.png',
+        primaryColor: '#88b2cc',
+    },
+    languageDictionary: {
+        title: "Meenk me in!"
+    }
+};
 var UsersService = (function () {
     // self$ = new BehaviorSubject<boolean>(false);
     function UsersService(http, router) {
         var _this = this;
         this.http = http;
         this.router = router;
-        this.lock = new Auth0Lock('r0U8PcRtw9LMakkw0MV9mjnHYb7gk7e3', 'riacarmin.auth0.com');
+        this.lock = new Auth0Lock('r0U8PcRtw9LMakkw0MV9mjnHYb7gk7e3', 'riacarmin.auth0.com', lockOptions);
         this.loggedIn$ = new __WEBPACK_IMPORTED_MODULE_4_rxjs_BehaviorSubject__["BehaviorSubject"](this.authenticated());
         this.currentUser$ = new __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__["Subject"]();
         this.setLoggedIn(this.authenticated());
