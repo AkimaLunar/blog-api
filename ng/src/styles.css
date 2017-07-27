@@ -649,7 +649,7 @@ input.input {
   animation-timing-function: ease-in-out; }
 .card-loading__header, .card-loading__author, .card-loading__text {
   height: 1rem;
-  background-color: #5d5762;
+  background-color: #a6a5aa;
   margin: .5rem 0; }
 .card-loading__header--1 {
   width: 70%; }
@@ -663,9 +663,9 @@ input.input {
 
 @keyframes cardLoadingPulse {
   from {
-    opacity: .5; }
+    opacity: .4; }
   to {
-    opacity: .2; } }
+    opacity: .1; } }
 .navigation {
   min-height: 4rem;
   background: #5d5762; }

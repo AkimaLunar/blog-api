@@ -64,7 +64,7 @@
   &__author,
   &__text {
     height: 1rem;
-    background-color: $color-plum;
+    background-color: $color-medium-grey;
     margin: .5rem 0;
   }
   &__header {
@@ -88,9 +88,9 @@
 
 @keyframes cardLoadingPulse {
   from {
-    opacity: .5;
+    opacity: .4;
   }
   to {
-    opacity: .2;
+    opacity: .1;
   }
 }
