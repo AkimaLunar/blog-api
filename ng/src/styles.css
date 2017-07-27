@@ -641,6 +641,31 @@ input.input {
       text-align: center;
       padding: 2rem .5rem; }
 
+.card-loading__header, .card-loading__author, .card-loading__text, .card-loading__hr {
+  animation-duration: 1.5s;
+  animation-name: cardLoadingPulse;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out; }
+.card-loading__header, .card-loading__author, .card-loading__text {
+  height: 1rem;
+  background-color: #5d5762;
+  margin: .5rem 0; }
+.card-loading__header--1 {
+  width: 70%; }
+.card-loading__header--2 {
+  width: 50%;
+  margin-bottom: 1rem; }
+.card-loading__author {
+  width: 25%; }
+.card-loading__text {
+  width: 100%; }
+
+@keyframes cardLoadingPulse {
+  from {
+    opacity: .5; }
+  to {
+    opacity: .2; } }
 .navigation {
   min-height: 4rem;
   background: #5d5762; }
@@ -649,8 +674,10 @@ input.input {
       padding: .5rem; } }
   .navigation__logo {
     display: block;
-    margin: 0 auto;
     width: 8rem; }
+    @media only screen and (max-width: 64em) {
+      .navigation__logo {
+        margin: 0 auto; } }
 
 .breadcrumbs {
   min-height: 4rem;
@@ -1697,16 +1724,6 @@ body {
     .main {
       margin-top: 1rem; } }
 
-.meenk-logo-loader-wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-content: center; }
-
-.meenk-logo-loader {
-  width: 2rem;
-  fill: #fff; }
-
 .container, .container-fluid {
   margin-right: auto;
   margin-left: auto; }
@@ -1728,9 +1745,7 @@ body {
   -ms-flex-direction: row;
   flex-direction: row;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -.5rem;
-  margin-left: -.5rem; }
+  flex-wrap: wrap; }
 
 .row.reverse {
   -webkit-box-orient: horizontal;

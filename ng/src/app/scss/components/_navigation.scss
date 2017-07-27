@@ -6,7 +6,9 @@
     }
     &__logo {
         display: block;
-        margin: 0 auto;
         width: 8rem;
+        @media only screen and (max-width: 64em) {
+            margin: 0 auto;
+        }
     }
 }

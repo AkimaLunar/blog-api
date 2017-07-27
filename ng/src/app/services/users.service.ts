@@ -13,11 +13,20 @@ declare var Auth0Lock: any;
 
 // @TODO refactor for production
 const API_URL = 'https://protected-tor-84468.herokuapp.com/api';
+const lockOptions = {
+  theme: {
+    logo: 'https://protected-tor-84468.herokuapp.com/assets/Logo-Auth0-Lock.png',
+    primaryColor: '#88b2cc',
+  },
+  languageDictionary: {
+    title: "Meenk me in!"
+  }
+}
 
 @Injectable()
 export class UsersService {
 
-  lock = new Auth0Lock('r0U8PcRtw9LMakkw0MV9mjnHYb7gk7e3', 'riacarmin.auth0.com');
+  lock = new Auth0Lock('r0U8PcRtw9LMakkw0MV9mjnHYb7gk7e3', 'riacarmin.auth0.com', lockOptions);
   loggedIn: boolean;
   loggedIn$ = new BehaviorSubject<boolean>(this.authenticated());
   currentUser: User;
