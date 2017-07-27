@@ -47,3 +47,50 @@
     }
   }
 }
+
+.card-loading {
+  &__header,
+  &__author,
+  &__text,
+  &__hr {
+    animation-duration: 1.5s;
+    animation-name: cardLoadingPulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+  }
+
+  &__header,
+  &__author,
+  &__text {
+    height: 1rem;
+    background-color: $color-plum;
+    margin: .5rem 0;
+  }
+  &__header {
+    &--1 {
+      width: 70%;
+    }
+    &--2 {
+      width: 50%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__author {
+    width: 25%;
+  }
+
+  &__text {
+    width: 100%;
+  }
+}
+
+@keyframes cardLoadingPulse {
+  from {
+    opacity: .5;
+  }
+  to {
+    opacity: .2;
+  }
+}
