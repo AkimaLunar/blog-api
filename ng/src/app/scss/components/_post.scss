@@ -1,0 +1,19 @@
+.post__blog {
+  h1 {
+    color: $color-dark-grey;
+    border-bottom: 1px solid $color-x-light-grey;
+    padding-bottom: .5rem;
+  }
+  h2 {
+    color: $color-medium-grey;
+  }
+  ul {
+    list-style-type: circle;
+    list-style-position: inside;
+}
+
+  ol {
+    list-style-type: decimal-leading-zero;
+    list-style-position: inside;
+  }
+}

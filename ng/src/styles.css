@@ -613,7 +613,7 @@ input.input {
   min-height: 260px; }
   @media only screen and (max-width: 64em) {
     .card {
-      margin: .3rem .5rem; } }
+      margin: .3rem 0; } }
   .card__inner {
     padding: .5rem; }
   .card__photo {
@@ -625,7 +625,8 @@ input.input {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(84, 82, 94, 0.4); }
+    background-color: rgba(84, 82, 94, 0.4);
+    transition: all 250ms ease; }
     .card__overlay:hover {
       background-color: rgba(84, 82, 94, 0.2); }
   .card__half {
@@ -649,7 +650,7 @@ input.input {
   animation-timing-function: ease-in-out; }
 .card-loading__header, .card-loading__author, .card-loading__text {
   height: 1rem;
-  background-color: #5d5762;
+  background-color: #a6a5aa;
   margin: .5rem 0; }
 .card-loading__header--1 {
   width: 70%; }
@@ -663,9 +664,9 @@ input.input {
 
 @keyframes cardLoadingPulse {
   from {
-    opacity: .5; }
+    opacity: .4; }
   to {
-    opacity: .2; } }
+    opacity: .1; } }
 .navigation {
   min-height: 4rem;
   background: #5d5762; }
@@ -1614,6 +1615,19 @@ input.input {
 .ql-container.ql-bubble:not(.ql-disabled) a:hover::after {
   visibility: visible; }
 
+.post__blog h1 {
+  color: #54525e;
+  border-bottom: 1px solid #f6f5fa;
+  padding-bottom: .5rem; }
+.post__blog h2 {
+  color: #a6a5aa; }
+.post__blog ul {
+  list-style-type: circle;
+  list-style-position: inside; }
+.post__blog ol {
+  list-style-type: decimal-leading-zero;
+  list-style-position: inside; }
+
 .user-profile {
   color: rgba(255, 255, 255, 0.75); }
   @media only screen and (min-width: 64em) {
@@ -1722,7 +1736,7 @@ body {
   margin-bottom: 2rem; }
   @media only screen and (max-width: 64em) {
     .main {
-      margin-top: 1rem; } }
+      margin-top: .3rem; } }
 
 .container, .container-fluid {
   margin-right: auto;
@@ -1745,7 +1759,9 @@ body {
   -ms-flex-direction: row;
   flex-direction: row;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin-right: -.5rem;
+  margin-left: -.5rem; }
 
 .row.reverse {
   -webkit-box-orient: horizontal;

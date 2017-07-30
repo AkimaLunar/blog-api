@@ -27,7 +27,7 @@ const routes = [
         component: CreateComponent,
         canActivate: [AuthGuard]
     },
-    { path: '**', component: PageNotFoundComponent },
+    // { path: '**', component: PageNotFoundComponent },
 ];
 
 export const Routing = RouterModule.forRoot(routes);
