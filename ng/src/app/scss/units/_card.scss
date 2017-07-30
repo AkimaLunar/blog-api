@@ -8,7 +8,7 @@
   margin-bottom: 1rem;
   min-height: 260px;
   @media only screen and (max-width: 64em) {
-    margin: .3rem .5rem;
+    margin: .3rem 0;
   }
 
   &__inner {
@@ -25,6 +25,7 @@
     top:0;
     left:0;
     background-color: transparentize($color-dark-grey, .6);
+    transition: all 250ms ease;
     &:hover {
       background-color: transparentize($color-dark-grey, .8);
     }
