@@ -21,3 +21,27 @@ h1 {
     text-align: center;
     height: 2.5rem;
 }
+
+@media only screen and (max-width: 64em) {
+    .col-xs-12 {
+        padding-right: 0rem;
+        padding-left: 0rem;
+    }
+    .row {
+        margin-left: 0;
+        margin-right:0;
+    }
+    .card {
+        border-radius: 0;
+        box-shadow: none;
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+    .card__inner {
+        padding: 1.5rem;
+    }
+
+    .main {
+        margin-top: 0;
+    }
+}

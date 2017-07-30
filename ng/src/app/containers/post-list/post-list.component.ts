@@ -12,6 +12,7 @@ import { UsersService } from '../../services/users.service';
 })
 export class PostListComponent implements OnInit {
   posts: Post[];
+  loaderPosts: Array<number>;
   constructor(
     private postsService: PostsService,
     private usersService: UsersService

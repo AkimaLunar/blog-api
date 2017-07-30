@@ -15,15 +15,29 @@
 }
 
 @media only screen and (max-width: 64em) {
-    .create__container.card {
-        border-radius: 0;
-        box-shadow: none;
-        margin: 0 0 1rem 0;
-    }
+  .create__type.box {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .create__container.card {
+      border-radius: 0;
+      box-shadow: none;
+      margin-bottom: 1rem;
+  }
 
-    .create__heading {
-      padding: 0 2rem;
-    }
+  .create__heading {
+    padding: 0 2rem;
+  }
+
+  .row {
+      margin-right: 0;
+      margin-left: 0;
+  }
+
+  .col-xs-12 {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 @media only screen and (min-width: 64em) {
