@@ -20,6 +20,8 @@ postsRouter.use(bodyParser.json());
 postsRouter.get('/', (req, res) => {
     Post
         .find()
+        .limit(50)
+        .sort({ timestamp: -1 })
         .exec()
         .then(posts => {
             if (!posts){
@@ -88,6 +90,8 @@ postsRouter.get('/user/:id', (req, res) => {
     const id = req.params.id;
     Post
         .find({'author.userId': id})
+        .limit(50)
+        .sort({ timestamp: -1 })
         .exec()
         .then(posts => {
             if (!posts){
