@@ -14,8 +14,8 @@ export class PostListComponent implements OnInit {
   posts: Post[];
   loaderPosts: Array<number>;
   constructor(
-    private postsService: PostsService,
-    private usersService: UsersService
+    public postsService: PostsService,
+    public usersService: UsersService
   ) { }
 
   ngOnInit() {

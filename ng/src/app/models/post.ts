@@ -10,5 +10,5 @@ export interface Post {
     timestamp: Date;
     tags?: string[];
     hearts?: string[];
-    content: object;
+    content: any;
 }

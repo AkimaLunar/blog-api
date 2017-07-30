@@ -28,9 +28,9 @@ export class CreateComponent implements OnInit {
     'blog',
     'photo'
   ];
-  private post: PostBody;
-  private content: any;
-  private quillConfig = {
+  public post: PostBody;
+  public content: any;
+  public quillConfig = {
     toolbar: [
       [{ 'header': 1 }, { 'header': 2 }],               // custom button values
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
@@ -39,9 +39,9 @@ export class CreateComponent implements OnInit {
   };
 
   constructor(
-    private postsService: PostsService,
-    private usersService: UsersService,
-    private router: Router
+    public postsService: PostsService,
+    public usersService: UsersService,
+    public router: Router
   ) { }
 
   ngOnInit() {
