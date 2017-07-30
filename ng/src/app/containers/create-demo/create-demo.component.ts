@@ -28,9 +28,9 @@ public types: Array<string> = [
     'blog',
     'photo'
   ];
-  private post: PostBody;
-  private content: any;
-  private quillConfig = {
+  post: PostBody;
+  content: any;
+  quillConfig = {
     toolbar: [
       [{ 'header': 1 }, { 'header': 2 }],               // custom button values
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
@@ -39,9 +39,9 @@ public types: Array<string> = [
   };
 
   constructor(
-    private postsService: PostsService,
-    private usersService: UsersService,
-    private router: Router
+    public postsService: PostsService,
+    public usersService: UsersService,
+    public router: Router
   ) { }
 
   ngOnInit() {

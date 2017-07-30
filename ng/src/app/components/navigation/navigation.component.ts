@@ -17,7 +17,7 @@ export class NavigationComponent implements OnInit {
   userSubscription: Subscription;
   user: User;
   constructor(
-    private usersService: UsersService
+    public usersService: UsersService
     ) {}
 
   ngOnInit() {
