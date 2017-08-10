@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -7,7 +7,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./breadcrumbs.component.css']
 })
 export class BreadcrumbsComponent implements OnInit {
-
+  @Input(' ') heading: string;
+  
   constructor(
     private location: Location
   ) { }

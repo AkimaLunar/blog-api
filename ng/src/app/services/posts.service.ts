@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { Post } from "../models/post";
 import { UsersService } from "./users.service";
 
-import { Observable } from "rxjs/Observable";
+import { Subject } from "rxjs/Subject";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
@@ -19,6 +19,8 @@ export class PostsService {
     private router: Router
   ) {}
 
+  searchPosts$: Subject<Post[]> = new Subject<Post[]>();
+
   private handleError(error: any): Promise<any> {
     console.error("An error occurred", error); // for demo purposes only
     return Promise.reject(error.message || error);
@@ -32,13 +34,13 @@ export class PostsService {
       .catch(this.handleError);
   }
 
-  searchPosts(query): Promise<Post[]> {
-    return this.http
-      .get(`${API_URL}/posts/search?${query}`)
-      .toPromise()
-      .then(response => response.json() as Post[])
-      .catch(this.handleError);
+  searchPosts(query): void {
+    this.http
+      .get(`${API_URL}/posts/search?p=${query}`)
+      .map(response => response.json() as Post[])
+      .subscribe(posts => this.searchPosts$.next(posts));
   }
+
   // @TODO Add format guards
   getPostById(id: string): Promise<Post> {
     return this.http

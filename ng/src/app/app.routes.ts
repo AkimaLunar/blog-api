@@ -7,6 +7,7 @@ import { UserProfileComponent } from './containers/user-profile/user-profile.com
 import { CollectionComponent } from './containers/collection/collection.component';
 import { ViewBlogComponent } from './containers/view-blog/view-blog.component';
 import { ViewDemoComponent } from './containers/view-demo/view-demo.component';
+import { ViewSearchComponent } from './containers/view-search/view-search.component';
 import { CreateComponent } from './containers/create/create.component';
 import { CreateDemoComponent } from './containers/create-demo/create-demo.component';
 import { PageNotFoundComponent } from './containers/page-not-found/page-not-found.component';
@@ -27,7 +28,8 @@ const routes = [
         component: CreateComponent,
         canActivate: [AuthGuard]
     },
-    // { path: '**', component: PageNotFoundComponent },
+    { path: 'search', component: ViewSearchComponent},
+    { path: '**', component: PageNotFoundComponent },
 ];
 
 export const Routing = RouterModule.forRoot(routes);

@@ -7,6 +7,7 @@ import { Routing } from './app.routes';
 import { AppComponent } from './app.component';
 
 import { UsersService } from './services/users.service';
+import { PostsService } from './services/posts.service';
 import { CardService } from './services/card.service';
 import { AuthGuard } from './services/auth-guard.service';
 
@@ -30,7 +31,8 @@ import { ViewDemoComponent } from './containers/view-demo/view-demo.component';
 import { CreateDemoComponent } from './containers/create-demo/create-demo.component';
 
 import { QuillModule } from 'ngx-quill';
-import { CardLoadingComponent } from './components/card-loading/card-loading.component'
+import { CardLoadingComponent } from './components/card-loading/card-loading.component';
+import { ViewSearchComponent } from './containers/view-search/view-search.component'
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { CardLoadingComponent } from './components/card-loading/card-loading.com
     CardDemoComponent,
     ViewDemoComponent,
     CreateDemoComponent,
-    CardLoadingComponent
+    CardLoadingComponent,
+    ViewSearchComponent
   ],
   entryComponents: [ CardBlogComponent, CardPhotoComponent ],
   imports: [
@@ -65,7 +68,8 @@ import { CardLoadingComponent } from './components/card-loading/card-loading.com
   providers: [
     CardService,
     AuthGuard,
-    UsersService
+    UsersService,
+    PostsService
   ],
   bootstrap: [AppComponent]
 })
