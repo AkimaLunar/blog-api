@@ -8,11 +8,10 @@ import { UsersService } from '../../services/users.service';
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css'],
-  providers: [PostsService]
+  providers: []
 })
 export class PostListComponent implements OnInit {
   posts: Post[];
-  loaderPosts: Array<number>;
   constructor(
     public postsService: PostsService,
     public usersService: UsersService

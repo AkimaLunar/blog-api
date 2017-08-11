@@ -17,7 +17,7 @@
               col-md-7">
   <div class="box">
     <form action="PUT">
-      <input class="navigation__search input input--light" type="text" placeholder="Search for a bit of perfect…">
+      <input (input)="searchQueries$.next($event.target.value)" class="navigation__search input input--light" type="text" placeholder="Search for a bit of perfect…">
     </form>
   </div>
   </div>
