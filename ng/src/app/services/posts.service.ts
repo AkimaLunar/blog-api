@@ -35,10 +35,14 @@ export class PostsService {
   }
 
   searchPosts(query): void {
-    this.http
+    if (query === "") { this.router.navigate(["/"]) }
+    else {
+      this.router.navigate(["/search"]);
+      this.http
       .get(`${API_URL}/posts/search?p=${query}`)
       .map(response => response.json() as Post[])
       .subscribe(posts => this.searchPosts$.next(posts));
+    }
   }
 
   // @TODO Add format guards
