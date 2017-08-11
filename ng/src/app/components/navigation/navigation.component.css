@@ -43,3 +43,7 @@ h1 {
 svg {
     margin-top: .5rem;
 }
+
+input {
+    color: rgba(255, 255, 255, 0.2);
+}
